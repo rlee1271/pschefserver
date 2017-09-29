@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+
+select(STDOUT); $|= 1;         # make unbuffered
+
+$DomainName = "<%= @DomainName %>";
+$Size = "<%= @Size %>";
+$DBName = "<%= @DBName %>";
+$DBType = "<%= @DBType %>";
+$UserId = "<%= @UserId %>";
+$UserPwd = "<%= @UserPwd %>";
+$DomainId = "<%= @DomainId %>";
+$AddToPath = "<%= @AddToPath %>";
+$ConnectId = "<%= @ConnectId %>";
+$ConnectPwd = "<%= @Connectpwd %>";
+$WSLPort = "<%= @WSLPort %>";
+$JSLPort = "<%= @JSLPort %>";
+$JRADPort = "<%= @JRADPort %>";
+
+$cmd = "/apps/psoft/pt854/appserv/psadmin -c create -d $DomainName -t $Size -s $DBName%$DBType%$UserId%$UserPwd%$DomainId%$AddToPath%$ConnectId%$ConnectPwd -p $WSLPort%$JSLPort%$JRADPort";
+
+system(". ../../setfin92-854; $cmd");
+#system($cmd);

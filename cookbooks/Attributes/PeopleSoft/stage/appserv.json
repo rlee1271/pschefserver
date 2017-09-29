@@ -1,0 +1,82 @@
+{
+   "TPAPSAPPP1" : {
+      "APPSERV" : {
+         "FSCGM01" : {
+            "DomainName" : "FSCGM01",
+            "Size" : "large",
+            "DBName" : "FSCG",
+            "WSLPort" : "6330",
+            "JSLPort" : "6430",
+            "JRADPort" : "9100"
+         },
+         "FSCGW01" : {
+            "DomainName" : "FSCGW01",
+            "Size" : "large",
+            "DBName" : "FSCG",
+            "WSLPort" : "6300",
+            "JSLPort" : "6400",
+            "JRADPort" : "9100"
+         }
+      }
+   },
+   "TPAPSAPPP2" : {
+      "APPSERV" : {
+         "FSCGM01" : {
+            "DomainName" : "FSCGM01",
+            "Size" : "large",
+            "DBName" : "FSCG",
+            "WSLPort" : "6330",
+            "JSLPort" : "6430",
+            "JRADPort" : "9100"
+         },
+         "FSCGW01" : {
+            "DomainName" : "FSCGW01",
+            "Size" : "large",
+            "DBName" : "FSCG",
+            "WSLPort" : "6300",
+            "JSLPort" : "6400",
+            "JRADPort" : "9100"
+         }
+      }
+   },
+   "NYCPSAPPP1" : {
+      "APPSERV" : {
+         "FSCGM01" : {
+            "DomainName" : "FSCGM01",
+            "Size" : "large",
+            "DBName" : "FSCG",
+            "WSLPort" : "6330",
+            "JSLPort" : "6430",
+            "JRADPort" : "9100"
+         },
+         "FSCGW01" : {
+            "DomainName" : "FSCGW01",
+            "Size" : "large",
+            "DBName" : "FSCG",
+            "WSLPort" : "6300",
+            "JSLPort" : "6400",
+            "JRADPort" : "9100"
+         }
+      }
+   },
+   "NYCPSAPPP2" : {
+      "APPSERV" : {
+         "FSCGM01" : {
+            "DomainName" : "FSCGM01",
+            "Size" : "large",
+            "DBName" : "FSCG",
+            "WSLPort" : "6330",
+            "JSLPort" : "6430",
+            "JRADPort" : "9100"
+         },
+         "FSCGW01" : {
+            "DomainName" : "FSCGW01",
+            "Size" : "large",
+            "DBName" : "FSCG",
+            "WSLPort" : "6300",
+            "JSLPort" : "6400",
+            "JRADPort" : "9100"
+         }
+      }
+   }
+}

@@ -1,0 +1,248 @@
+# ***************************************************************
+#  This software and related documentation are provided under a
+#  license agreement containing restrictions on use and
+#  disclosure and are protected by intellectual property
+#  laws. Except as expressly permitted in your license agreement
+#  or allowed by law, you may not use, copy, reproduce,
+#  translate, broadcast, modify, license, transmit, distribute,
+#  exhibit, perform, publish or display any part, in any form or
+#  by any means. Reverse engineering, disassembly, or
+#  decompilation of this software, unless required by law for
+#  interoperability, is prohibited.
+#  The information contained herein is subject to change without
+#  notice and is not warranted to be error-free. If you find any
+#  errors, please report them to us in writing.
+#  
+#  Copyright (C) 1988, 2014, Oracle and/or its affiliates.
+#  All Rights Reserved.
+# ***************************************************************
+ 
+ 
+
+#-----------------------------------------------------------------------
+#
+#   psconfig.sh    -- Script to set PS environmental variables 
+#                     (Bourne Shell) 
+#
+# Add ". $PSHOME$/psconfig.sh" to file, .profile
+# in user's home directory
+#
+# Naturally, place it somewhere in the file where it will always
+# be executed.  Beware of premature exits in the .profile code.
+#
+#-----------------------------------------------------------------------
+
+#
+# Check for multiple invocations of this script as multiple
+# invocations may cause environment variables to be set incorrectly.
+#
+if [ "x$IS_PS_PLT" = "xY" ]; then
+  echo "Error: A psconfig.sh script has already been invoked.  Your environment will not be changed"
+  return 1
+fi
+
+#
+# Environment variable setup
+#
+IS_PS_PLT="Y"; export IS_PS_PLT
+PS_HOME="<%= @PS_HOME %>"; export PS_HOME
+PS_HOSTTYPE="oel-5-x86_64"; export PS_HOSTTYPE
+
+if [ "x$PS_NO_LOGIN_VARS" != "xY" ]; then
+  #
+  # Save environment variables.
+  # The PeopleSoft EM plugin depends on these saved values. 
+  #
+  PS_LOGINVARS_HOME="$HOME/psft"
+  PS_LOGINVARS_FILE="$PS_LOGINVARS_HOME/ps_login_vars.sh"
+  if [ ! -s "$PS_LOGINVARS_FILE" ]; then
+    mkdir -p "$PS_LOGINVARS_HOME" > /dev/null 2>&1
+    if [ -w "$PS_LOGINVARS_HOME" ]; then
+      LOGINVARS="USER HOME LOGNAME MAIL SHELL"
+      for var in $LOGINVARS; do
+        if env | grep "^$var=" > /dev/null; then
+          env | grep "^$var=" | sed -e "s/$/\"; export $var/" -e "s/^$var=/$var=\"/" >> "$PS_LOGINVARS_FILE.$$"
+        fi
+      done
+    
+      mv -f "$PS_LOGINVARS_FILE.$$" "$PS_LOGINVARS_FILE"
+ 
+      unset LOGINVARS
+    fi
+  fi
+  unset PS_LOGINVARS_FILE 
+  unset PS_LOGINVARS_HOME
+fi
+CLASSPATH="$PS_HOME/appserv/classes${CLASSPATH+:$CLASSPATH}"; export CLASSPATH
+COBPATH="$PS_HOME/cblbin"; export COBPATH
+PS_JRE="$PS_HOME/jre"; export PS_JRE
+PATH="$PS_JRE/bin:$PATH:$PS_HOME/bin:$PS_HOME/bin/sqr/ORA/bin"; export PATH
+DM_HOME="$HOME/PS_DM"; export DM_HOME
+PS_DM_DATA_IN="$PS_HOME/data"; export PS_DM_DATA_IN
+PS_DM_DATA_OUT="$DM_HOME/data"; export PS_DM_DATA_OUT
+PS_DM_LOG="$DM_HOME/log"; export PS_DM_LOG
+PS_SERVDIR="$HOME/PS_CACHE"; export PS_SERVDIR
+PS_SERVER_CFG="$PS_HOME/setup/psdmtx.cfg"; export PS_SERVER_CFG
+PS_DM_SCRIPT="$PS_HOME/scripts"; export PS_DM_SCRIPT
+SQR_HOME="$PS_HOME/bin/sqr/ORA"; export SQR_HOME
+SQRDIR="$SQR_HOME/bin"; export SQRDIR
+
+# Tuxedo contains a defect with regard to process generation
+# that requires this environment variable to be set.
+TM_GP_AUTOSPAWNEXIT_FIX="yes"; export TM_GP_AUTOSPAWNEXIT_FIX
+
+# The Tuxedo log file will be world writable without this
+# environment variable set.
+UMASKULOGPERM="yes"; export UMASKULOGPERM
+
+
+#
+# Path setup
+#
+
+# Solaris SASL path
+case "$PS_HOSTTYPE" in
+  solaris-*-sparc)
+    case "`uname -r`" in
+      5.9)
+        LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/mps/sasl2/64"; export LD_LIBRARY_PATH
+        ;;
+    esac
+    ;;
+esac
+
+# Java library paths
+case "$PS_HOSTTYPE" in
+  aix-*)
+    PSJLIBPATH="$PS_JRE/bin:$PS_JRE/lib/ppc64:$PS_JRE/lib/ppc64/j9vm"; export PSJLIBPATH
+    ;;
+  hpux-*-ia64)
+    PSJLIBPATH="$PS_JRE/lib/IA64W/native_threads:$PS_JRE/lib/IA64W/server:$PS_JRE/lib/IA64W"; export PSJLIBPATH
+    ;;
+  hpux-*-parisc)
+    PSJLIBPATH="$PS_JRE/lib/PA_RISC2.0W/native_threads:$PS_JRE/lib/PA_RISC2.0W/server:$PS_JRE/lib/PA_RISC2.0W"; export PSJLIBPATH
+    ;;
+  oel-*-x86_64|suse-*-x86_64|redhat-*-x86_64)
+    PSJLIBPATH="$PS_JRE/lib/amd64/native_threads:$PS_JRE/lib/amd64/server:$PS_JRE/lib/amd64"; export PSJLIBPATH
+    ;;
+  solaris-*-sparc)
+    PSJLIBPATH="$PS_JRE/lib/sparcv9/native_threads:$PS_JRE/lib/sparcv9/server:$PS_JRE/lib/sparcv9"; export PSJLIBPATH
+    ;;
+  solaris-*-x86_64)
+    PSJLIBPATH="$PS_JRE/lib/amd64/native_threads:$PS_JRE/lib/amd64/server:$PS_JRE/lib/amd64"; export PSJLIBPATH
+    ;;
+  suse-*-zarch|redhat-*-zarch)
+    PSJLIBPATH="$PS_JRE/lib/s390x/j9vm:$PS_JRE/lib/s390x:$PS_JRE/bin"; export PSJLIBPATH
+    ;;
+esac
+
+# Verity binary and library paths
+case "$PS_HOSTTYPE" in
+  aix-*)
+    PSVERITYBIN="$PS_HOME/verity/aix/_rs6k43/bin"; export PSVERITYBIN
+    ;;
+  hpux-*-ia64)
+    PSVERITYBIN="$PS_HOME/verity/hpux-ia64/_hpux64i/bin"; export PSVERITYBIN
+    ;;
+  hpux-*-parisc)
+    PSVERITYBIN="$PS_HOME/verity/hpux/_hpux/bin"; export PSVERITYBIN
+    ;;
+  oel-*-x86_64|suse-*-x86_64|redhat-*-x86_64)
+    PSVERITYBIN="$PS_HOME/verity/linux/_ilnx21/bin"; export PSVERITYBIN
+    ;;
+  solaris-*-sparc)
+    PSVERITYBIN="$PS_HOME/verity/solaris/_ssol26/bin"; export PSVERITYBIN
+    ;;
+  solaris-*-x86_64)
+    # Verity is not supported on Solaris x86_64
+    ;;
+  suse-*-zarch|redhat-*-zarch)
+    # Verity is not supported on z/Linux
+    ;;
+esac
+
+# PATH environment variable
+PATH="$PATH${PSVERITYBIN+:$PSVERITYBIN}"; export PATH
+
+# LD_LIBRARY_PATH/SHLIB_PATH/LIBPATH environment variables
+PS_LIBPATH="$PS_HOME/bin"; export PS_LIBPATH
+case "$PS_HOSTTYPE" in
+  aix-*)
+    LIBPATH="$PSJLIBPATH${LIBPATH+:$LIBPATH}"
+    LIBPATH="$LIBPATH:$PS_HOME/bin:$PS_HOME/bin/interfacedrivers"
+    LIBPATH="$LIBPATH:$PS_HOME/bin/sqr/ORA/bin:$PS_HOME/optbin"
+    LIBPATH="$LIBPATH${PSVERITYBIN+:$PSVERITYBIN}"
+    export LIBPATH
+    ;;
+  hpux-*)
+    LD_LIBRARY_PATH="$PSJLIBPATH${LD_LIBRARY_PATH+:$LD_LIBRARY_PATH}"
+    LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$PS_HOME/bin:$PS_HOME/bin/interfacedrivers"
+    LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$PS_HOME/bin/sqr/ORA/bin:$PS_HOME/optbin"
+    LD_LIBRARY_PATH="$LD_LIBRARY_PATH${PSVERITYBIN+:$PSVERITYBIN}"
+    export LD_LIBRARY_PATH
+    SHLIB_PATH="$PSJLIBPATH${SHLIB_PATH+:$SHLIB_PATH}"
+    SHLIB_PATH="$SHLIB_PATH:$PS_HOME/bin:$PS_HOME/bin/interfacedrivers"
+    SHLIB_PATH="$SHLIB_PATH:$PS_HOME/bin/sqr/ORA/bin:$PS_HOME/optbin"
+    SHLIB_PATH="$SHLIB_PATH${PSVERITYBIN+:$PSVERITYBIN}"
+    export SHLIB_PATH
+    ;;
+  oel-*|redhat-*|solaris-*|suse-*)
+    LD_LIBRARY_PATH="$PSJLIBPATH${LD_LIBRARY_PATH+:$LD_LIBRARY_PATH}"
+    LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$PS_HOME/bin:$PS_HOME/bin/interfacedrivers"
+    LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$PS_HOME/bin/sqr/ORA/bin:$PS_HOME/optbin"
+    LD_LIBRARY_PATH="$LD_LIBRARY_PATH${PSVERITYBIN+:$PSVERITYBIN}"
+    export LD_LIBRARY_PATH
+    ;;
+esac
+
+
+#
+# External scripts
+#
+if [ -s "$PS_HOME/setup/psdb.sh" ]; then
+  . "$PS_HOME/setup/psdb.sh"
+fi
+
+
+#
+# additional OS Specific settings
+#
+case "$PS_HOSTTYPE" in
+  aix-*)
+    AIXTHREAD_SCOPE=S; export AIXTHREAD_SCOPE
+    AIXTHREAD_MUTEX_DEBUG=OFF; export AIXTHREAD_MUTEX_DEBUG
+    AIXTHREAD_RWLOCK_DEBUG=OFF; export AIXTHREAD_RWLOCK_DEBUG
+    AIXTHREAD_COND_DEBUG=OFF; export AIXTHREAD_COND_DEBUG
+    ;;
+  hpux-*)
+    JAVA_FONTS="/usr/lib/X11/fonts/TrueType/chinese_s.st/typefaces${JAVA_FONTS+:$JAVA_FONTS}"
+    JAVA_FONTS="/usr/lib/X11/fonts/TrueType/korean.st/typefaces:$JAVA_FONTS"
+    JAVA_FONTS="/usr/lib/X11/fonts/TrueType/chinese_t.st/typefaces:$JAVA_FONTS"
+    JAVA_FONTS="/usr/lib/X11/fonts/TrueType/japanese.st/typefaces:$JAVA_FONTS"
+    JAVA_FONTS="$PS_HOME/jre/lib/fonts:$JAVA_FONTS"
+    export JAVA_FONTS
+    ;;
+  oel-*-x86_64|suse-*-x86_64|redhat-*-x86_64)
+    JAVA_FONTS="/usr/share/fonts/ko/TrueType${JAVA_FONTS+:$JAVA_FONTS}"
+    JAVA_FONTS="/usr/share/fonts/zh_TW/TrueType:$JAVA_FONTS"
+    JAVA_FONTS="/usr/share/fonts/zh_CN/TrueType:$JAVA_FONTS"
+    JAVA_FONTS="/usr/share/fonts/ja/TrueType:$JAVA_FONTS"
+    JAVA_FONTS="/usr/share/fonts/default/TrueType:$JAVA_FONTS"
+    JAVA_FONTS="$PS_HOME/jre/lib/fonts:$JAVA_FONTS"
+    export JAVA_FONTS
+    ;;
+  suse-*-zarch|redhat-*-zarch)
+    # Disable JIT compiler.
+    JAVA_COMPILER=NONE; export JAVA_COMPILER
+
+    JAVA_FONTS="/usr/share/fonts/ko/TrueType${JAVA_FONTS+:$JAVA_FONTS}"
+    JAVA_FONTS="/usr/share/fonts/zh_TW/TrueType:$JAVA_FONTS"
+    JAVA_FONTS="/usr/share/fonts/zh_CN/TrueType:$JAVA_FONTS"
+    JAVA_FONTS="/usr/share/fonts/ja/TrueType:$JAVA_FONTS"
+    JAVA_FONTS="/usr/share/fonts/default/TrueType:$JAVA_FONTS"
+    JAVA_FONTS="$PS_HOME/jre/lib/fonts:$JAVA_FONTS"
+    export JAVA_FONTS
+    ;;
+esac
+
+unset PSVERITYBIN

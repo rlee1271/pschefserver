@@ -1,0 +1,58 @@
+{
+   "NYCPSAPPP1" : {
+      "APPSERV" : {
+         "F01M01" : {
+            "DomainName" : "F01M01",
+            "Size"       : "large",
+            "DBName"     : "FSCP",
+       	    "WSLPort"    : "6330",
+       	    "JSLPort"    : "6430",
+       	    "JRADPort"   : "9100"
+         },
+         "F01W01" : {
+            "DomainName" : "F01W01",
+            "Size"       : "large",
+            "DBName"     : "FSCP",
+            "WSLPort"    : "6300",
+       	    "JSLPort"    : "6400",
+       	    "JRADPort"   : "9100"
+         },
+         "F01W02" : {
+            "DomainName" : "F01W02",
+	    "Size"       : "large",
+	    "DBName"     : "FSCP",
+	    "WSLPort"    : "6310",
+	    "JSLPort"    : "6410",
+	    "JRADPort"   : "9100"
+         }
+      }
+   },
+   "NYCPSAPPP2" : {
+      "APPSERV" : {
+         "F02M01" : {
+            "DomainName" : "F01M01",
+            "Size"       : "large",
+            "DBName"     : "FSCP",
+       	    "WSLPort"    : "6330",
+       	    "JSLPort"    : "6430",
+       	    "JRADPort"   : "9100"
+         },
+         "F02W01" : {
+            "DomainName" : "F01W01",
+            "Size"       : "large",
+            "DBName"     : "FSCP",
+       	    "WSLPort"    : "6300",
+       	    "JSLPort"    : "6400",
+       	    "JRADPort"   : "9100"
+         },
+         "F02W02" : {
+	    "DomainName" : "F01W02",
+	    "Size"       : "large",
+	    "DBName"     : "FSCP",
+	    "WSLPort"    : "6310",
+	    "JSLPort"    : "6410",
+	    "JRADPort"   : "9100"
+        }
+      }
+   }
+}

@@ -1,0 +1,65 @@
+#Following inputs are required in response file for silent installation
+# Location of PIA_HOME directory. For windows path should have front slash '/' instead of back slash '\'
+# Set the below variable to the location where you want to install PIA.
+# PLEASE NOTE this variable could be ANY DIRECTORY on your machine. It includes but is definitely not limited to PeopleTools Home.
+PS_CFG_HOME=<%= @PsCfgHome %>
+# Name of the PIA domain
+DOMAIN_NAME=<%= @DomainName %>
+# Web server type. Possible values are "weblogic", "websphere"
+SERVER_TYPE=weblogic
+# WebLogic home, the location where Oracle WebLogic is installed (for WebLogic deployment only)
+BEA_HOME=<%= @BEA_HOME %>
+# WebSphere Home, the location where IBM WebSphere is installed (for WebSphere deployment only)
+#WS_HOME=C:/IBM/WebSphere/AppServer
+# admin console user id/password for securing WebLogic/WebSphere admin console credential
+USER_ID=<%= @UserId %>
+USER_PWD=<%= @UserPwd %>
+USER_PWD_RETYPE=<%= @UserPwd %>
+# Install action to specify the core task that installer should perform.
+# For creating new PIA domain - CREATE_NEW_DOMAIN.
+# For redeploying PIA - REDEPLOY_PSAPP.
+# For recreating PIA domain - REBUILD_DOMAIN.
+# For installing additional PSFT site - ADD_SITE
+# For installing Extensions - ADD_PSAPP_EXT
+INSTALL_ACTION=CREATE_NEW_DOMAIN
+# Domain type to specify whether to create new domain or modify existing domain. Possible values are "NEW_DOMAIN", "EXISTING_DOMAIN".
+DOMAIN_TYPE=NEW_DOMAIN
+# App home is required only when you are installaing extensions from a decoupled Apps home, please leave it commented otherwise.
+# Silent installer can detect the deployable application extensions from the PS_APP_HOME
+# PS_APP_HOME=D:/CR9.2
+# Install type to specify whether the installation is a single server or multi server deployment. Possible values are "SINGLE_SERVER_INSTALLATION", "MULTI_SERVER_INSTALLATION"
+<% if @SingleOrMultiIntall == "MULTI" %>
+INSTALL_TYPE=MULTI_SERVER_INSTALLATION
+<% else %>
+INSTALL_TYPE=SINGLE_SERVER_INSTALLATION
+<% end %>
+# WebSite Name
+WEBSITE_NAME=<%= @WebSiteName %>
+# To enable jolt failover and load balancing, provide a list of application server domains in the format of; PSSERVER=AppSrvr:JSLport,...
+# For example: PSSERVER=SERVER1:9000,SERVER2:9010,SERVER3:9020
+# PSSERVER is optional, but if set will have precedence over APPSERVER_NAME & JSL_PORT.
+PSSERVER=
+# AppServer Name
+APPSERVER_NAME=<%= @AppServerName %>
+# Appserver JSL Port
+JSL_PORT=<%= @JSLPort %>
+# HTTP Port
+HTTP_PORT=<%= @HTTPPort %>
+# HTTPS Port
+HTTPS_PORT=<%= @HTTPSPort %>
+# Authentication Domain (optional)
+AUTH_DOMAIN=<%= @AuthDomain %>
+# Web Profile Name Possible Values are "DEV","TEST","PROD","KIOSK"
+WEB_PROF_NAME=<%= @WebProfName %>
+# Web Profile password for User "PTWEBSERVER"
+WEB_PROF_PWD=<%= @WebProfPwd %>
+WEB_PROF_PWD_RETYPE=<%= @WebProfPwd %>
+# Integration Gateway user profile.
+IGW_USERID=<%= @IGWUserId %>
+IGW_PWD=<%= @IGWPwd %>
+IGW_PWD_RETYPE=<%= @IGWPwd %>
+# AppServer connection user profile
+APPSRVR_CONN_PWD=
+APPSRVR_CONN_PWD_RETYPE=
+# Directory path for reports
+REPORTS_DIR=<%= @ReportsDir %>

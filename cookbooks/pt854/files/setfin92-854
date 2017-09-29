@@ -1,0 +1,17 @@
+unset IS_PS_PLT
+unset TNS_ADMIN
+umask 002
+export ORACLE_SID=FI91DMO
+export ORACLE_HOME=/apps/oracle/product/11.2.0/client_3
+export ORACLE_BASE=/apps/oracle
+export COBDIR=/apps/cobol_51ws6
+export TUXDIR=/apps/tuxedo/tuxedo12.1.1.0
+export PATH=$ORACLE_HOME/bin:$TUXDIR/bin:$COBDIR/bin:/usr/ccs/bin:/usr/bin:/usr/ucb:/etc:/bin:/sbin:/usr/openwin/bin:.
+export LD_LIBRARY_PATH=$TUXDIR/lib:$COBDIR/lib:/usr/dt/lib:/usr/openwin/lib:/usr/local/lib
+
+. /apps/psoft/pt854/psconfig.sh
+
+export PS_CFG_HOME=$PS_HOME
+#export PS_APP_HOME='/apps/psoft/fin91-mp11'
+export COBPATH=$PS_APP_HOME/cblbin:$PS_HOME/cblbin
+export PS_CLASSPATH=$PS_HOME/class:$PS_HOME/appserv/classes/:$PS_APP_HOME/class:$PS_APP_HOME/appserv/classes

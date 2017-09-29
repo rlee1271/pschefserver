@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+
+select(STDOUT); $|= 1;         # make unbuffered
+
+$DomainName = "FIPASS";
+$Size = "large";
+$DBName = "FIPASS";
+$DBType = "ORACLE";
+$UserId = "APPSERV";
+$UserPwd = "twzVdYRM7pplsaO9noPM7NmiFDgeTtCb3bCyTblAJSk=";
+$DomainId = "TESTSERV";
+$AddToPath = ".";
+$ConnectId = "timeinc";
+$ConnectPwd = "";
+$WSLPort = "7000";
+$JSLPort = "9300";
+$JRADPort = "9100";
+
+$cmd = "/apps/psoft/pt854/appserv/psadmin -c create -d $DomainName -t $Size -s $DBName%$DBType%$UserId%$UserPwd%$DomainId%$AddToPath%$ConnectId%$ConnectPwd -p $WSLPort%$JSLPort%$JRADPort";
+
+system($cmd);
