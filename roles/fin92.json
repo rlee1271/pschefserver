@@ -1,0 +1,18 @@
+{
+   "name":"fin92",
+   "description":"peoplesoft fin 9.2 role",
+   "json_class":"Chef::Role",
+   "default_attributes":{
+
+   },
+   "override_attributes":{
+
+   },
+   "chef_type":"role",
+   "run_list":[
+      "recipe[appl::fin92]"
+   ],
+   "env_run_lists":{
+
+   }
+}

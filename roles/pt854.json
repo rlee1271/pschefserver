@@ -1,0 +1,18 @@
+{
+   "name":"pt854",
+   "description":"peopletools 8.54.28 role",
+   "json_class":"Chef::Role",
+   "default_attributes":{
+
+   },
+   "override_attributes":{
+
+   },
+   "chef_type":"role",
+   "run_list":[
+      "recipe[ptools::pt854]"
+   ],
+   "env_run_lists":{
+
+   }
+}

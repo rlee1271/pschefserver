@@ -1,0 +1,18 @@
+{
+   "name":"weblogic1212",
+   "description":"weblogic 12.1.2 role",
+   "json_class":"Chef::Role",
+   "default_attributes":{
+
+   },
+   "override_attributes":{
+
+   },
+   "chef_type":"role",
+   "run_list":[
+      "recipe[weblogic::weblogic1212]"
+   ],
+   "env_run_lists":{
+
+   }
+}

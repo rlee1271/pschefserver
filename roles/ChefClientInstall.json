@@ -1,0 +1,19 @@
+{
+   "name": "ChefClientInstall",
+   "description": "Installs Chef-Client as a service to run at at a given interval.",
+   "json_class": "Chef::Role",
+   "default_attributes": {
+     "chef_client": {
+       "interval": 300,
+       "splay": 60
+     }
+   },
+   "override_attributes": {
+   },
+   "chef_type": "role",
+   "run_list": ["recipe[chef-client::default]",
+                "recipe[chef-client::delete_validation]"
+   ],
+   "env_run_lists": {
+   }
+}

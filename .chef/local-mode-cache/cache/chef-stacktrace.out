@@ -1,20 +1,14 @@
-Generated at 2017-09-29 15:29:54 +0000
-SyntaxError: /home/vagrant/chef-repo/.chef/local-mode-cache/cache/cookbooks/pt854/attributes/UAT.appserv.rb:10: syntax error, unexpected ']', expecting end-of-input
-default['APPSERV']['TPAPSAPPD2']]['FIUAT01M']['JRADPort'] = '9100'
-                                 ^
+Generated at 2017-10-10 14:57:19 +0000
+NoMethodError: undefined method `each' for nil:NilClass
+/home/vagrant/chef-repo/.chef/local-mode-cache/cache/cookbooks/app_domain/recipes/appServSetup.rb:9:in `from_file'
 /opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/mixin/from_file.rb:30:in `instance_eval'
 /opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/mixin/from_file.rb:30:in `from_file'
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/dsl/include_attribute.rb:39:in `block in include_attribute'
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/dsl/include_attribute.rb:31:in `each'
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/dsl/include_attribute.rb:31:in `include_attribute'
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/run_context/cookbook_compiler.rb:182:in `load_attribute_file'
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/run_context/cookbook_compiler.rb:175:in `block in load_attributes_from_cookbook'
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/run_context/cookbook_compiler.rb:174:in `each'
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/run_context/cookbook_compiler.rb:174:in `load_attributes_from_cookbook'
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/run_context/cookbook_compiler.rb:110:in `block in compile_attributes'
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/run_context/cookbook_compiler.rb:109:in `each'
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/run_context/cookbook_compiler.rb:109:in `compile_attributes'
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/run_context/cookbook_compiler.rb:72:in `compile'
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/cookbook_version.rb:233:in `load_recipe'
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/run_context.rb:338:in `load_recipe'
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/run_context/cookbook_compiler.rb:141:in `block in compile_recipes'
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/run_context/cookbook_compiler.rb:138:in `each'
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/run_context/cookbook_compiler.rb:138:in `compile_recipes'
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/run_context/cookbook_compiler.rb:75:in `compile'
 /opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/run_context.rb:187:in `load'
 /opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/policy_builder/expand_node_object.rb:97:in `setup_run_context'
 /opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/client.rb:511:in `setup_run_context'
