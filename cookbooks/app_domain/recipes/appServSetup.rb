@@ -5,7 +5,7 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
 node['APPSERV'][node['hostname'].upcase].each do |k,domain|
-   if !File.exists?("/apps/psoft/ptools/pt854/appserv/#{domain['DomainName']}#/psappsrv.cfg")
+   if !Dir.exists?("/apps/psoft/ptools/pt854/appserv/#{domain['DomainName']}")
       template '/apps/psoft/ptools/pt854/appserv/createAppServer.pl' do
          source 'createAppServer.pl.erb'
          owner 'psoft'
@@ -32,5 +32,10 @@ node['APPSERV'][node['hostname'].upcase].each do |k,domain|
          cwd '/apps/psoft/ptools/pt854/appserv'
          command './createAppServer.pl;rm createAppServer.pl;'
      end
+   end
+
+   execute 'change_owner' do
+      cwd '/apps/psoft/ptools/pt854/appserv/'
+      command "chown -R psoft:psoft #{domain['DomainName']}"
    end
 end

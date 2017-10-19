@@ -27,3 +27,20 @@ if !File.directory?("/apps/psoft/appl/fin92-854")
    end
 end
 
+template "/home/psoft/setfin92-854" do
+   source "setfin92-854.erb"
+   owner 'psoft'
+   group 'psoft'
+   mode '0755'
+   variables({
+     :ORACLE_SID      => node['setfin92-854']['ORACLE_SID'],
+     :ORACLE_HOME     => node['setfin92-854']['ORACLE_HOME'],
+     :ORACLE_BASE     => node['GlobalEnv']['ORACLE_BASE'],
+     :COBDIR          => node['setfin92-854']['COBDIR'],
+     :TUXDIR          => node['setfin92-854']['TUXDIR'],
+     :PATH            => node['GlobalEnv']['PATH'],
+     :LD_LIBRARY_PATH => node['GlobalEnv']['LD_LIBRARY_PATH'],
+     :PS_APP_HOME     => node['setfin92-854']['PS_APP_HOME']
+   })
+end
+

@@ -14,6 +14,6 @@ $ServerName = "<%= @ServerName %>";
 $LogOutDir = "<%= @LogOutDir %>";
 $SqrBin = "<%= @SqrBin %>";
 
-$cmd = "/apps/psoft/pt854/appserv/psadmin -p create -d $DomainName -t unix -ps $DBName,$DBType,$PrcsServer,$UserId,$UserPwd,$ConnectId,$ConnectPwd,$ServerName,$LogOutDir,$SqrBin";
+$cmd = "/apps/psoft/ptools/pt854/appserv/psadmin -p create -d $DomainName -t unix -ps $DBName,$DBType,$PrcsServer,$UserId,$UserPwd,$ConnectId,$ConnectPwd,$ServerName,$LogOutDir,$SqrBin";
 
-system(". ../../setfin92-854; $cmd");
+system(". /home/psoft/setfin92-854; $cmd");

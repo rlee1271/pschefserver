@@ -287,17 +287,28 @@
         }
       }
     },
-    "pt854": {
-      "PS_HOME": "/apps/psoft/pt854"
-    },
-    "setfin92-854": {
-      "ORACLE_SID": "FI91DMO",
-      "ORACLE_HOME": "/apps/oracle/product/11.2.0/client_3",
+    "GlobalEnv": {
+      "ORACLE_SID": "FSCV",
       "ORACLE_BASE": "/apps/oracle",
-      "COBDIR": "/apps/cobol_51ws6",
-      "TUXDIR": "/apps/tuxedo/tuxedo12.1.1.0",
       "PATH": "$ORACLE_HOME/bin:$TUXDIR/bin:$COBDIR/bin:/usr/ccs/bin:/usr/bin:/usr/ucb:/etc:/bin:/sbin:/usr/openwin/bin:.",
       "LD_LIBRARY_PATH": "$TUXDIR/lib:$COBDIR/lib:/usr/dt/lib:/usr/openwin/lib:/usr/local/lib"
+    },
+    "setfin92-854": {
+      "ORACLE_HOME": "/apps/oracle/product/12.1.0/client_1",
+      "COBDIR": "/apps/cobol_51ws6",
+      "TUXDIR": "/apps/psoft/tuxedo/tuxedo12.1.1.0",
+      "PS_APP_HOME": "/apps/psoft/appl/fin92-854"
+    },
+    "pt854": {
+      "PS_HOME": "/apps/ptools/psoft/pt854"
+    },
+    "setcrm88-850": {
+      "ORACLE_HOME": "/apps/oracle/product/11.2.0/client_1",
+      "COBDIR": "/apps/cobol",
+      "TUXDIR": "/apps/tuxedo/tuxedo10gR3"
+    },
+    "pt850": {
+      "PS_HOME": "/apps/ptools/psoft/pt850"
     }
   },
   "automatic": {
@@ -366,13 +377,13 @@
     "filesystem": {
       "/dev/mapper/VolGroup00-LogVol00": {
         "kb_size": "39269648",
-        "kb_used": "12234492",
-        "kb_available": "27035156",
-        "percent_used": "32%",
+        "kb_used": "15010576",
+        "kb_available": "24259072",
+        "percent_used": "39%",
         "mount": "/",
         "total_inodes": "19644416",
-        "inodes_used": "84577",
-        "inodes_available": "19559839",
+        "inodes_used": "101339",
+        "inodes_available": "19543077",
         "inodes_percent_used": "1%",
         "fs_type": "xfs",
         "mount_options": [
@@ -590,6 +601,14 @@
           "relatime"
         ]
       },
+      "binfmt_misc": {
+        "mount": "/proc/sys/fs/binfmt_misc",
+        "fs_type": "binfmt_misc",
+        "mount_options": [
+          "rw",
+          "relatime"
+        ]
+      },
       "/dev/sda3": {
         "fs_type": "LVM2_member",
         "uuid": "P4yYpo-SUfx-Cge9-cK7F-lFXT-KNuK-phOvZ8"
@@ -614,6 +633,10 @@
       "processor": "x86_64",
       "os": "GNU/Linux",
       "modules": {
+        "binfmt_misc": {
+          "size": "17468",
+          "refcount": "1"
+        },
         "snd_intel8x0": {
           "size": "38274",
           "refcount": "0"
@@ -825,9 +848,9 @@
     },
     "memory": {
       "swap": {
-        "cached": "0kB",
+        "cached": "2292kB",
         "total": "1572860kB",
-        "free": "1572860kB"
+        "free": "1561028kB"
       },
       "hugepages": {
         "total": "0",
@@ -836,23 +859,23 @@
         "surplus": "0"
       },
       "total": "1883808kB",
-      "free": "411916kB",
+      "free": "412564kB",
       "buffers": "0kB",
-      "cached": "1164148kB",
-      "active": "827820kB",
-      "inactive": "488504kB",
-      "dirty": "1416kB",
+      "cached": "1181500kB",
+      "active": "825596kB",
+      "inactive": "505096kB",
+      "dirty": "4kB",
       "writeback": "0kB",
-      "anon_pages": "152188kB",
-      "mapped": "21984kB",
-      "slab": "104544kB",
-      "slab_reclaimable": "77040kB",
-      "slab_unreclaim": "27504kB",
-      "page_tables": "7276kB",
+      "anon_pages": "146932kB",
+      "mapped": "16600kB",
+      "slab": "91252kB",
+      "slab_reclaimable": "64892kB",
+      "slab_unreclaim": "26360kB",
+      "page_tables": "7624kB",
       "nfs_unstable": "0kB",
       "bounce": "0kB",
       "commit_limit": "2514764kB",
-      "committed_as": "452984kB",
+      "committed_as": "467504kB",
       "vmalloc_total": "34359738367kB",
       "vmalloc_used": "7404kB",
       "vmalloc_chunk": "34359728764kB",
@@ -1046,18 +1069,18 @@
           "eth0": {
             "tx": {
               "queuelen": "1000",
-              "bytes": "7394947063",
-              "packets": "2940866",
+              "bytes": "7433817052",
+              "packets": "3187103",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
               "collisions": "0"
             },
             "rx": {
-              "bytes": "10944514714",
-              "packets": "17223992",
+              "bytes": "22932965156",
+              "packets": "31130154",
               "errors": "0",
-              "drop": "3405704",
+              "drop": "4584670",
               "overrun": "0"
             }
           }
@@ -1075,10 +1098,10 @@
     "platform": "centos",
     "platform_version": "7.3.1611",
     "platform_family": "rhel",
-    "uptime_seconds": 1805296,
-    "uptime": "20 days 21 hours 28 minutes 16 seconds",
-    "idletime_seconds": 1804003,
-    "idletime": "20 days 21 hours 06 minutes 43 seconds",
+    "uptime_seconds": 2429964,
+    "uptime": "28 days 02 hours 59 minutes 24 seconds",
+    "idletime_seconds": 2427658,
+    "idletime": "28 days 02 hours 20 minutes 58 seconds",
     "virtualization": {
       "systems": {
         "vbox": "guest"
@@ -1451,6 +1474,13 @@
           "uid": 48,
           "shell": "/sbin/nologin",
           "gecos": "Apache"
+        },
+        "psoft": {
+          "dir": "/home/psoft",
+          "gid": 1001,
+          "uid": 1001,
+          "shell": "/bin/bash",
+          "gecos": ""
         }
       },
       "group": {
@@ -1723,6 +1753,12 @@
           "members": [
 
           ]
+        },
+        "psoft": {
+          "gid": 1001,
+          "members": [
+
+          ]
         }
       }
     },
@@ -1735,12 +1771,12 @@
       "by_device": {
         "/dev/mapper/VolGroup00-LogVol00": {
           "kb_size": "39269648",
-          "kb_used": "12234492",
-          "kb_available": "27035156",
-          "percent_used": "32%",
+          "kb_used": "15010576",
+          "kb_available": "24259072",
+          "percent_used": "39%",
           "total_inodes": "19644416",
-          "inodes_used": "84577",
-          "inodes_available": "19559839",
+          "inodes_used": "101339",
+          "inodes_available": "19543077",
           "inodes_percent_used": "1%",
           "fs_type": "xfs",
           "mount_options": [
@@ -2008,6 +2044,16 @@
             "/var/lib/nfs/rpc_pipefs"
           ]
         },
+        "binfmt_misc": {
+          "fs_type": "binfmt_misc",
+          "mount_options": [
+            "rw",
+            "relatime"
+          ],
+          "mounts": [
+            "/proc/sys/fs/binfmt_misc"
+          ]
+        },
         "/dev/sda": {
           "mounts": [
 
@@ -2045,12 +2091,12 @@
       "by_mountpoint": {
         "/": {
           "kb_size": "39269648",
-          "kb_used": "12234492",
-          "kb_available": "27035156",
-          "percent_used": "32%",
+          "kb_used": "15010576",
+          "kb_available": "24259072",
+          "percent_used": "39%",
           "total_inodes": "19644416",
-          "inodes_used": "84577",
-          "inodes_available": "19559839",
+          "inodes_used": "101339",
+          "inodes_available": "19543077",
           "inodes_percent_used": "1%",
           "fs_type": "rootfs",
           "mount_options": [
@@ -2106,12 +2152,12 @@
         },
         "/run": {
           "kb_size": "941904",
-          "kb_used": "8540",
-          "kb_available": "933364",
-          "percent_used": "1%",
+          "kb_used": "16760",
+          "kb_available": "925144",
+          "percent_used": "2%",
           "total_inodes": "235476",
-          "inodes_used": "384",
-          "inodes_available": "235092",
+          "inodes_used": "394",
+          "inodes_available": "235082",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -2441,19 +2487,14 @@
           ]
         },
         "/proc/sys/fs/binfmt_misc": {
-          "fs_type": "autofs",
+          "fs_type": "binfmt_misc",
           "mount_options": [
             "rw",
-            "relatime",
-            "fd=31",
-            "pgrp=1",
-            "timeout=300",
-            "minproto=5",
-            "maxproto=5",
-            "direct"
+            "relatime"
           ],
           "devices": [
-            "systemd-1"
+            "systemd-1",
+            "binfmt_misc"
           ]
         },
         "/sys/kernel/debug": {
@@ -2513,13 +2554,13 @@
         "/dev/mapper/VolGroup00-LogVol00,/": {
           "device": "/dev/mapper/VolGroup00-LogVol00",
           "kb_size": "39269648",
-          "kb_used": "12234492",
-          "kb_available": "27035156",
-          "percent_used": "32%",
+          "kb_used": "15010576",
+          "kb_available": "24259072",
+          "percent_used": "39%",
           "mount": "/",
           "total_inodes": "19644416",
-          "inodes_used": "84577",
-          "inodes_available": "19559839",
+          "inodes_used": "101339",
+          "inodes_available": "19543077",
           "inodes_percent_used": "1%",
           "fs_type": "xfs",
           "mount_options": [
@@ -2575,13 +2616,13 @@
         "tmpfs,/run": {
           "device": "tmpfs",
           "kb_size": "941904",
-          "kb_used": "8540",
-          "kb_available": "933364",
-          "percent_used": "1%",
+          "kb_used": "16760",
+          "kb_available": "925144",
+          "percent_used": "2%",
           "mount": "/run",
           "total_inodes": "235476",
-          "inodes_used": "384",
-          "inodes_available": "235092",
+          "inodes_used": "394",
+          "inodes_available": "235082",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -2948,6 +2989,15 @@
             "relatime"
           ]
         },
+        "binfmt_misc,/proc/sys/fs/binfmt_misc": {
+          "device": "binfmt_misc",
+          "mount": "/proc/sys/fs/binfmt_misc",
+          "fs_type": "binfmt_misc",
+          "mount_options": [
+            "rw",
+            "relatime"
+          ]
+        },
         "/dev/sda,": {
           "device": "/dev/sda"
         },
@@ -3036,20 +3086,26 @@
     "machine_id": "cee40b87f8414f9986e9b6501f380862",
     "sessions": {
       "by_session": {
+        "747": {
+          "session": "747",
+          "uid": "0",
+          "user": "root",
+          "seat": null
+        },
         "56": {
           "session": "56",
           "uid": "0",
           "user": "root",
           "seat": "seat0"
         },
-        "549": {
-          "session": "549",
+        "740": {
+          "session": "740",
           "uid": "0",
           "user": "root",
           "seat": null
         },
-        "550": {
-          "session": "550",
+        "741": {
+          "session": "741",
           "uid": "0",
           "user": "root",
           "seat": null
@@ -3058,19 +3114,25 @@
       "by_user": {
         "root": [
           {
+            "session": "747",
+            "uid": "0",
+            "user": "root",
+            "seat": null
+          },
+          {
             "session": "56",
             "uid": "0",
             "user": "root",
             "seat": "seat0"
           },
           {
-            "session": "549",
+            "session": "740",
             "uid": "0",
             "user": "root",
             "seat": null
           },
           {
-            "session": "550",
+            "session": "741",
             "uid": "0",
             "user": "root",
             "seat": null
@@ -3078,7 +3140,7 @@
         ]
       }
     },
-    "ohai_time": 1507556165.3560593,
+    "ohai_time": 1508180833.5853794,
     "packages": {
       "glib-networking": {
         "epoch": "0",
@@ -5591,7 +5653,7 @@
       "ULONG_MAX": 18446744073709551615,
       "USHRT_MAX": 65535,
       "WORD_BIT": 32,
-      "_AVPHYS_PAGES": 101885,
+      "_AVPHYS_PAGES": 101567,
       "_NPROCESSORS_CONF": 1,
       "_NPROCESSORS_ONLN": 1,
       "_PHYS_PAGES": 470952,
@@ -5851,7 +5913,8 @@
       "timezone": "UTC"
     },
     "recipes": [
-      "ptools::pt854"
+      "ptools::pt854",
+      "ptools::directoryStructure"
     ],
     "expanded_run_list": [
       "ptools::pt854"

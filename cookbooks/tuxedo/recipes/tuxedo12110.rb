@@ -7,15 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-#Create each directory
-%w[ /apps/psoft /apps/psoft/tuxedo].each do |path| 
-   directory path do
-      owner 'psoft'
-      group 'psoft'
-#      mode '0755'
-      action :create
-   end
-end
+include_recipe 'tuxedo::directoryStructure'
 
 if !File.exists?("/apps/psoft/tuxedo/tuxedo12.1.1.0/tux.env")
    #Place tarball on node

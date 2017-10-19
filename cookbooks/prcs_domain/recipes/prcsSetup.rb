@@ -4,9 +4,9 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
-node['TPAFINDPRD2']['PRCS'].each do |k,domain|
-   if !File.exists?("/apps/psoft/pt854/appserv/prcs/PRCS/psprcs.cfg")
-      template '/apps/psoft/pt854/appserv/createPRCS.pl' do
+node['PRCS'][node['hostname'].upcase].each do |k,domain|
+   if !Dir.exists?("/apps/psoft/ptools/pt854/appserv/prcs/#{domain['DomainName']}")
+      template '/apps/psoft/ptools/pt854/appserv/createPRCS.pl' do
          source 'createPRCS.pl.erb'
          owner 'psoft'
          group 'psoft'
@@ -25,11 +25,16 @@ node['TPAFINDPRD2']['PRCS'].each do |k,domain|
             :SqrBin => domain['SqrBin']
          })
       end
-   end
 
-   execute 'execute_FIPASS' do
-      cwd '/apps/psoft/pt854/appserv'
-      command './createPRCS.pl;rm createPRCS.pl;'
+      execute 'execute_PRCS' do
+         cwd '/apps/psoft/ptools/pt854/appserv/'
+         command './createPRCS.pl;rm createPRCS.pl;'
+      end
+   end
+   
+   execute 'change_owner' do
+      cwd '/apps/psoft/ptools/pt854/appserv/prcs/'
+      command "chown -R psoft:psoft #{domain['DomainName']}"
    end
 end
 

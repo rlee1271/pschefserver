@@ -4,7 +4,7 @@
    "json_class": "Chef::Role",
    "default_attributes": {
      "chef_client": {
-       "interval": 300,
+       "interval": 1500,
        "splay": 60
      }
    },

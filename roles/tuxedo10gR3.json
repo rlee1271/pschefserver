@@ -1,0 +1,18 @@
+{
+   "name":"tuxedo10gR3",
+   "description":"tuxedo 10gR3 role",
+   "json_class":"Chef::Role",
+   "default_attributes":{
+
+   },
+   "override_attributes":{
+
+   },
+   "chef_type":"role",
+   "run_list":[
+      "recipe[tuxedo::tuxedo10gR3]"
+   ],
+   "env_run_lists":{
+
+   }
+}

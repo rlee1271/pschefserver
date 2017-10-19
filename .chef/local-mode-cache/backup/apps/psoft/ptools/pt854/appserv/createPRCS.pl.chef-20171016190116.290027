@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+
+select(STDOUT); $|= 1;         # make unbuffered
+
+$DomainName = "FSCG2";
+$DBName = "FSCG";
+$DBType = "ORACLE";
+$PrcsServer = "PSUNX2";
+$UserId = "APPSERV";
+$UserPwd = "twzVdYRM7pplsaO9noPM7NmiFDgeTtCb3bCyTblAJSk=";
+$ConnectId = "timeinc";
+$ConnectPwd = "";
+$ServerName = "";
+$LogOutDir = "%PS_SERVDIR%log_output";
+$SqrBin = "%PS_HOME%/bin/sqr/%PS_DB%/bin";
+
+$cmd = "/apps/psoft/pt854/appserv/psadmin -p create -d $DomainName -t unix -ps $DBName,$DBType,$PrcsServer,$UserId,$UserPwd,$ConnectId,$ConnectPwd,$ServerName,$LogOutDir,$SqrBin";
+
+system(". /home/psoft/setfin92-854; $cmd");

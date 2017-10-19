@@ -536,8 +536,8 @@ RCCBL PRDBIN=%PS_HOME%\cblbin%PS_COBOLTYPE%
 
 ;-------------------------------------------------------------------------
 ; UBBGEN settings
-Min Instances=2
-Max Instances=4
+Min Instances=25
+Max Instances=25
 Service Timeout=300
 
 ;-------------------------------------------------------------------------
@@ -576,7 +576,7 @@ Tuxedo Queue Size=65535
 
 ;-------------------------------------------------------------------------
 ; UBBGEN settings
-Min Instances=2
+Min Instances=3
 Max Instances=3
 
 ;-------------------------------------------------------------------------
@@ -629,8 +629,8 @@ ProcessRestartMemoryLimit=0
 ; UBBGEN settings
 ; PSSAMSRV never spawns, so we set Instances instead of setting a Min and
 ; Max value for Instances.
-Min Instances=2
-Max Instances=4
+Min Instances=6
+Max Instances=6
 Service Timeout=300
 
 ;-------------------------------------------------------------------------
@@ -661,8 +661,8 @@ Max Fetch Size=32
 
 ;-------------------------------------------------------------------------
 ; UBBGEN settings
-Min Instances=2
-Max Instances=4
+Min Instances=9
+Max Instances=9
 Service Timeout=300
 
 ;-------------------------------------------------------------------------
@@ -692,8 +692,8 @@ Max Fetch Size=5000
 
 ;-------------------------------------------------------------------------
 ; UBBGEN settings
-Min Instances=2
-Max Instances=4
+Min Instances=6
+Max Instances=6
 Service Timeout=1200
 
 ;-------------------------------------------------------------------------
@@ -811,8 +811,8 @@ Restart Period=120
 ;=========================================================================
 ; Settings for Publication Broker handler
 ;=========================================================================
-Min Instances=2
-Max Instances=4
+Min Instances=6
+Max Instances=6
 Service Timeout=1200
 Recycle Count=20000
 ; Dynamic change not allowed for the ProcessRestartMemoryLimit
@@ -866,8 +866,8 @@ Restart Period=120
 ;=========================================================================
 ; Settings for subscription contract handler
 ;=========================================================================
-Min Instances=2
-Max Instances=4
+Min Instances=6
+Max Instances=6
 Service Timeout=1200
 Recycle Count=20000
 ; Dynamic change not allowed for the ProcessRestartMemoryLimit
@@ -926,8 +926,8 @@ Restart Period=120
 ;=========================================================================
 ; Settings for publication contract handler
 ;=========================================================================
-Min Instances=2
-Max Instances=4
+Min Instances=6
+Max Instances=6
 Service Timeout=1200
 Recycle Count=20000
 ; Dynamic change not allowed for the ProcessRestartMemoryLimit
