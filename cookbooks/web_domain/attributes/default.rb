@@ -1,4 +1,5 @@
-#Attributes for Peopletools
-
-default['tuxedo']['companyName'] = 'Timeinc' 
-default['java']['JAVA_HOME'] = '"/apps/psoft/weblogic1212/jdk1.7.0_80"'
+# GLOBAL VARIABLES
+default['GLOBAL']['WEBLOGIC1212'] = {
+  'PS_CFG_HOME' => '/apps/psoft/ptools/pt854',
+  'BEA_HOME' => '/apps/psoft/weblogic/weblogic1212',
+}

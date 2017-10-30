@@ -6,10 +6,10 @@
 # All rights reserved - Do Not Redistribute
 #
 
-%w[/apps/psoft/weblogic /apps/psoft/java].each do |path|
-   directory path do
-      owner 'psoft'
-      group 'psoft'
-      action :create
-   end
+%w(/apps/psoft/weblogic /apps/psoft/java).each do |path|
+  directory path do
+    owner 'psoft'
+    group 'psoft'
+    action :create
+  end
 end

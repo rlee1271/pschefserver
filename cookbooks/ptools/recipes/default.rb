@@ -5,8 +5,3 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-
-include_recipe 'pt854::peopleToolsSetup'
-#include_recipe 'pt854::appServSetup'
-#include_recipe 'pt854::prcsSetup'
-#include_recipe 'pt854::webServSetup'

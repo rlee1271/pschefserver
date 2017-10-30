@@ -1,0 +1,60 @@
+############################################
+#            TPAPSAPPTST1 SETTINGS         #
+############################################
+
+default['TPAPSAPPTST1']['FSCV']['WB01']['SINGLE']['FSCV'] = {
+  'PsCfgHome'                => '/apps/psoft/ptools/pt854',
+  'UserId'                   => 'system',
+  'UserPwd'                  => 'password11',
+  'DomainName'               => 'FSCV_WB01',
+  'BEA_HOME'                 => '/apps/psoft/weblogic/weblogic1212',
+  'SingleOrMultiIntall'      => 'SINGLE',
+  'WebSiteName'              => 'FSCV',
+  'AppServerName'            => 'nycfindtst1.timeinc.com',
+  'JSLPort'                  => '9200',
+  'HTTPPort'                 => '8080',
+  'HTTPSPort'                => '8443',
+  'AuthDomain'               => 'timeinc.com',
+  'WebProfName'              => 'DEV',
+  'WebProfPwd'               => 'asdf11asdf',
+  'IGWUserId'                => 'administrator',
+  'IGWPwd'                   => 'password',
+  'ReportsDir'               => '/apps/psoft/psreports',
+  'PSHome'                   => '/apps/psoft/ptools/pt854',
+  'PIAHome'                  => '/apps/psoft/ptools/pt854',
+  'WLHome'                   => '/apps/psoft/weblogic/weblogic1212/wlserver',
+  'JavaOptionsLinux'         => '-server -Xms1536m -Xmx1536m -XX:MaxPermSize=256m -Dtoplink.xml.platform=oracle.toplink.platform.xml.jaxp.JAXPPlatform -Dcom.sun.xml.namespace.QName.useCompatibleSerialVersionUID=1.0',
+}
+
+default[['TPAPSAPPTST1'] = {
+	'FSCV' => {
+		'domainType' => 'WB01'
+		'site' => 'FSCV'
+	}	
+}
+
+
+default['TPAPSAPPTST1']['FSCV']['IB01']['SINGLE']['FSCV'] = {
+  'PsCfgHome'                => '/apps/psoft/ptools/pt854',
+  'UserId'                   => 'system',
+  'UserPwd'                  => 'password11',
+  'DomainName'               => 'FSCV_IB01',
+  'BEA_HOME'                 => '/apps/psoft/weblogic/weblogic1212',
+  'SingleOrMultiIntall'      => 'SINGLE',
+  'WebSiteName'              => 'FSCV',
+  'AppServerName'            => 'nycfindtst1.timeinc.com',
+  'JSLPort'                  => '9200',
+  'HTTPPort'                 => '8080',
+  'HTTPSPort'                => '8443',
+  'AuthDomain'               => 'timeinc.com',
+  'WebProfName'              => 'DEV',
+  'WebProfPwd'               => 'asdf11asdf',
+  'IGWUserId'                => 'administrator',
+  'IGWPwd'                   => 'password',
+  'ReportsDir'               => '/apps/psoft/psreports',
+  'PSHome'                   => '/apps/psoft/ptools/pt854',
+  'PIAHome'                  => '/apps/psoft/ptools/pt854',
+  'WLHome'                   => '/apps/psoft/weblogic/weblogic1212/wlserver',
+  'JavaOptionsLinux'         => '-server -Xms1536m -Xmx1536m -XX:MaxPermSize=256m -Dtoplink.xml.platform=oracle.toplink.platform.xml.jaxp.JAXPPlatform -Dcom.sun.xml.namespace.QName.useCompatibleSerialVersionUID=1.0'
+  # 'AdmHostName'              => 'tpapsappp1.timeinc.com'
+}

@@ -1,0 +1,49 @@
+{
+  "create": {
+    "actors": [
+      "pivotal",
+      "tpapsapptst2.timeinc.com"
+    ],
+    "groups": [
+      "admins"
+    ]
+  },
+  "read": {
+    "actors": [
+      "pivotal",
+      "tpapsapptst2.timeinc.com"
+    ],
+    "groups": [
+      "admins",
+      "users"
+    ]
+  },
+  "update": {
+    "actors": [
+      "pivotal",
+      "tpapsapptst2.timeinc.com"
+    ],
+    "groups": [
+      "admins"
+    ]
+  },
+  "delete": {
+    "actors": [
+      "pivotal",
+      "tpapsapptst2.timeinc.com"
+    ],
+    "groups": [
+      "admins",
+      "users"
+    ]
+  },
+  "grant": {
+    "actors": [
+      "pivotal",
+      "tpapsapptst2.timeinc.com"
+    ],
+    "groups": [
+      "admins"
+    ]
+  }
+}

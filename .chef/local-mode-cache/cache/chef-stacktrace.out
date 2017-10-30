@@ -1,14 +1,10 @@
-Generated at 2017-10-16 19:11:33 +0000
-Chef::Exceptions::FileNotFound: template[/apps/psoft/pt854/psconfig.sh] (ptools::peopleToolsSetup line 22) had an error: Chef::Exceptions::FileNotFound: Cookbook 'ptools' (0.1.0) does not contain a file at any of these locations:
-  templates/centos-7.3.1611/psconfig.sh.erb
-  templates/centos/psconfig.sh.erb
-  templates/default/psconfig.sh.erb
-  templates/psconfig.sh.erb
-
-This cookbook _does_ contain: ['/home/vagrant/chef-repo/.chef/local-mode-cache/cache/cookbooks/ptools/templates/default/psappsrv.cfg.erb','/home/vagrant/chef-repo/.chef/local-mode-cache/cache/cookbooks/ptools/templates/default/psconfig850.sh.erb','/home/vagrant/chef-repo/.chef/local-mode-cache/cache/cookbooks/ptools/templates/default/psconfig854.sh.erb','/home/vagrant/chef-repo/.chef/local-mode-cache/cache/cookbooks/ptools/templates/default/setcrm88-850.erb','/home/vagrant/chef-repo/.chef/local-mode-cache/cache/cookbooks/ptools/templates/default/setfin92-854.erb']
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/cookbook_version.rb:331:in `preferred_manifest_record'
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/cookbook_version.rb:339:in `preferred_filename_on_disk_location'
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/provider/template_finder.rb:40:in `find'
+Generated at 2017-10-23 19:33:24 +0000
+Chef::Exceptions::CookbookNotFound: template[/apps/psoft/ptools/pt854/appserv/custom.cfx] (app_domain::appServSetup line 9) had an error: Chef::Exceptions::CookbookNotFound: Cookbook app_domain not found. If you're loading app_domain from another cookbook, make sure you configure the dependency in your metadata
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/cookbook/cookbook_collection.rb:39:in `block in initialize'
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/ohai-8.23.0/lib/ohai/mash.rb:77:in `default'
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/ohai-8.23.0/lib/ohai/mash.rb:77:in `default'
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/provider/template_finder.rb:38:in `[]'
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/provider/template_finder.rb:38:in `find'
 /opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/provider/template/content.rb:32:in `template_location'
 /opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/provider/template.rb:49:in `block in define_resource_requirements'
 /opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/mixin/why_run.rb:314:in `assert'
@@ -47,16 +43,12 @@ This cookbook _does_ contain: ['/home/vagrant/chef-repo/.chef/local-mode-cache/c
 /usr/bin/chef-client:57:in `load'
 /usr/bin/chef-client:57:in `<main>'
 
->>>> Caused by Chef::Exceptions::FileNotFound: Cookbook 'ptools' (0.1.0) does not contain a file at any of these locations:
-  templates/centos-7.3.1611/psconfig.sh.erb
-  templates/centos/psconfig.sh.erb
-  templates/default/psconfig.sh.erb
-  templates/psconfig.sh.erb
-
-This cookbook _does_ contain: ['/home/vagrant/chef-repo/.chef/local-mode-cache/cache/cookbooks/ptools/templates/default/psappsrv.cfg.erb','/home/vagrant/chef-repo/.chef/local-mode-cache/cache/cookbooks/ptools/templates/default/psconfig850.sh.erb','/home/vagrant/chef-repo/.chef/local-mode-cache/cache/cookbooks/ptools/templates/default/psconfig854.sh.erb','/home/vagrant/chef-repo/.chef/local-mode-cache/cache/cookbooks/ptools/templates/default/setcrm88-850.erb','/home/vagrant/chef-repo/.chef/local-mode-cache/cache/cookbooks/ptools/templates/default/setfin92-854.erb']
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/cookbook_version.rb:331:in `preferred_manifest_record'
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/cookbook_version.rb:339:in `preferred_filename_on_disk_location'
-/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/provider/template_finder.rb:40:in `find'
+>>>> Caused by Chef::Exceptions::CookbookNotFound: Cookbook app_domain not found. If you're loading app_domain from another cookbook, make sure you configure the dependency in your metadata
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/cookbook/cookbook_collection.rb:39:in `block in initialize'
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/ohai-8.23.0/lib/ohai/mash.rb:77:in `default'
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/ohai-8.23.0/lib/ohai/mash.rb:77:in `default'
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/provider/template_finder.rb:38:in `[]'
+/opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/provider/template_finder.rb:38:in `find'
 /opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/provider/template/content.rb:32:in `template_location'
 /opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/provider/template.rb:49:in `block in define_resource_requirements'
 /opt/chefdk/embedded/lib/ruby/gems/2.3.0/gems/chef-12.19.36/lib/chef/mixin/why_run.rb:314:in `assert'

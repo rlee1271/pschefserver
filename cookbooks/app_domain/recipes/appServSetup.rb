@@ -35,7 +35,8 @@ node['APPSERV'][node['hostname'].upcase].each do |k,domain|
    end
 
    execute 'change_owner' do
-      cwd '/apps/psoft/ptools/pt854/appserv/'
-      command "chown -R psoft:psoft #{domain['DomainName']}"
+      cwd '/apps/psoft/'
+      #command "chown -R psoft:psoft #{domain['DomainName']}"
+      command "chown -R psoft:psoft ptools"
    end
 end

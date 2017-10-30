@@ -1,0 +1,12 @@
+{
+  "name": "clients",
+  "clients": [
+    "timeinc-validator",
+    "tpacrmdtst1",
+    "tpafindtst1",
+    "tpapsapptst1",
+    "tpapsapptst2.timeinc.com",
+    "tpatpappt1",
+    "tpatpdtst1"
+  ]
+}

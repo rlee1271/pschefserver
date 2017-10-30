@@ -1,0 +1,1674 @@
+;<                  IMPORTANT NOTE TO USERS OF THIS FILE
+;<  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+;<  Oracle does not support creating custom CFX templates nor modifying delivered CFX templates
+;<  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+;<  Each of the section properties in this file contains a meta data
+;<  entry.  This meta data is used for the PeopleSoft Environment Manager plug in
+;<  to display the configuration details in the UI.
+;<  If you are adding new entries to this file YOU MUST ADD meta data for these
+;<  entries.  If you do not know how to do this, locate the ToolsAdmin API / EM
+;<  Plugin documentation.  If you cannot locate this documentation, consult
+;<  the development manager for this product.
+;<  Meta data enties must be added on the line preceeding the property.  Meta data
+;<  entries are identified by a line beginning with a double comment ( ;; )
+;<  followed by a number of name-value pairs.  These name-value pairs are as follows
+;<  dt = Display Type  {c,d,n,t,e}
+;<                   c  = Checkbox
+;<                   d  = Dropdown List
+;<                   dx = Dropdown list with editable entry
+;<                   n  = Numeric
+;<                   t  = Textfield   (default)
+;<                   e  = Encrypted
+;<                   g  = Grid
+;<
+;<  dy = Dynamic    {Y,N}       Requires / does not require server restart to take effect
+;<                              default is no
+;<  rl = Reload     {Y,N}       Requires / does not require domain reconfig to take effect
+;<                              default is no
+;<  hd = Hideable   {Y,N}       Hideable means that it can be commented out
+;<                              default is N - no.
+;<  rq = Required   {Y,N}       Property is / is not optional
+;<                              default is yes
+;<  dr = Display Rule  {single,multiple}    default is single
+;<
+;<  sd = Short Description    string bounded by quotes describing the property
+;<                            Rough guideline is five words or less.  This is
+;<                            equivalent to the display name for the entry in
+;<                            the EM UI.
+;<
+;<  ld = Long Description     string bounded by quotes describing the property.
+;<
+;<  tip                       Provides a guideline to the administrator about value range
+;<                            related settings in possibly other sections. Can also provide
+;<                            link to other sources of documentation.
+;<
+;<  option                    Options are generally applied to dropdown lists or checkoxes.  An
+;<                            option is usually comprised of a va (valid argument) and a sd
+;<                            short description.
+;<
+;<  ssp                       Setting Search Pattern.  This tag is found only for default meta
+;<                            data entries for a section.  This tag is composed of a regular
+;<                            expression which is applied to any name=value pairs in the section.
+;<                            Any settings whose name successfully matches the regular expression
+;<                            in the ssp tag are adorned with the section default meta data.
+;<                            There can be at most one ssp tag and thus one default meta data
+;<                            definition per section.  If the ssp tag has the empty value it is
+;<                            matches any name in a name=value pair for that section.
+;<
+;<  tn                        Template Name. This is an optional tag for the name of the template.  
+;<                            If no entry is present the name of the template is assumed to be 
+;<                            the filename.
+;<
+;<  td                        Template Description. This is an optional tag for a description of
+;<                            the template.  If no entry is present there is assumed to be no
+;<                            description of the template.
+;<
+;<  Meta data entries are optional.  For optimal usability of the EM, it is
+;<  important that any new entries are considered for meta data additions.
+;<
+;<  Not all meta data tags used by the EM plug-in are found in this file.  Additional
+;<  meta-data entries are devised programatically.  For more information on these
+;<  tags consult the ToolsAdmin API documentation.
+
+[Startup]
+;=========================================================================
+; Database Signon settings
+;=========================================================================
+;; sd="Database Name", ld="The name of the database that contains the PeopleSoft application"
+DBName=<%= @DBName %>
+;; sd="Database Type", ld="Database platform", dt="d"
+DBType=ORACLE
+;; sd="User Id", ld="User ID that can start the application server"
+UserId=APPSERV
+;; sd="User Password", ld="Password for the User ID that will start the application server"
+UserPswd=twzVdYRM7pplsaO9noPM7NmiFDgeTtCb3bCyTblAJSk=
+;; sd="Connect Id", ld="Connect Id for the database"
+ConnectId=timeinc
+;; sd="Connect Password", ld="Connect password for the database"
+ConnectPswd=hyuqAvhd2cE=
+;; sd="Server Name", ld="Name of server on which the database resides", rq="N", tip="Needed only for Sybase and Informix"
+ServerName=
+;; sd="Standby Database Name", ld="The name of the Standby database that contains the PeopleSoft application", rq="N"
+StandbyDBName=
+;; sd="Standby Database Type", ld="Standby Database platform", dt="d", rq="N"
+StandbyDBType=
+;; sd="Standby DB User Id", ld="User ID that can start the application server", rq="N"
+StandbyUserId=
+;; sd="Standby DB User Password", ld="Password for the User ID that will start the application server", rq="N"
+StandbyUserPswd=
+;; sd="InMemory Database Name", ld="The name of the InMemory database that contains the PeopleSoft application", rq="N"
+InMemoryDBName=
+;; sd="InMemory Database Type", ld="InMemory Database platform", dt="d", rq="N"
+InMemoryDBType=
+
+[Database Options]
+;=========================================================================
+; Database-specific configuration options
+;=========================================================================
+;; sd="Sybase Packet Size", dt="n", ld="Sybase Packet Size, Sybase specific", rq="N", Tip="Please see Chapter Tuning and Administration, in Sybase Installation and Administration Guide for details.  This does not affect you unless you are using a Sybase Database"
+SybasePacketSize=
+;; sd="Use Local Oracle Database", rq="N", dt="c", ld="Indicates if the PeopleSoft Database that you are connecting to is in a Local Oracle SID"
+UseLocalOracleDB=0
+;; sd="Oracle SID", hd="Y", rq="N", ld="If UseLocalOracleDB is checked, specify local Oracle SID that you want the PeopleSoft processes to connect to"
+;ORACLE_SID=
+;; sd="Enable Database Monitoring", dt="d", rq="N", dy="Y", ld="Enables or disables monitoring of three-tier connections"
+EnableDBMonitoring=1
+;; sd="Enable AE Monitoring", dt="c", rq="N", dy="Y", ld="Enables or disables monitoring of three-tier connections"
+EnableAEMonitoring=
+;; sd="PSDB Maximum Cursors", dt="n", ld="PSDB Maximum Cursors, Database type specific", rq="N"
+PSDB Maximum Cursors=
+;; sd="Disable GTT Stats", dt="c", rq="N", dy="Y", ld="Enables or disables execution of update database statistics metaSQL for Oracle GTT"
+DisableGTTStats=0
+
+[Security]
+;=========================================================================
+; Security settings
+;=========================================================================
+;; sd="Validate Signon with Database", dt="c", rq="N", ld="Use the database for additional signon authentication.  The default value is OFF (unchecked - signon validation OFF)"
+Validate Signon with Database=0
+;; sd="AppServer Password", rq="Y", ld="Password for AppServer Connections"
+DomainConnectionPwd=
+; Enable/Disable Login Audit
+; Y - Enable Login Audit (Default)
+; N - Disable Login Audit
+;; sd="Enable Login Audit", ld="Determines whether the user logins should be captured in PSPTLOGINAUDIT table. This is enabled by default", dt="c", dy="Y", rq="N"
+Enable Login Audit=Y
+
+[Inter-Domain Events]
+;=========================================================================
+; InterDomain Event settings
+;=========================================================================
+;; sd="Process Scheduler Credentials", ld="The Domain ID and machine:port combination representing the remote Process Scheduler domain.  The domain id must precede the machine:port combination and be separated by a vertical tab | character.  The machine name should be a fully qualified domain name, e.g. myserver.oracle.com", rl="Y", tip="Enter as [Domain ID]+|+[machine:port]", rq="N"
+Process Scheduler Credentials=PRCS1|localhost:8988
+;; sd="Application Server Port", ld="The port on which the Application Server Domains Gateway will listen for communications from the remote Process Scheduler domain", rl="Y", dt="n", tip="This value must match the Process Scheduler Server Port in the Process Scheduler domain configuration", rq="N"
+Application Server Port=7988
+
+[Workstation Listener]
+;=========================================================================
+; Settings for Workstation Listener
+;=========================================================================
+;; sd="Machine Address", ld="Can be either Machine Name or IP address. If not edited, %PS_MACH% will be replaced with the Application Server machine name", rl = "Y"
+Address=%PS_MACH%
+;; sd="Workstation Listener Port", dt="n", ld="The port through which Application Designer clients connect to the domain", rl = "Y", tip="This value is only relevant if the WSL process is running in the domain.  Ensure that you have no port clash with other domains or products"
+Port=7000
+;; sd="Encryption Level", dt="d", ld="Bit Encryption applied to the data transferred between Application Designer client and the domain", rl = "Y"
+WSL Encryption=0
+;; sd="Minimum Handlers", dt="n", ld="Minimum number of Workstation Handlers for the WSL process", rl = "Y"
+Min Handlers=1
+;; sd="Maximum Handlers", dt="n", ld="Maximum number of Workstation Handlers for the WSL process", rl = "Y"
+Max Handlers=3
+;; sd="Maximum Clients per Handler", dt="n", ld="Maximum number of clients that may connect to each Workstation Handler", rl = "Y"
+Max Clients per Handler=40
+;; sd="Client Cleanup Timeout", dt="n", ld="Number of minutes that a Workstation Client may remain idle before the session is destroyed"
+Client Cleanup Timeout=60
+;; sd="Process Initialization Timeout", dt="n", ld="Number of minutes that a WSL process may take to initialize before timing out", rl = "Y", tip="This should be set to be greater than the service timeout for the application server domain"
+Init Timeout=5
+;; sd="Tuxedo Compression Threshold", dt="n", ld="The maximum message size in bytes before Tuxedo applies its compression algorithm", rl = "Y"
+Tuxedo Compression Threshold=5000
+
+
+[JOLT Listener]
+;=========================================================================
+; Settings for JOLT Listener
+;=========================================================================
+;; sd="Machine Address", ld="Can be either Machine Name or IP address. If not edited, %PS_MACH% will be replaced with the Application Server machine name", rl = "Y"
+Address=%PS_MACH%
+;; sd="Jolt Listener Port", dt="n", ld="The port through which PIA clients connect to the domain", rl = "Y", tip="This port must match the port in the psserver client string in the PIA configuration.  Ensure that you have no port clash with other domains or products"
+Port=<%= @JSLPort %>
+;; sd="Encryption Level", dt="d", ld="Bit Encryption applied to the data transferred between Jolt client and the JSH process", rl = "Y"
+JSL Encryption=0
+;; sd="Minimum Handlers", dt="n", ld="Minimum number of Jolt Handlers for the JSL process", rl = "Y"
+Min Handlers=5
+;; sd="Maximum Handlers", dt="n", ld="Maximum number of Jolt Handlers for the JSL process", rl = "Y"
+Max Handlers=7
+;; sd="Maximum Clients per Handler", dt="n", ld="Maximum number of clients that may connect to each Jolt Session Handler", rl = "Y", tip="Note that each handler uses a port sequentially allocated from the JSL port.  The number of ports consumed is in the range [JSL PORT ... (JSL PORT+Max Handlers)]"
+Max Clients per Handler=40
+;; sd="Client Cleanup Timeout", dt="n", ld="Number of minutes that a Jolt Client may remain idle before the session is destroyed", Tip="Keep this low to prevent unnecessary resource usage on domain machine"
+Client Cleanup Timeout=10
+;; sd="Process Initialization Timeout", dt="n", ld="Number of minutes that a JSL process may take to initialize before timing out", rl = "Y"
+Init Timeout=5
+;; sd="Client Connection Mode", ld="The type of connection that is maintained by Jolt between client and server", rl = "Y", dt="d"
+Client Connection Mode=ANY
+;; sd="Jolt Compression Threshold", dt="n", ld="The maximum message size in bytes before Jolt applies its compression algorithm", rl = "Y"
+Jolt Compression Threshold=1000000
+
+
+[JOLT Relay Adapter]
+;=========================================================================
+; Settings for JOLT Relay Adapter (JRAD)
+;=========================================================================
+;; sd="Machine Address", ld="Can be either Machine Name or IP address. If not edited, %PS_MACH% will be replaced with THIS machine's name", rl = "Y", tip="Jolt Relay is used to tighten accessibility between PIA and AppServer domain.  Consult the documentation for more information.", rq="N"
+Listener Address=%PS_MACH%
+;; sd="Jolt Relay Adapter Machine Port", dt="n", ld="The port through which JRAD clients connect to the domain", rl = "Y", rq="N"
+Listener Port=9100
+
+
+[Domain Settings]
+;=========================================================================
+; General settings for this Application Server.
+;=========================================================================
+
+;-------------------------------------------------------------------------
+;; sd="Domain Id", ld="TUXEDO Domain ID for this Application Server", rl = "Y"
+Domain ID=<%= @DomainName %>
+
+;-------------------------------------------------------------------------
+;; sd="Add To PATH Env Variable", ld="Additional directories for the Application Server's PATH environment variable.  This should include the location of the database DLLs.", rl = "Y", rq="N"
+Add to PATH=
+
+;-------------------------------------------------------------------------
+;; sd="Process Spawn Threshold", ld="Added to the Command Line Parameters for each app server during domain configuration if Max Instances > Min Instances", rl = "Y", Tip="Format: a,b:x,y.  A server is decayed if queue size < a for b seconds.  A new server is spawned if the queue size > x for y seconds.  Requires a full domain reconfiguration to take effect. Only applicable when Max Instances > Min Instances"
+Spawn Threshold=1,600:1,1
+
+;-------------------------------------------------------------------------
+;; sd="Restart Servers Upon Termination", ld="Flag indicates whether server processes are restartable or not", rl = "Y", tip="Cross Dependency Note: If you use recycling, you must set this to Y otherwise your server will not restart upon recycle", dt="c"
+Restartable=Y
+
+;-------------------------------------------------------------------------
+;; sd="Log File Directory", ld="Location of TUXEDO and PeopleSoft Application Server log files for this domain", hd="Y", rq="N"
+; Log Directory defaults to the LOGS directory within %PS_SERVDIR%
+;Log Directory=
+
+;-------------------------------------------------------------------------
+; This allows for dynamic changes to certain setting without having to reboot
+; the domain.  The settings that can be dynamically changed are: Recycle Count,
+; Consecutive Service failures, Trace SQL, Trace Mask SQL, TracePC, TracePCMask,
+; TracePpr, TracePprMask, TracePIA, TracePIAMask, Log Fence, Enable DB Monitoring,
+; Enable Debugging, LogErrorReport, MailErrorReport, DumpMemoryImageAtCrash,
+; EnableCacheRepair, AdjustMaxCacheMem, ExcessivePruningThreshold, CacheMissThreshold, 
+; MaxRepairCollection
+; These settings are further identified by the "Dynamic change allowed for .."
+; comment.
+;; sd="Allow Dynamic Changes", dt="c", ld="Indicates whether or not the server will check for dynamic changes", tip="If this is turned off, all changes will require a domain restart and possibly reconfiguration to take effect"
+Allow Dynamic Changes=Y
+
+;-------------------------------------------------------------------------
+; Logging detail level
+;
+; Level     Type of information
+; -----     -------------------
+;  -100     - Suppress logging
+;  -1       - Protocol, memory errors
+;   0       - Status information
+;   1       - General errors
+;   2       - Warnings
+;   3       - Tracing Level 1 (default)
+;   4       - Tracing Level 2
+;   5       - Tracing Level 3
+; Dynamic change allowed for LogFence
+;; sd="Log Fence", ld="Determines the level of logging for the domain", dt="d", dy="Y", rq="N"
+;; option(va = -100, sd="Suppress logging")
+;; option(va =   -1, sd="Protocol, memory errors")
+;; option(va =    0, sd="Status information")
+;; option(va =    1, sd="General errors")
+;; option(va =    2, sd="Warnings")
+;; option(va =    3, sd="Tracing Level 1 (default)")
+;; option(va =    4, sd="Tracing Level 2")
+;; option(va =    5, sd="Tracing Level 3")
+LogFence=3
+
+;-------------------------------------------------------------------------
+; Log Field Separator Setting
+;
+; This field is used to separate individual fields of data within the domain
+; log file(s). If this setting is not explicitly defined, the default value
+; value is a single space character. The below meta values can be used as
+; the field separator.
+; Meta Value     String Replaced
+; ----------     ---------------
+;    <TAB>       - A tab character(\t)
+;    <SPACE>     - A whitespace character( )
+; While the actual key strokes can be used to specify a separator, the escape
+; sequence equivalent of them is not supported.(Example \t is not recognized
+; as a tab character). For purpose of clarity, avoid key strokes that are not
+; visible to the naked eye, instead use their meta value equivalents.
+;; sd="Log Field Separator", ld="Characters used to separate individual log fields within the domain log files", hd="Y", rq="N"
+;LogFieldSeparator=
+
+;-------------------------------------------------------------------------
+; Trace-Log File Character Set: Character set used for log and trace files
+;
+;; sd="Trace-Log File Character Set", ld="Character set used for log and trace files", dt="d"
+Trace-Log File Character Set=ANSI
+
+;-------------------------------------------------------------------------
+; Configurable memory threshold -  ProcessRestartMemoryLimit
+; If the recycable process has exceeded a configurable memory threshold it will recycle
+; default value for the ProcessRestartMemoryLimit=0, - this is mean that there is no configurable memory threshold
+; Dynamic change not allowed for the ProcessRestartMemoryLimit
+;; sd="ProcessRestartMemoryLimit", ld="If the VM for the recycable process has exceeded ProcessRestartMemoryLimit it will recycle", tip="This is not dynamic cfg-parameter.  If set to zero, there is no memory threshold for the process", dt = "n", dy = "Y" 
+ProcessRestartMemoryLimit=0
+
+[PeopleCode Debugger]
+;=========================================================================
+; PeopleCode Debug Server settings
+;=========================================================================
+
+;-------------------------------------------------------------------------
+;; sd="Listener Port", ld="Port on which the PeopleCode Debug Server listens", dt="n", rq="N"
+PSDBGSRV Listener Port=9500
+
+;-------------------------------------------------------------------------
+; PeopleCode Debugger Trace Settings
+;
+; Level   Type of tracing
+; -----   ---------------
+;   0     Off (default)
+;   1     Level 1 - log connection activity
+;   2     Level 2 - log debug broker transactions (getsession, register/unregister, acquire/unacquire)
+;   3     Level 3 - log primary debuggee/debugger transactions (register, modechange, seteventflag, break)
+;   4     Level 4 - log debuggee/debugger variables transactions
+;   5     Level 5 - log debuggee/debugger command responses and gotbreaks
+;   Warning: Levels 3 thru 5 result in lots of transaction data being logger and require plenty of disk space.
+;; sd="Debugger Message Log Level", ld="Level of logging enabled for PeopleCode Debugger" dt="d"
+;; option(va = 0, sd="Off (default)")
+;; option(va = 1, sd="Level 1 - log connection activity")
+;; option(va = 2, sd="Level 2 - log debug broker transactions")
+;; option(va = 3, sd="Level 3 - log primary debuggee/debugger transactions")
+;; option(va = 4, sd="Level 4 - log debuggee/debugger variables transactions")
+;; option(va = 5, sd="Level 5 - log debuggee/debugger command responses and breaks")
+DebuggerMsgLogEnable=0
+
+
+[Trace]
+;=========================================================================
+; Server Trace settings
+;=========================================================================
+
+;-------------------------------------------------------------------------
+; SQL Tracing Bitfield
+;
+; Bit       Type of tracing
+; ---       ---------------
+; 1         - SQL statements
+; 2         - SQL statement variables
+; 4         - SQL connect, disconnect, commit and rollback
+; 8         - Row Fetch (indicates that it occurred, not data)
+; 16        - All other API calls except ssb
+; 32        - Set Select Buffers (identifies the attributes of columns
+;             to be selected).
+; 64        - Database API specific calls
+; 128       - COBOL statement timings
+; 256       - Sybase Bind information
+; 512       - Sybase Fetch information
+; 1024      - SQL Informational Trace
+; 4096      - Manager information
+; 8192      - Mapcore information
+; Dynamic change allowed for TraceSql and TraceSqlMask
+;; sd="SQL Tracing Bitfield", dt="c", dr="m", dy="Y", tab("TraceSql")
+;; option(va =    1, sd="SQL statements")
+;; option(va =    2, sd="SQL statement variables")
+;; option(va =    4, sd="SQL connect, disconnect, commit and rollback")
+;; option(va =    8, sd="Row Fetch")
+;; option(va =   16, sd="All other API calls except ssb")
+;; option(va =   32, sd="Set Select Buffers")
+;; option(va =   64, sd="Database API specific calls")
+;; option(va =  128, sd="COBOL statement timings")
+;; option(va =  256, sd="Sybase Bind information")
+;; option(va =  512, sd="Sybase Fetch information")
+;; option(va = 1024, sd="SQL Informational Trace")
+;; option(va = 4096, sd="Manager information")
+;; option(va = 8192, sd="Mapcore information")
+TraceSql=0
+;; sd="SQL Tracing Mask", dt = n, dy = Y, ld="Logging level ceiling for SQL tracing for individual clients"
+TraceSqlMask=12319
+
+;-------------------------------------------------------------------------
+; PeopleCode Tracing Bitfield
+;
+; Bit       Type of tracing
+; ---       ---------------
+; 1         - Trace Evaluator instructions  (not recommended)
+; 2         - List Evaluator program        (not recommended)
+; 4         - Show assignments to variables
+; 8         - Show fetched values
+; 16        - Show stack
+; 64        - Trace start of programs
+; 128       - Trace external function calls
+; 256       - Trace internal function calls
+; 512       - Show parameter values
+; 1024      - Show function return value
+; 2048      - Trace each statement in program  (recommended)
+; Dynamic change allowed for TracePC and TracePCMask
+;; sd="PeopleCode Tracing Bitfield", dt = c, dr = m, tip="Levels 1 and 2 and 2048 not recommended", dy = Y, tab("TracePC")
+;; option(va =    1, sd="Trace Evaluator instructions")
+;; option(va =    2, sd="List Evaluator program")
+;; option(va =    4, sd="Show assignments to variables")
+;; option(va =    8, sd="Show fetched values")
+;; option(va =   16, sd="Show stack")
+;; option(va =   64, sd="Trace start of programs")
+;; option(va =  128, sd="Trace external function calls")
+;; option(va =  256, sd="Trace internal function calls")
+;; option(va =  512, sd="Show parameter values")
+;; option(va = 1024, sd="Show function return value")
+;; option(va = 2048, sd="Trace each statement in program (recommended)")
+TracePC=0
+;; sd="Trace PC Mask", ld="PeopleCode Trace Mask", dt = n, dy = Y
+TracePCMask=4095
+
+;-------------------------------------------------------------------------
+; Panel Processor Tracing Bitfield
+;
+; Bit       Type of tracing
+; ---       ---------------
+; 1         - Log extra debug messages
+; 2         - Dump panel after build
+; 4         - Dump buffers after PPRInit
+; 8         - Dump buffers before/after service
+; 16        - Dump buffers after scrollselect
+; 32        - Dump buffers after modal panel
+; 64        - Dump buffers before save
+; 128       - Dump buffers after insertrow
+; 256       - Trace default processing
+; 512       - Dump PRM data
+; 1024      - Show function return value
+; 2048      - dump memory statistics
+; 4096      - Trace related display processing
+; 8192      - Trace keylist generation
+; 16384     - Trace work record settings
+; Dynamic change allowed for TracePPR and TracePPRMask
+;; sd="PPR Tracing Bitfield", ld="Panel Processor Tracing Bitfield", dt = c, dr = m, dy = Y, tab("TracePPR")
+;; option(va =     1, sd="Log extra debug messages")
+;; option(va =     2, sd="Dump panel after build")
+;; option(va =     4, sd="Dump buffers after PPRInit")
+;; option(va =     8, sd="Dump buffers before/after service")
+;; option(va =    16, sd="Dump buffers after scrollselect")
+;; option(va =    32, sd="Dump buffers after modal panel")
+;; option(va =    64, sd="Dump buffers before save")
+;; option(va =   128, sd="Dump buffers after insertrow")
+;; option(va =   256, sd="Trace default processing")
+;; option(va =   512, sd="Dump PRM data")
+;; option(va =  1024, sd="Show function return value")
+;; option(va =  2048, sd="dump memory statistics")
+;; option(va =  4096, sd="Trace related display processing")
+;; option(va =  8192, sd="Trace keylist generation")
+;; option(va = 16384, sd="Trace work record settings")
+TracePPR=0
+;; sd="PPR Tracing Mask", ld="Panel Processor Tracing Mask", dt = n, dy = Y
+TracePPRMask=32767
+
+;-------------------------------------------------------------------------
+; PIA Page Generation Tracing Bitfield
+;
+; Bit       Type of tracing
+; ---       ---------------
+; 1         - Log page generation errors
+; 2         - Show table layout via cell borders in generated page
+; 4         - Annotate field overlap in HTML source
+; 8         - Detailed trace of table generation algorithm
+; 16        - Inline stylesheet in generated pages
+; 32        - Unminified javascript
+; 64        - QATesting - annotation and extra tags needed by Robot
+; 128       - Format source.   Make HTML more readable
+; 256       - Save File. Save each generated page in log directory
+; 512       - Debug JavaScript.  Include debug functions in page
+; 1024      - Log form data.   Log all request parameters on each service
+; 2048      - Log key errors.   Write log message for unrecognized query parameters.
+; Dynamic change allowed for TracePIA and TracePIAMask
+;
+;; sd="PIA Page Generation Tracing Bitfield", dt = c, dr = m, dy = Y, tab("TracePIA")
+;; option(va =     1, sd="Log page generation errors")
+;; option(va =     2, sd="Show table layout via cell borders in page")
+;; option(va =     4, sd="Annotate field overlap in HTML source")
+;; option(va =     8, sd="Detailed trace of table generation")
+;; option(va =    16, sd="Inline stylesheet in generated pages")
+;; option(va =    32, sd="Unminified javascript")
+;; option(va =    64, sd="Log annotation and extra tags needed by Robot")
+;; option(va =   128, sd="Format source. Make HTML more readable")
+;; option(va =   256, sd="Save each generated page in log directory")
+;; option(va =   512, sd="Debug JavaScript. Include debug functions in page")
+;; option(va =  1024, sd="Log form data and request parameters ")
+;; option(va =  2048, sd="Log key errors for unknown query parameters")
+TracePIA=0
+;; sd="Trace PIA Mask", ld="PIA Page Generation Tracing Mask", dt = n, dy = Y
+TracePIAMask=32767
+
+;-------------------------------------------------------------------------
+; AE Tracing Bitfield
+;
+; Bit       Type of tracing
+; ---       ---------------
+; 1         - Trace STEP execution sequence to AET file
+; 2         - Trace Application SQL statements to AET file
+; 4         - Trace Dedicated Temp Table Allocation to AET file
+; 8         - not yet allocated
+; 16        - not yet allocated
+; 32        - not yet allocated
+; 64        - not yet allocated
+; 128       - Timings Report to AET file
+; 256       - Method/BuiltIn detail instead of summary in AET Timings Report
+; 512       - not yet allocated
+; 1024      - Timings Report to tables, ignored if Process Instance is 0
+; 2048      - DB optimizer trace to file
+; 4096      - DB optimizer trace to tables
+; 8192      - Transform trace
+;; sd="AE Tracing Bitfield", dt = c, dr = m, dy = Y, tab("TraceAE")
+;; option(va =     1, sd="Trace STEP execution sequence")
+;; option(va =     2, sd="Trace Application SQL statements")
+;; option(va =     4, sd="Trace Dedicated Temp Table Allocation")
+;; option(va =     8, sd="not yet allocated")
+;; option(va =    16, sd="not yet allocated")
+;; option(va =    32, sd="not yet allocated")
+;; option(va =    64, sd="not yet allocated")
+;; option(va =   128, sd="Trace Timings Report")
+;; option(va =   256, sd="Trace Method/BuiltIn details")
+;; option(va =   512, sd="not yet allocated")
+;; option(va =  1024, sd="Trace Timings Report to tables")
+;; option(va =  2048, sd="DB optimizer trace to file")
+;; option(va =  4096, sd="DB optimizer trace to tables")
+;; option(va =  8192, sd="Transform trace")
+TraceAE=0
+
+;-------------------------------------------------------------------------
+; AE Trace file size
+; This parameter is used to specify max size (in MBs) of the AE trace file
+; Min value - 20 (Default)
+; Max value - 1500
+; if value is less than 20, default max file size is set to 20 MB
+; if value is greater than 1500, default max file size is set to 1500 MB
+;; sd="AE Trace File Size", ld="AE Trace File Size, specified in MBs", dt="n", dy="Y", rq="N"
+AETFileSize=20
+
+;-------------------------------------------------------------------------
+; If set to Y, PeopleCode and SQL trace output will be merged into AET file.
+; If set to N, PeopleCode and SQL trace output will be in .trc file in the same directory as AET file.
+TraceAECombineOutput=N
+
+;-------------------------------------------------------------------------
+; If set to Y, section level trace will be enabled.
+; If set to N, section level trace will be disabled and AE traces will be controlled by TraceAE setting only.
+TraceAEEnableSection=N
+
+;------------------------------------------------------------------------
+; Analytic Server Tracing Bitfield
+;
+; MostSignificantBit -> LeastSignificantBit
+; QAS     |ACE MODEL | ACE CALC | ACE API| Plugin | DCache | Utils  | Analytic Server |
+; 1  1  1   1  1  1     1  1  1   1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+;
+; Bit       Type of tracing        3 bits per component (octal word)
+; ---       ---------------        ---------------------------------
+; 1         - Analytic Server LSB
+; 2         - Analytic Server      MSB LSB      LogFence
+; 4         - Analytic Server MSB  --- ---  --------------------
+; 8         - Utilities LSB         0 0 0   0  (Severity_Status)
+; 16        - Utilities             0 0 1   1  (Severity_Error)
+; 32        - Utilities MSB         0 1 0   2  (Severity_Warn)
+; 64        - DataCache LSB         0 1 1   3  (Severity_Info)
+; 128       - DataCache             1 0 0   4  (Severity_Trace1)
+; 256       - DataCache MSB         1 0 1   5  (Severity_Trace2)
+; 512       - Plug-in LSB           1 1 0   6  (not used)
+; 1024      - Plug-in               1 1 1   7  (not used)
+; 2048      - Plug-in MSB
+; 4096      - ACE API LSB
+; 8192      - ACE API
+; 16384     - ACE API MSB
+; 32768     - ACE CALC LSB
+; 65536     - ACE CALC
+; 131072    - ACE CALC MSB
+; 262144    - ACE MODEL LSB
+; 524288    - ACE MODEL
+; 1048576   - ACE MODEL MSB
+; 2097152   - QAS LSB
+; 4194304   - QAS
+; 8388608   - QAS MSB
+;
+; The bits enable logging for OptEngine components beyond the standard
+; LogFence setting.  E.g., TraceAnalytic=14380470 sets full trace on all components.
+; Using 110 (1 greater than Severity_Trace2) for each component:
+; OptEng: 4 + 2
+; Utils : 32 + 16
+; DC    : 256 + 128
+; Plugin: 2048 + 1024
+; ACE API: 16384 + 8192
+; ACE CALC: 131072 + 65536
+; ACE MODEL: 1048576 + 524288
+; QAS      : 8388608 + 4194304
+; Total : 14380470
+;; sd="Analytic Server Tracing Bitfield", dt = c, dr = m, dy = Y, tab("TraceAnalytic")
+;; option(va =       1, sd="Analytic Server LSB")
+;; option(va =       2, sd="Analytic Server")
+;; option(va =       4, sd="Analytic Server MSB")
+;; option(va =       8, sd="Utilities LSB")
+;; option(va =      16, sd="Utilities")
+;; option(va =      32, sd="Utilities MSB")
+;; option(va =      64, sd="DataCache LSB")
+;; option(va =     128, sd="DataCache")
+;; option(va =     256, sd="DataCache MSB")
+;; option(va =     512, sd="Plug-in LSB")
+;; option(va =    1024, sd="Plug-in")
+;; option(va =    2048, sd="Plug-in MSB")
+;; option(va =    4096, sd="ACE API LSB")
+;; option(va =    8192, sd="ACE API")
+;; option(va =   16384, sd="ACE API MSB")
+;; option(va =   32768, sd="ACE CALC LSB")
+;; option(va =   65536, sd="ACE CALC")
+;; option(va =  131072, sd="ACE CALC MSB")
+;; option(va =  262144, sd="ACE MODEL LSB")
+;; option(va =  524288, sd="ACE MODEL")
+;; option(va = 1048576, sd="ACE MODEL MSB")
+;; option(va = 2097152, sd="QAS LSB")
+;; option(va = 4194304, sd="QAS")
+;; option(va = 8388608, sd="QAS MSB")
+TraceAnalytic=9586980
+;; sd="Analytic Server Trace Mask", dt = n, dy = Y
+TraceAnalyticMask=16777215
+;------------------------------------------------------------------------
+; Performance Monitor Tracing Bitfield
+;
+; Bit       Type of tracing
+; ---       ---------------
+; 1         - Trace All performance monitor agent activity
+;; sd="Performance Monitor Tracing Bitfield", dt = c, dr = m, dy = Y, tab("Other")
+;; option(va = 1, sd = "Trace All performance monitor agent activity")
+TracePPM=0
+
+;-------------------------------------------------------------------------
+; Create a memory image of the failing process during a crash
+;
+; Setting      Meaning
+; -------      ---------------
+; NONE         no memory image
+; MINI         mini memory image
+; FULL         full memory image
+;
+; If set to MINI or FULL, when a crash occurs, a memory.dmp file is
+; generated under <log directory>/<server name>.<process id>.
+; Dynamic change allowed.
+;; sd="Dump Memory Image At Crash", ld="The size of the memory image that is dumped when a crash occurs", dy="Y", dt="d"
+DumpMemoryImageAtCrash=NONE
+
+;-------------------------------------------------------------------------
+;If set to Y, when a crash occurs, the application server process will write
+;additional information to help in debugging the crash that occurred.
+;This consists of the customized object definitions for reproducing
+;the request on another database.
+;; sd="Dump Manager Objects At Crash", ld="Enables the writing of additional debug information upon AppServer process crash", dt="c"
+DumpManagerObjectsAtCrash=Y
+
+;-------------------------------------------------------------------------
+; If set to Y, when a runtime error is detected, the message and a dump of
+; the application state will be written to the current log file.
+; Dynamic change allowed.
+;; sd="Log Error Report", dy="Y", dt="c", ld="If set to Y, when a runtime error is detected, the message and a dump of the application state will be written to the current log file"
+LogErrorReport=N
+
+;-------------------------------------------------------------------------
+; When set to an email address, an email will be sent when an error report
+; or a crash dump is written to the log.
+; Dynamic change allowed.
+;; sd="Error Report Email Address", ld="Email address to which error report is sent upon crash", dy="Y", rq="N", tip="It is necessary to configure SMTP settings for this to take effect"
+MailErrorReport=
+
+
+[Cache Settings]
+;==============================================================================================
+; Settings for managed object caching;
+; Default EnableServerCaching=2, ServerCacheMode=0
+; Default CacheBaseDir=%PS_SERVDIR% if defined else %PS_CFG_HOME/<domain name>/cache
+; You can change these values by uncommenting and setting to the desired value
+;==============================================================================================
+;-----------------------------------------------------------------------
+; EnableServerCaching -
+;  0        Server file caching disabled
+;  1        Server file caching limited to most used classes
+;  2        Server file caching for all types
+;; sd="Enable Server Caching", ld="Choose the type of caching to be done on the application server", hd = Y, dt = d, rq = N
+;; option(va = 0, sd="Disabled")
+;; option(va = 1, sd="Limited to most used classes")
+;; option(va = 2, sd="Caching for all types")
+;EnableServerCaching=2
+;-----------------------------------------------------------------------
+; CacheBaseDir = the base file cache directory
+;; sd="Cache Base Dir", ld="Directory where the cache files will be written", hd = Y, rq = N
+;CacheBaseDir=%PS_SERVDIR%
+;-----------------------------------------------------------------------
+; ServerCacheMode
+;  0        One file cache directory per app server process
+;  1        One file cache directory per domain (shared file cache, needs to be preloaded)
+;; sd="Server Cache Mode", ld="Choose how the cache will be written to the cache directory", hd = Y, rq = N, dt = d
+;; option(va = 0, sd = "One directory per process")
+;; option(va = 1, sd = "One cache directory per domain")
+;ServerCacheMode=0
+;-----------------------------------------------------------------------
+; Deprecated cache settings : MaxInMemoryObjects
+;-----------------------------------------------------------------------
+;-----------------------------------------------------------------------
+; MaxCacheMemory - controls cache memory pruning
+;  0        cache memory pruning disabled
+;  >0       max size of memory cache in MBytes
+;; sd="Max Cache Memory", ld="controls cache memory pruning", dt = n, tip="Set to zero to disable cache memory pruning"
+MaxCacheMemory=0
+
+;-----------------------------------------------------------------------
+; EnableDBCache - When set to Y, Cache is accessed from DB, rather than File-System.
+; When this setting is enabled, the settings EnableServerCaching, ServerCacheMode and CacheBaseDir are ignored.
+; Y  DB-Cache is enabled
+; N  DB-Cache is disabled
+;; sd="Enable DB-Cache", rq="N", hd="Y", ld="Enables cache in Database. This value must be set prior to booting domain.", dt="c"
+;EnableDBCache=
+
+;-----------------------------------------------------------------------
+; PreloadCache - Preload Cache project for File/DB and in-memory Cache
+; PreloadFileCache setting is deprecated but is still supported for backward compatibility
+;; sd="Preload Cache", rq="N", hd="Y", ld="This value must be set prior to preloading Application Server cache.  This is the name of the previously created preload file cache project. PreloadFileCache setting is still supported for backward compatibility"
+;PreloadCache=
+;; sd="Preload Memory Cache", rq="N", hd="Y", ld="This value must be set prior to preloading Application Server memory cache.  This is the name of the previously created preload file cache project."
+;PreloadMemoryCache=
+
+;-----------------------------------------------------------------------
+; Cache Repair Settings
+;-----------------------------------------------------------------------
+; EnableCacheRepair - When set to Y, cache repair activities will execute.
+;                     When this setting is disabled, the settings AdjustMaxCacheMem, 
+;                     ExcessivePruningThreshold, CacheMissThreshold, and 
+;                     MaxRepairCollection are ignored.
+; Y  cache repair is enabled - default
+; N  cache repair is disabled
+; Dynamic change allowed for EnableCacheRepair
+;; sd="Enable Cache Repair", dt="c", dy="Y", rq="N", hd="Y", ld="Cache repair performs on-the-fly adjustments to problematic cache"
+EnableCacheRepair=Y
+;-----------------------------------------------------------------------
+; AdjustMaxCacheMem - Controls how much to adjust the internal setting for MaxCacheMem 
+;                     if excessive pruning is detected. This is unused if MaxCacheMem=0.
+;  0        disables adjusting internal setting
+;  >0       #MBytes by which to increase the internal setting
+; Dynamic change allowed for AdjustMaxCacheMem
+;; sd="Adjust internal MaxCacheMem setting", dt="n", dy="Y", rq="N", tip="Set to 0 to disable adjusting internal setting",ld="Controls internal adjustments to MaxCacheMem. Ignored if MaxCacheMem is 0."
+AdjustMaxCacheMem=5
+;-----------------------------------------------------------------------
+; ExcessivePruningThreshold - Threshold for ratio of pruned objects to objects fetched  
+;                             in a service request. Once the threshold is reached the 
+;                             internal setting for MaxCacheMem is incremented by the 
+;                             amount in AdjustMaxCacheMem. This is unused if MaxCacheMem=0.
+;                             Expressed as a percentage.
+; Dynamic change allowed for ExcessivePruningThreshold
+;; sd="Excessive Pruning Threshold", dt="n", dy="Y", rq="N", ld="Threshold for ratio of pruned objects to objects fetched in a service request, expressed as a percentage. Once the threshold is reached the internal setting for MaxCacheMem will be incremented by the amount in AdjustMaxCacheMem."
+ExcessivePruningThreshold=80
+;-----------------------------------------------------------------------
+; CacheMissThreshold - Threshold for the number of times an object is found to be invalid
+;                      in cache before deleting the object from cache, forcing a refresh.
+; Dynamic change allowed for CacheMissThreshold
+;; sd="Cache Miss Threshold", dt="n", dy="Y", rq="N", ld="Threshold for the number of times an object is found to be invalid in cache before deleting the object from cache, forcing a refresh."
+CacheMissThreshold=5
+;-----------------------------------------------------------------------
+; MaxRepairCollection - Maximum size of the memory data collection for cache repair
+; Dynamic change allowed for MaxRepairCollection 
+;; sd="Max Repair Collection", dt="n", dy="Y", rq="N", ld="Maximum size of the memory data collection for cache repair. The data collection is purged from memory once it reaches the maximum size."
+MaxRepairCollection=5
+
+[RemoteCall]
+;=========================================================================
+; Settings for RemoteCall
+;=========================================================================
+;; sd="COBOL Platform", ld="Third Party COBOL compiler and runtime platform", rq="N"
+COBOL Platform=
+;-------------------------------------------------------------------------
+; RemoteCall child process output redirection and Tracing
+;
+; If this parameter is non-zero,
+; the child process output is saved to <Domain Settings\Log Directory>\<program>_<oprid>.out (with remote call tracing information),
+; and any error output is saved to <program>_<oprid>.err
+; also rmtcall_in.<pid>, rmtcall_out.<pid>, rmtcall_cblmsg.<pid> files will be saved
+;
+; If this parameter is zero (default),
+; the child process output and error files are created but with no remote call tracing information,
+; also rmtcall_in.<pid>, rmtcall_out.<pid>, rmtcall_cblmsg.<pid> files will not be saved
+;
+;; sd="Redirect RemoteCall Child Process Output", dt="c", rq="N", ld="If this parameter is non-zero, the child process output is saved to Domain Settings/Log Directory/program_oprid.out  Any error output is saved to program_oprid.err. By default, the output is not saved."
+RCCBL Redirect=0
+
+;-------------------------------------------------------------------------
+; Location of COBOL programs
+; NT/Windows 2000: By default, RemoteCall looks for the COBOL programs in
+; the directories mentioned below.  PS_COBOLTYPE is automatically set when
+; the application server is started.  The value depends upon the database.
+; Possible values:
+;     PS_COBOLTYPE = A (non-Unicode)
+;     PS_COBOLTYPE = E (EBCDIC)
+;     PS_COBOLTYPE = U (Unicode)
+;
+; UNIX: By default, RemoteCall looks for the COBOL programs in COBPATH environment variable.
+; COBPATH can be changed from psadmin as below
+; psadmin -> Application Server -> Administer a domain -> <domain> -> Configure this domain -> Edit environment settings -> Edit environment variable
+;
+; You can override the default setting by changing the appropriate
+; line and modifying the setting to fit your requirements.
+; NT/Windows 2000:
+;; sd="COBOL Program Home", ld = "Location of COBOL programs", hd = Y, rq = N
+RCCBL PRDBIN=%PS_APP_HOME%\cblbin:%PS_HOME%\cblbin%PS_COBOLTYPE%
+
+[PSAPPSRV]
+;=========================================================================
+; Settings for PSAPPSRV
+;=========================================================================
+
+;-------------------------------------------------------------------------
+; UBBGEN settings
+;; sd="Minimum Instances", ld="Minimum number of process instances started upon domain boot", rl = "Y", dt = n
+Min Instances=2
+;; sd="Maximum Instances", ld="Maximum number of process instances started upon domain boot", rl = "Y", tip = "Set this value equal to Min Instances to disable spawning", dt = n
+Max Instances=4
+;; sd="Service Timeout", ld="Maximum time period in seconds that may elapse for servicing a request before the process is forcefully terminated", rl = "Y", tip="Cross Dependency Note: This value should at least as large as the Tuxedo Receive Timeout (Web Profile) and HTTP Session timeout for the Web Container. If Service Timeout is 0, then services do not timeout.", dt = "n"
+Service Timeout=300
+
+;-------------------------------------------------------------------------
+; Number of services after which PSAPPSRV will automatically restart.
+; If the recycle count is set to zero, PSAPPSRV will never be recycled.
+; The default value is 10000.
+; Dynamic change allowed for Recycle Count
+;; sd="Recycle Count", ld="Number of services that will be completed before this process restarts", tip="Cross Dependency Note: If set > 0, Domain Settings/Restartable must be set to 'Y'.  If set to zero, the process never recycles", dt = "n", dy = "Y"
+Recycle Count=10000
+; Dynamic change not allowed for the ProcessRestartMemoryLimit
+;; sd="ProcessRestartMemoryLimit", ld="If the VM for the recycable process has exceeded ProcessRestartMemoryLimit it will recycle", tip="This is not dynamic cfg-parameter.  If set to zero, there is no memory threshold for the process", dt = "n", dy = "Y" 
+ProcessRestartMemoryLimit=0
+
+;-------------------------------------------------------------------------
+; Number of consecutive service failures after which PSAPPSRV will
+; automatically restart.
+; If this is set to zero, PSAPPSRV will never be recycled.
+; The default value is zero.
+; Dynamic change allowed for Allowed Consec Service Failures
+;; sd="Allowed Consecutive Service Failures", ld="Number of consecutive services allowed to fail before this process restarts", tip="If set to zero, the process never restarts due to failure", dt = "n", dy = "Y"
+Allowed Consec Service Failures=2
+
+; Max Fetch Size -- max result set size in KB for a SELECT query
+; Default is 5000KB. Use 0 for no limit.
+;; sd="Max Fetch Size Per Query", ld="Maximum result set size in KB for a SELECT query", tip="If set to zero, there is no limit", dt = "n"
+Max Fetch Size=5000
+; Automatically select prompt, 1 = yes, 0 = no
+;; sd="Auto Select Prompts", dt="c", ld="When enabled the user is not required to enter a prompt value on a search page.  If disabled, user must provide a prompt value for the search"
+;; option(va = 0, sd="No")
+;; option(va = 1, sd="Yes")
+Auto Select Prompts=1
+
+;-------------------------------------------------------------------------
+; This parameter is used for Tuxedo Queue Threshold Determination (used for Pub/Sub ; processing only). This parameter is the actual Tuxedo message queue size.  
+; This is a kernel parameter in Unix. For Windows, look in BEA Tuxedo, IPC Resources. The default size is 65535.
+;; sd="Tuxedo Queue Size", ld="This parameter is used for Tuxedo Queue Threshold Determination. This parameter is the actual Tuxedo message queue size.", tip="This is a kernel parameter in Unix. For Windows, look in BEA Tuxedo, IPC Resources. The default size is 65535"
+Tuxedo Queue Size=65535
+
+
+[PSANALYTICSRV]
+;=========================================================================
+; Settings for PSANALYTICSRV
+;=========================================================================
+
+;-------------------------------------------------------------------------
+; UBBGEN settings
+;; sd="Minimum Instances", ld="Minimum number of process instances started upon domain boot", rl = "Y", dt = n, rq="N"
+Min Instances=2
+;; sd="Maximum Instances", ld="Maximum number of Analytic Servers that will run at the same time in a single domain", rl = "Y", tip= "Set this value equal to Min Instances to disable spawning", dt = n, rq="N"
+Max Instances=4
+
+;-------------------------------------------------------------------------
+; Number of Analytic Instances an Analytic Server instance will load and
+; unload before recycling.  If the recycle count is set to zero, the
+; Analytic Server will never be recycled.
+; The default value is 1.
+; Dynamic changes to this setting are allowed.  A dynamic change will
+; affect running Analytic Servers.
+;; sd="Recycle Count", hd="Y", ld="Number of Analytic Instances an Analytic Server instance will load and unload before recycling.", tip="If set to zero, the process never recycles", dt="n", dy="Y", rq="N"
+;Recycle Count=1
+; Dynamic change not allowed for the ProcessRestartMemoryLimit
+;; sd="ProcessRestartMemoryLimit", ld="If the VM for the recycable process has exceeded ProcessRestartMemoryLimit it will recycle", tip="This is not dynamic cfg-parameter.  If set to zero, there is no memory threshold for the process", dt = "n", dy = "Y" 
+ProcessRestartMemoryLimit=0
+
+;-------------------------------------------------------------------------
+; Number of minutes an analytic instance will remain loaded without being
+; accessed when it is auto-loaded by the analytic grid or when a
+; PeopleCode program loads the instance with a timeout value of -1.
+; The default value is 30
+; Setting this to zero will disable timeouts for auto-loaded instances.
+; Dynamic changes to this setting are allowed.
+;; sd="Analytic Instance Idle Timeout", hd="Y", dy="Y", dt="n", ld="Number of minutes an analytic instance will remain loaded without being accessed when it is auto-loaded by the analytic grid or when a PeopleCode program loads the instance with a timeout value of -1.", rq="N"
+;Analytic Instance Idle Timeout=30
+
+;-------------------------------------------------------------------------
+; Setting this to 1 will cause each analytic server to log to it's own
+; file rather than the common PSANALYTICSRV_<Month|Day>.LOG file.  The
+; individual log files will include the Tuxedo server ID.
+; Dynamic changes to this setting are allowed.  Changes will only come
+; into affect for running analytic servers when they are recycled.
+; The default value is 0
+;; sd="Analytic Per Server Log", ld="If this is checked, each analytic server logs to its own file.  Otherwise, all analytic servers write to the common file", hd="Y", rq="N", dt="d", dy="Y"
+;; option(va = 0, sd="One Directory per process")
+;; option(va = 1, sd="One PSANALYTICSRV log directory per Domain")
+;Analytic Per Server Log=1
+
+;-------------------------------------------------------------------------
+; This setting determines what is the threshold to enable file swaping
+; in ACE. Each data block is of 6K. Each data cube is divided into multiple
+; data blocks. In batch environment this could be configured to a higher value.
+; The default value is 1024 blocks. If set to zero, the disk swaping is disabled.
+;; sd="ACE Max Memory Data Blocks", dt="n", tip="If set to zero, disk swapping is disabled", hd="Y", rq="N", ld="This setting determines the threshold to enable file swapping in ACE.  Each data block is 6K. Each data cube is divided into multiple data blocks.  In a batch environment this could be configured to a higher value.  The default value is 1024 blocks. If set to zero, the disk swapping is disabled."
+;ACE Max Memory Data Blocks=1024
+
+;-------------------------------------------------------------------------
+; Queue size for data loading in batches. If set to zero, batch loading is disabled.
+;; sd="ACE Load Queue Size", ld="Queue size for data loading in batches", tip="Set to zero to disable batch loading", dt="n", hd="Y", rq="N"
+;ACE Load Queue Size=100000
+
+
+[PSSAMSRV]
+;=========================================================================
+; Settings for PSSAMSRV
+;=========================================================================
+
+;-------------------------------------------------------------------------
+; UBBGEN settings
+; PSSAMSRV never spawns, so we set Instances instead of setting a Min and
+; Max value for Instances.
+;; sd="Minimum Instances", ld="Minimum number of process instances started upon domain boot", rl = "Y", dt = n
+Min Instances=2
+;; sd="Maximum Instances", ld="Maximum number of process instances that will be spawned at peak time", rl = "Y", dt = n
+Max Instances=4
+;; sd="Service Timeout", ld="Maximum time period in seconds that may elapse for servicing a request before the process is forcefully terminated. If set to zero, the process never times out", rl = "Y", dt="n"
+Service Timeout=300
+
+;-------------------------------------------------------------------------
+; Number of services after which PSSAMSRV will automatically restart.
+; If the recycle count is set to zero, PSSAMSRV will never be recycled.
+; The default value is zero.
+;; sd="Recycle Count", ld = "Number of services that will be completed before this process restarts", tip="If set to zero, the process never recycles", dt = "n", dy = "Y"
+Recycle Count=100000
+; Dynamic change not allowed for the ProcessRestartMemoryLimit
+;; sd="ProcessRestartMemoryLimit", ld="If the VM for the recycable process has exceeded ProcessRestartMemoryLimit it will recycle", tip="This is not dynamic cfg-parameter.  If set to zero, there is no memory threshold for the process", dt = "n", dy = "Y" 
+ProcessRestartMemoryLimit=0
+
+;-------------------------------------------------------------------------
+; Number of consecutive service failures after which PSSAMSRV will
+; automatically restart.
+; If this is set to zero, PSSAMSRV will never be recycled.
+; The default value is zero.
+;; sd="Allowed Consecutive Service Failures", ld="Number of consecutive services allowed to fail before this process restarts", tip="If set to zero, the process never restarts due to failure", dt = "n", dy = "Y"
+Allowed Consec Service Failures=2
+
+; Max Fetch Size -- max result set size in KB for a SELECT query
+; Max Fetch Size=n indicates n * 1024 bytes
+; Default is 32KB. Use 0 for no limit
+;; sd="Maximum Query Fetch Size", ld = "Maximum result set size in KB for a SELECT query", tip="If set to zero, there is no limit", dt = "n"
+Max Fetch Size=32
+
+
+[PSQCKSRV]
+;=========================================================================
+; Settings for PSQCKSRV
+;=========================================================================
+
+;-------------------------------------------------------------------------
+; UBBGEN settings
+;; sd="Minimum Instances", ld="Minimum number of process instances started upon domain boot", rl = "Y", dt = n, rq="N"
+Min Instances=2
+;; sd="Maximum Instances", ld="Maximum number of process instances that will be spawned at peak time", rl = "Y", tip = "Set this value equal to Min Instances to disable spawning", dt = n, rq="N"
+Max Instances=4
+;; sd="Service Timeout", ld="Maximum time period in seconds that may elapse for servicing a request before the process is forcefully terminated. If set to zero, the process never times out", rl = "Y", dt="n"
+Service Timeout=300
+
+;-------------------------------------------------------------------------
+; Number of services after which PSQCKSRV will automatically restart.
+; If the recycle count is set to zero, PSQCKSRV will never be recycled.
+; The default value is zero.
+;; sd="Recycle Count", ld = "Number of services that will be completed before this process restarts", tip="If set to zero, the process never recycles", dt = "n", dy = "Y" , rq="N"
+Recycle Count=100000
+; Dynamic change not allowed for the ProcessRestartMemoryLimit
+;; sd="ProcessRestartMemoryLimit", ld="If the VM for the recycable process has exceeded ProcessRestartMemoryLimit it will recycle", tip="This is not dynamic cfg-parameter.  If set to zero, there is no memory threshold for the process", dt = "n", dy = "Y" 
+ProcessRestartMemoryLimit=0
+
+;-------------------------------------------------------------------------
+; Number of consecutive service failures after which PSQCKSRV will
+; automatically restart.
+; If this is set to zero, PSQCKSRV will never be recycled.
+; The default value is zero.
+;; sd="Allowed Consecutive Service Failures", ld="Number of consecutive services allowed to fail before this process restarts", tip="If set to zero, the process never restarts due to failure", dt = "n", dy = "Y"
+Allowed Consec Service Failures=2
+
+; Max Fetch Size -- max result set size in KB for a SELECT query
+; Default is 5000KB. Use 0 for no limit.
+;; sd="Maximum Query Fetch Size", ld = "Maximum result set size in KB for a SELECT query", tip="If set to zero, there is no limit", dt = "n", rq="N"
+Max Fetch Size=5000
+
+
+[PSQRYSRV]
+;=========================================================================
+; Settings for PSQRYSRV
+;=========================================================================
+
+;-------------------------------------------------------------------------
+; UBBGEN settings
+;; sd="Minimum Instances", ld="Minimum number of process instances started upon domain boot", rl = "Y", dt = n, rq="N"
+Min Instances=2
+;; sd="Maximum Instances", ld="Maximum number of process instances that will be spawned at peak time", rl = "Y", tip="Set this value equal to Min Instances to disable spawning", dt = n, rq="N"
+Max Instances=4
+;; sd="Service Timeout", ld="Maximum time period in seconds that may elapse for servicing a request before the process is forcefully terminated. If set to zero, the process never times out", rl = "Y", dt="n"
+Service Timeout=1200
+
+;-------------------------------------------------------------------------
+; Number of services after which PSQRYSRV will automatically restart.
+; If the recycle count is set to zero, PSQRYSRV will never be recycled.
+; The default value is zero.
+;; sd="Recycle Count", ld="Number of services that will be completed before this process restarts", tip="If set to zero, the process never recycles", dt = "n", dy = "Y", rq="N"
+Recycle Count=100000
+; Dynamic change not allowed for the ProcessRestartMemoryLimit
+;; sd="ProcessRestartMemoryLimit", ld="If the VM for the recycable process has exceeded ProcessRestartMemoryLimit it will recycle", tip="This is not dynamic cfg-parameter.  If set to zero, there is no memory threshold for the process", dt = "n", dy = "Y" 
+ProcessRestartMemoryLimit=0
+
+;-------------------------------------------------------------------------
+; Number of consecutive service failures after which PSQRYSRV will
+; automatically restart.
+; If this is set to zero, PSQRYSRV will never be recycled.
+; The default value is zero.
+;; sd="Allowed Consecutive Service Failures", ld="Number of consecutive services allowed to fail before this process restarts", tip="If set to zero, the process never restarts due to failure", dt = "n", dy = "Y"
+Allowed Consec Service Failures=2
+
+; Max Fetch Size -- max result set size in KB for a SELECT query
+; Default is 10000KB. Use 0 for no limit.
+;; sd="Maximum Query Fetch Size", ld="Maximum result set size in KB for a SELECT query", tip="If set to zero, there is no limit", dt = "n", rq="N"
+Max Fetch Size=10000
+
+; Use dirty-read(uncommitted read) for PSQRYSRV only on DB2/OS390 or SQL Server
+;; sd="Use Dirty Read", ld="Use dirty-read(uncommitted read) for PSQRYSRV only on DB2/OS390 or SQL Server", rq="N", dt="c"
+Use dirty-read=0
+
+
+[Publish&Subscribe]
+;=========================================================================
+; Settings for PUB/SUB servers
+;=========================================================================
+
+;-------------------------------------------------------------------------
+; Option to disable Persistent cursors option for DB2/OS390 on PUB/SUB servers only.
+; If this option is set to zero, persistent cursors will not be enabled.  Therefore,
+; all sql satements will be compiled each time the statement is envoked.
+; A setting of 1 will enable persistent cursors for PUB/SUB.
+;; sd="Enable Persistent Cursors on DB2/OS390", ld="Enable/Disable persistent cursors option for DB2/OS390 on PUB/SUB servers only", rq="N", dt="d"
+;; option(va = 0, sd="Disable persistent cursors for PUB/SUB")
+;; option(va = 1, sd="Enable persistent cursors for PUB/SUB")
+Persistent Cursors on DB2/OS390=0
+
+;-------------------------------------------------------------------------
+; Option to initially configure the PUB/SUB servers in this Domain in SLAVE mode.
+; A setting of 1 will initialize the PUB/SUB servers in Slave Mode. A Setting of
+; 0 will initialize the PUB/SUB servers in normal (Master) mode
+;; sd="Domain Slave Mode", ld="Option to initially configure the PUB/SUB servers in this Domain in SLAVE mode", dt="c", rq="N"
+;; option(va = 0, sd="Initialize the PUB/SUB servers in normal (Master) mode")
+;; option(va = 1, sd="Initialize the PUB/SUB servers in Slave Mode")
+Domain Slave Mode=0
+
+;-------------------------------------------------------------------------
+; This value is used to determine how many In-Memory Message Segments are allowed
+; before reading/ writing message segments to database directly is automatically
+; enabled. Moreover this value is used to chunk (ordered) segmented messages being
+; sent to IB gateway.
+;; sd="Message Segment From DB", ld="When this limit is reached, reading/writing message segments to database directly is automatically enabled", dt="n", rq="N"
+Message Segment From DB=10
+
+
+;-------------------------------------------------------------------------
+; This value is to determine the time interval between load balance processing when
+; the dispatcher is processing requests. This processing consists of attempting to perform
+; the equivalent of an On Idle ping on all down nodes (without the ping interval delay)
+; for the default publication contract dispatcher (_dflt). Moreover, for all dispatchers (not
+; configured as Slaves) when this interval is reached the equivalent of on idle processing will be performed. This
+; means that if other queues can be processed they will be for that current dispatch cycle.
+;
+; The value used will be the number of minutes between load balance processing.  When
+; true on-idle processing is performed the load balance interval time will be reset.
+; A setting of 0 will disable this feature.
+;
+;;sd="Load Balance Interval", ld="The value used will be the number of minutes between load balance processing", dt="n", rq="N", tip="Set this value to 0 to disable it"
+Load Balance Interval=0
+
+;-------------------------------------------------------------------------
+; This value will perform a serial recycle of Handler processes in the same process group.
+; This prevents all Handlers within the same group from recycling at the same time (providing
+; the server does recycle properly within the allocated recycle time of 60 seconds).
+; The default setting enables this functionality. A value of N will disable this feature.
+; Serial recycle time must be 60 seconds or greater.
+;;sd="Serial Recycle", ld="Option to perform a serial recycle of Handler processes in the same process group", dt="c", rq="N", tip="Set this value to N to disable it"
+Serial Recycle=Y
+;;sd="Serial Recycle Time", ld="Allocated time for the server to recycle properly", dt="n", hd="Y", rq="N", tip="Valid Recycle Time >= 60 seconds"
+;Serial Recycle Time=60
+; Dynamic change not allowed for the ProcessRestartMemoryLimit
+;; sd="ProcessRestartMemoryLimit", ld="If the VM for the recycable process has exceeded ProcessRestartMemoryLimit it will recycle", tip="This is not dynamic cfg-parameter.  If set to zero, there is no memory threshold for the process", dt = "n", dy = "Y" 
+ProcessRestartMemoryLimit=0
+
+
+[PSBRKDSP_dflt]
+;=========================================================================
+; Settings for Publication Broker dispatcher
+;=========================================================================
+;; sd="Recycle Count", ld = "Number of messages processed before restart", tip="If set to zero, the process never recycles", dt="n", dy="Y", rq="N"
+Recycle Count=0
+; Dynamic change not allowed for the ProcessRestartMemoryLimit
+;; sd="ProcessRestartMemoryLimit", ld="If the VM for the recycable process has exceeded ProcessRestartMemoryLimit it will recycle", tip="This is not dynamic cfg-parameter.  If set to zero, there is no memory threshold for the process", dt = "n", dy = "Y" 
+ProcessRestartMemoryLimit=0
+;; sd="Allowed Consecutive Service Failures", ld="Number of consecutive services allowed to fail before this process restarts", tip="If set to zero, the process never restarts due to failure", dt = "n", dy = "Y"
+Allowed Consec Service Failures=0
+
+;The Dispatch List is determined by the number of associated handlers multiplied
+;by this value.
+;; sd="Dispatch List Multiplier", ld="Limits the number of dispatched messages by this number, multiplied by the number of associated handler(s)", dt="n", rq="N", tip="A value of 0 will disable this type of throttle."
+Dispatch List Multiplier=10
+
+;-------------------------------------------------------------------------
+; After this many seconds of inactivity, the server will scan the
+; database queues and restart any stalled/crashed items
+;; sd="Inactivity Scan Interval", dt="n", rq="N", ld="After this many seconds of inactivity, the server will scan the database queues and restart any stalled/crashed items. The scan rate and Ping rate (as percentage) will determine the actual interval for pinging any unavailable remote nodes (algorithm used: Attempts * Ping Rate * Scan Inteval). The maximum Ping Interval (in Hours) is the maximum interval between subsequent attempted pings of any unavailable remote nodes."
+Scan Interval=15
+
+;-------------------------------------------------------------------------
+; This determines the Maximum number of items per queue that the Dispatcher
+; will keep in memory
+;; sd="Dispatcher Queue Max Queue Size", ld="Maximum number of items per queue kept in memory by Dispatcher", dt="n", rq="N"
+Dispatcher Queue Max Queue Size=1000
+
+;-------------------------------------------------------------------------
+; After this many attempted dispatches the in-memory queue for that queue
+; will be refreshed.
+; A setting of 0 will disable the memory queue refresh.
+; A setting of 1 will disable in-memory caching.
+;; sd="Memory Queue Refresh Rate", ld="Maximum number of items per channel kept in memory by Dispatcher", dt="n", rq="N", tip="A setting of 0 will disable the memory queue refresh.  A setting of 1 will disable in-memory caching."
+Memory Queue Refresh rate=1000
+
+;-------------------------------------------------------------------------
+; Items which have been 'started' for more than this number of seconds
+; will be restarted.
+;; sd="Restart Period", ld="Time period in seconds after which restart will occur", dt="n", rq="N"
+Restart Period=120
+
+
+[PSBRKHND_dflt]
+;=========================================================================
+; Settings for Publication Broker handler
+;=========================================================================
+;; sd="Minimum Instances", ld="Minimum number of process instances started upon domain boot", rl = "Y", dt = n, rq="N"
+Min Instances=1
+;; sd="Maximum Instances", ld="Minimum number of process instances started upon domain boot", rl = "Y", tip="Set this value equal to Min Instances to disable spawning", dt="n", rq="N"
+Max Instances=1
+;; sd="Service Timeout", ld="Maximum time period in seconds that may elapse for servicing a request before the process is forcefully terminated", rl = "Y", dt="n", rq="N", tip="If set to zero, the process will not timeout"
+Service Timeout=1200
+;; sd="Recycle Count", ld = "Number of messages processed before restart", tip="If set to zero, the process never recycles", dt="n", dy="Y", rq="N"
+Recycle Count=20000
+; Dynamic change not allowed for the ProcessRestartMemoryLimit
+;; sd="ProcessRestartMemoryLimit", ld="If the VM for the recycable process has exceeded ProcessRestartMemoryLimit it will recycle", tip="This is not dynamic cfg-parameter.  If set to zero, there is no memory threshold for the process", dt = "n", dy = "Y" 
+ProcessRestartMemoryLimit=0
+;; sd="Allowed Consecutive Service Failures", ld="Number of consecutive services allowed to fail before this process restarts", tip="If set to zero, the process never restarts due to failure", dt = "n", dy = "Y"
+Allowed Consec Service Failures=0
+
+;-------------------------------------------------------------------------
+; After an item has been dispatched this many times, it will be marked
+; 'error'.
+;; sd="Maximum Retries", ld="Number of restarts for an item before being flagged as an error", dt="n", rq="N"
+Max Retries=5
+
+
+[PSSUBDSP_dflt]
+;=========================================================================
+; Settings for subscription contract dispatcher
+;=========================================================================
+;; sd="Recycle Count", ld = "Number of messages processed before restart", tip="If set to zero, the process never recycles", dt="n", dy="Y", rq="N"
+Recycle Count=0
+; Dynamic change not allowed for the ProcessRestartMemoryLimit
+;; sd="ProcessRestartMemoryLimit", ld="If the VM for the recycable process has exceeded ProcessRestartMemoryLimit it will recycle", tip="This is not dynamic cfg-parameter.  If set to zero, there is no memory threshold for the process", dt = "n", dy = "Y" 
+ProcessRestartMemoryLimit=0
+;; sd="Allowed Consecutive Service Failures", ld="Number of consecutive services allowed to fail before this process restarts", tip="If set to zero, the process never restarts due to failure", dt = "n", dy = "Y"
+Allowed Consec Service Failures=0
+
+;-------------------------------------------------------------------------
+;The Dispatch List is determined by the number of associated handlers multiplied
+;by this value.
+;; sd="Dispatch List Multiplier", ld="Limits the number of dispatched messages by this number, multiplied by the number of associated handler(s)", dt="n", rq="N"
+Dispatch List Multiplier=10
+
+;-------------------------------------------------------------------------
+; After this many seconds of inactivity, the server will scan the
+; database queues and restart any stalled/crashed items
+;; sd="Inactivity Scan Interval", dt="n", rq="N", ld="After this many seconds of inactivity, the server will scan the database queues and restart any stalled/crashed items. The scan rate and Ping rate (as percentage) will determine the actual interval for pinging any unavailable remote nodes (algorithm used: Attempts * Ping Rate * Scan Inteval). The maximum Ping Interval (in Hours) is the maximum interval between subsequent attempted pings of any unavailable remote nodes."
+Scan Interval=15
+
+;-------------------------------------------------------------------------
+; This determines the Maximum number of items per queue that the Dispatcher
+; will keep in memory
+;; sd="Dispatcher Queue Max Queue Size", ld="Maximum number of items per queue kept in memory by Dispatcher", dt="n", rq="N"
+Dispatcher Queue Max Queue Size=1000
+
+;-------------------------------------------------------------------------
+; After this many attempted dispatches the in-memory queue for that queue
+; will be refreshed.
+; A setting of 0 will disable the memory queue refresh.
+; A setting of 1 will disable in-memory caching.
+;; sd="Memory Queue Refresh Rate", ld="Maximum number of items per channel kept in memory by Dispatcher", dt="n", rq="N", tip="A setting of 0 will disable the memory queue refresh.  A setting of 1 will disable in-memory caching."
+Memory Queue Refresh rate=1000
+
+;-------------------------------------------------------------------------
+; Items which have been 'started' for more than this number of seconds
+; will be restarted.
+;; sd="Restart Period", ld="Time period in seconds after which restart will occur", dt="n", rq="N"
+Restart Period=120
+
+
+[PSSUBHND_dflt]
+;=========================================================================
+; Settings for subscription contract handler
+;=========================================================================
+;; sd="Minimum Instances", ld="Minimum number of process instances started upon domain boot", rl = "Y", dt = n, rq="N"
+Min Instances=1
+;; sd="Maximum Instances", ld="Minimum number of process instances started upon domain boot", rl = "Y", tip="Set this value equal to Min Instances to disable spawning", dt="n", rq="N"
+Max Instances=1
+;; sd="Service Timeout", ld="Maximum time period in seconds that may elapse for servicing a request before the process is forcefully terminated", rl = "Y", dt="n", rq="N", tip="If set to zero, the process will not timeout"
+Service Timeout=1200
+;; sd="Recycle Count", ld = "Number of messages processed before restart", tip="If set to zero, the process never recycles", dt="n", dy="Y", rq="N"
+Recycle Count=20000
+; Dynamic change not allowed for the ProcessRestartMemoryLimit
+;; sd="ProcessRestartMemoryLimit", ld="If the VM for the recycable process has exceeded ProcessRestartMemoryLimit it will recycle", tip="This is not dynamic cfg-parameter.  If set to zero, there is no memory threshold for the process", dt = "n", dy = "Y" 
+ProcessRestartMemoryLimit=0
+;; sd="Allowed Consecutive Service Failures", ld="Number of consecutive services allowed to fail before this process restarts", tip="If set to zero, the process never restarts due to failure", dt = "n", dy = "Y"
+Allowed Consec Service Failures=0
+
+;-------------------------------------------------------------------------
+; After an item has been dispatched this many times, it will be marked 'error'
+;; sd="Maximum Retries", ld="Number of restarts for an item before being flagged as an error", dt="n", rq="N"
+Max Retries=5
+
+
+[PSPUBDSP_dflt]
+;=========================================================================
+; Settings for publication contract dispatcher
+;=========================================================================
+;; sd="Recycle Count", ld = "Number of messages processed before restart", tip="If set to zero, the process never recycles", dt="n", dy="Y", rq="N"
+Recycle Count=0
+; Dynamic change not allowed for the ProcessRestartMemoryLimit
+;; sd="ProcessRestartMemoryLimit", ld="If the VM for the recycable process has exceeded ProcessRestartMemoryLimit it will recycle", tip="This is not dynamic cfg-parameter.  If set to zero, there is no memory threshold for the process", dt = "n", dy = "Y" 
+ProcessRestartMemoryLimit=0
+;; sd="Allowed Consecutive Service Failures", ld="Number of consecutive services allowed to fail before this process restarts", tip="If set to zero, the process never restarts due to failure", dt = "n", dy = "Y"
+Allowed Consec Service Failures=0
+
+;-------------------------------------------------------------------------
+;The Dispatch List is determined by the number of associated handlers multiplied
+;by this value.
+;; sd="Dispatch List Multiplier", ld="Limits the number of dispatched messages by this number, multiplied by the number of associated handler(s)", dt="n", rq="N"
+Dispatch List Multiplier=10
+
+;-------------------------------------------------------------------------
+; After this many seconds of inactivity, the server will scan the
+; database queues and restart any stalled/crashed items. The scan rate and Ping
+; rate (as percentage) will determine the actual interval for pinging
+; any unavailable remote nodes (algorithm used: Attempts * Ping Rate * Scan Interval).
+; The maximum Ping Interval (in Hours) is the maximum interval between
+; subsequent attempted pings of any unavailable remote nodes.
+;; sd="Inactivity Scan Interval", dt="n", rq="N", ld="After this many seconds of inactivity, the server will scan the database queues and restart any stalled/crashed items. The scan rate and Ping rate (as percentage) will determine the actual interval for pinging any unavailable remote nodes (algorithm used: Attempts * Ping Rate * Scan Inteval). The maximum Ping Interval (in Hours) is the maximum interval between subsequent attempted pings of any unavailable remote nodes."
+Scan Interval=15
+;; sd="Ping Rate", ld="The ping rate (as percentage) determines the ping interval for unavailable remote nodes", dt="n", rq="N"
+Ping Rate=150
+;; sd="Maximum Ping Interval", ld="Maximum interval in hours between unavailable remote node pings", dt="n", rq="N"
+Maximum Ping Interval=1
+
+;-------------------------------------------------------------------------
+; This determines the Maximum number of items per queue that the Dispatcher
+; will keep in memory
+;; sd="Dispatcher Queue Max Queue Size", ld="Maximum number of items per queue kept in memory by Dispatcher", dt="n", rq="N"
+Dispatcher Queue Max Queue Size=1000
+
+;-------------------------------------------------------------------------
+; After this many attempted dispatches the in-memory queue for that queue
+; will be refreshed.
+; A setting of 0 will disable the memory queue refresh.
+; A setting of 1 will disable in-memory caching.
+;; sd="Memory Queue Refresh Rate", ld="Maximum number of items per channel kept in memory by Dispatcher", dt="n", rq="N", tip="A setting of 0 will disable the memory queue refresh.  A setting of 1 will disable in-memory caching."
+Memory Queue Refresh rate=1000
+
+;-------------------------------------------------------------------------
+; Items which have been 'started' for more than this number of seconds
+; will be restarted.
+;; sd="Restart Period", ld="Time period in seconds after which restart will occur", dt="n", rq="N"
+Restart Period=120
+
+
+[PSPUBHND_dflt]
+;=========================================================================
+; Settings for publication contract handler
+;=========================================================================
+;; sd="Minimum Instances", ld="Minimum number of process instances started upon domain boot", rl = "Y", dt = n, rq="N"
+Min Instances=1
+;; sd="Maximum Instances", ld="Minimum number of process instances started upon domain boot", rl = "Y", tip="Set this value equal to Min Instances to disable spawning", dt="n", rq="N"
+Max Instances=1
+;; sd="Service Timeout", ld="Maximum time period in seconds that may elapse for servicing a request before the process is forcefully terminated", rl = "Y", dt="n", rq="N", tip="If set to zero, the process will not timeout"
+Service Timeout=1200
+;; sd="Recycle Count", ld = "Number of messages processed before restart", tip="If set to zero, the process never recycles", dt="n", dy="Y", rq="N"
+Recycle Count=20000
+; Dynamic change not allowed for the ProcessRestartMemoryLimit
+;; sd="ProcessRestartMemoryLimit", ld="If the VM for the recycable process has exceeded ProcessRestartMemoryLimit it will recycle", tip="This is not dynamic cfg-parameter.  If set to zero, there is no memory threshold for the process", dt = "n", dy = "Y" 
+ProcessRestartMemoryLimit=0
+;; sd="Allowed Consecutive Service Failures", ld="Number of consecutive services allowed to fail before this process restarts", tip="If set to zero, the process never restarts due to failure", dt = "n", dy = "Y"
+Allowed Consec Service Failures=0
+; Thread Pool Size. The Minumum value is 1 and maximum allowable is 20.
+;; sd="Thread Pool Size", ld="Thread Pool Size used by SyncRequest PeopleCode event", dt="n", rq="N"
+Thread Pool Size=1
+
+;-------------------------------------------------------------------------
+; After an item has been dispatched this many times, it will be marked 'error'.
+;; sd="Maximum Retries", ld="Number of restarts for an item before being flagged as an error", dt="n", rq="N"
+Max Retries=5
+
+
+;_@_APSRV  WARNING: DO NOT ALTER THIS LINE -- Marker for append point used by PSADMIN
+
+
+[SMTP Settings]
+;=========================================================================
+; Settings for SMTP mail
+; Allow Dynamic Changes under [Domain Settings] has no effect on these controls
+;=========================================================================
+
+; Dynamic change allowed for SMTPServer
+;; sd="SMTP Server", ld="Principal SMTP Server Address", dy="Y", rq="N"
+SMTPServer=
+
+; Dynamic change allowed for SMTPPort
+;; sd="SMTP Port", ld="Port for Principal SMTP Server", dt="n", dy="Y", rq="N"
+SMTPPort=25
+
+; Dynamic change allowed for SMTPServer1
+;; sd="SMTP Server 1", ld="Failover SMTP Server", dy="Y", rq="N"
+SMTPServer1=
+
+; Dynamic change allowed for SMTPPort1
+;; sd="SMTP Port 1", ld="Port for failover SMTP Server", dt="n", dy="Y", rq="N"
+SMTPPort1=0
+
+; Dynamic change allowed for SMTPSender
+;; sd="SMTP Sender Source Address", dy="Y", rq="N"
+SMTPSender=PeopleSoft@peoplesoft.com
+
+; Dynamic change allowed for SMTPBlackberryReplyTo
+;; sd="SMTP Blackberry Reply Address", ld="SMTP E-Mail Address to which to reply", dy="Y", rq="N"
+SMTPBlackberryReplyTo=
+
+; Dynamic change allowed for SMTPSourceMachine
+;; sd="SMTP Source Machine Name", dy="Y", rq="N"
+SMTPSourceMachine=
+
+; Dynamic change allowed for SMTPCharacterSet
+;; sd="SMTP Character Set", ld="SMTP Character Encoding Set", dy="Y", rq="N", dt="d"
+SMTPCharacterSet=UTF-8
+
+; Dynamic change allowed for SMTPEncodingDLL
+;; sd="SMTP Encoding DLL", ld="Enter the name of a dynamic-link library (DLL) that is used to translate the mail message from the sender's character set (such as latin1, sjis, big5, gb, ks-c-5601-1987, or ks-c-5601-1992) to a 7-bit safe character set for transmission", dy="Y", rq="N"
+SMTPEncodingDLL=
+;; sd="SMTP Guaranteed Delivery", ld="Check this parameter if you want TriggerBusinessEvent email PeopleCode to be delivered through the messaging system, which provides some additional administration capabilities for ensuring delivery of the message", rq="N", dt="c"
+SMTPGuaranteed=0
+;; sd="SMTP Tracing Enabled", ld="Enables the tracing of all email details to the log file when LogFence is set to 5. Uncheck this field to disable it. With this option, you can reduce the log file size for high-volume email users", rq="N", dt="c"
+SMTPTrace=0
+;; sd="SMTP Send Time", ld="Enable this field to have messages contain a send time that is populated by the application server. Uncheck this to leave the send time blank and have it populated by the receiving gateway (depending on the gateway)", rq="N", dt="c"
+SMTPSendTime=0
+
+;; sd="SMTP Use SSL Flag", ld="Enable this field connect to Email Server in SSL mode. This works only if MCF is used to connect to Email Server", rq="N"
+SMTPUseSSL=N
+;; sd="SMTP SSL Port", ld="SSL Port for Principal SMTP Server", rq="N", dt="n"
+SMTPSSLPort=465
+;; sd="SMTP Client Certificate Alias", ld="Enter the name of the Certificate Alias incase Email Server is needs a client certificate for SSL connection", rq="N"
+SMTPClientCertAlias=
+
+;; sd="SMTP Use SSL Flag 1", ld="Enable this field connect to Failover Email Server in SSL mode. This is only works is MCF is used to connect to Email Server", rq="N"
+SMTPUseSSL1=N
+;; sd="SMTP SSL Port 1", ld="SSL Port for Failover SMTP Server", rq="N", dt="n"
+SMTPSSLPort1=465
+;; sd="SMTP Client Certificate Alias 1", ld="Enter the name of the Certificate Alias incase Failover Email Server needs a client certificate for SSL connection", rq="N"
+SMTPClientCertAlias1=
+
+
+[Interface Driver]
+;=========================================================================
+; General settings for Business Interlink Interface Drivers
+;=========================================================================
+;This defines the "RPS_LOCALE" string which is sent to the SCP (Supply Chain
+;Planning) server.
+;; sd="SCP Locales", ld="RPS_LOCALE string which is sent to the Supply Chain Planning Server", rq="N"
+SCP_LOCALE="LOCALE=EN_US","CHARSET=US-ASCII"
+
+
+[PSTOOLS]
+;=========================================================================
+; General settings for PSTOOLS
+;=========================================================================
+
+;Set the value to 1 to enable embedded JMX agents, 0 to disable embedded JMX agents.
+;; sd="Enable Remote Administration Agent", dt="c", rq="N", hd="N", ld="Enable the remote administration agent"
+Enable Remote Administration=0
+;Port number to use for remoted administration of domain processes. All embedded JMX agents will use the
+;port in the JMX service URL.
+;; sd="Remote Administration Port", ld="Port for remote administration service", rq="N", dt="n"
+Remote Administration Port=10100
+;User name for remote administration connections
+;; sd="Remote Administration User Id", ld="User ID for connection to remote administration service" 
+Remote Administration UserId=admin
+;Password for remote administration connections
+;; sd="Remote Administration Password", dt="e", ld="Connect password for remote administration service"
+Remote Administration Password={V1.1}7m4OtVwXFNyLc1j6pZG69Q==
+
+; This will suppress SQL error dialogs. This option helps prevent
+; SQL injection attacks by only writing SQL errors to the log files
+; (and not displaying them to a user.)
+;; sd="Suppress SQL Error", ld="This option helps prevent SQL injection attacks by only writing SQL errors to the log files", dt="n"
+Suppress SQL Error=1
+
+;Uncomment this to specify an alternate directory to search for Interface Drivers.
+;; sd="Business Interlink Search Directory", ld="Search Directory for Business Interlink Drivers", hd="Y", rq="N"
+;Business Interlink Driver Directory=
+
+;Set the value to 1 to Enable PPM Agents,0 to disable PPM Agents
+;; sd="Enable PPM Agent", dt="c", rq="N", hd="N", ld="Enable the Performance Monitor agent"
+EnablePPM Agent=0
+
+;To add directories or jar files to CLASSPATH for the jvm loaded via JNI, uncomment Add to CLASSPATH=
+;and set it equal to the list of elements you would like to use.
+;The classpath elements need to be seperated using the path seperator specific to the platform.
+;For Example: Add to CLASSPATH=/usr/class:/home/user/class
+;; sd="Add to Java Classpath", ld="Path additions to the CLASSPATH environment variable", rq="N"
+;Add to CLASSPATH=-Dxdo.ConfigFile=%PS_HOME%/appserv/xdo.cfg -Xms512m -Xmx512m
+
+;To pass java options to the jvm loaded via JNI, uncomment JavaVM Options=
+;and set it equal to the list of parameters you would like to use.
+;The options need to be a blank space separated list of valid java options.
+;Consult your JRE vendor for valid java options.
+;For example: JavaVM Options=-Xmx256m -Xms128m
+;; sd="Java VM Startup Options", rq="N", ld="Used to pass Java options to the JVM loaded via JNI.  Set this value equal to the list of parameters you would like to use.  The options need to be a blank space separated list of valid java options.  Consult your JRE vendor for valid JVM options.  For example, JavaVM Options=-Xmx256m -Xms128m."
+JavaVM Options=-Dxdo.ConfigFile=%PS_HOME%/appserv/xdo.cfg -Xms32m -Xmx128m
+
+;If the application server is behind a proxy server,
+;set "Proxy Host=" to the domain name of the proxy server (proxy.peoplesoft.com)
+;set "Proxy Port=" to the port number of the proxy server (80)
+;Note this does not affect the embedded Jvm. To set proxy and non-proxy options for Java use the JavaVM Options parameter.
+;; sd="Proxy Server Machine Name", rq="N", ld="Use this setting if the Application Server is behind a proxy server"
+Proxy Host=
+
+;; sd="Proxy Server Machine Port", ld="Port of the Proxy Server", dt="n", rq="N"
+Proxy Port=
+
+;set "Non Proxy Hosts=" to a list of hosts that should be connected to directly
+;and not through proxy server. The value can be a list of hosts, each
+;seperated by a |, and in addition a wildcard character (*) can be used for
+;matching. For example: Non Proxy Hosts=*.foo.com|localhost. The maximum
+;length of this string cannot exceed 1024 characters.
+;; sd="Non Proxy Hosts", rq="N", ld="List of hosts that should be connected to directly and not through a proxy server. The value can be a list of hosts, each separated by a vertical tab, and in addition a wildcard character (*) can be used for matching. For example: Non Proxy Hosts=*.foo.com|localhost. The maximum length of this string cannot exceed 1024 characters"
+Non Proxy Hosts=
+
+;To set the DISPLAY environment variable on headless UNIX boxes running applications
+;with chart graphics. Xvfb must also be started and configured to use this value.
+;For example, Display=localhost:10.0
+;; sd="UNIX DISPLAY Environment Variable", ld="DISPLAY environment variable used on UNIX for Applications with chart graphics", rq="N", hd="Y"
+;Display=
+
+; Usage Monitoring domain settings
+; 0 No user can enable monitoring.  This is the default and the only option for clients
+; 1 All users are monitored, no one can disable monitoring, users are anonymous unless testing
+; 2 All users are monitored, no one can disable monitoring, no users are anonymous
+;; sd="Usage Monitoring mode", dt="n", ld="Usage monitoring modes, possible values are 0,1 and 2", rl = "Y"
+Usage Monitoring State=0
+
+;-------------------------------------------------------------------------
+; IMPORTANT NOTE: THIS SETTING IS APPLICABLE FOR ALL PLATFORMS!
+; The "Character Set" setting specifies the character set and encoding
+; used for naming files.  If this setting is commented out, defaults
+; will be used as follows:
+;   Windows: The system active code page (CP_ACP)
+;   UNIX:    latin1
+;   z/OS:    ccsid1047
+; To see the available character encodings, run 'psuniconv -usage'
+;; sd="Character Set", dt="d", ld="Character set", tip="This setting is used on all platforms", rq="N"
+;Character Set=latin1
+
+;-------------------------------------------------------------------------
+; WINDOWS PLATFORM ONLY:
+; Suppress App Error Box: After an application error occurs, suppress the
+; console's Application Error dialog box.
+;; sd="Suppress Application Error Pop-up", ld="Suppress the application error pop up box on AppServer machine",  dt="c", tip="This setting is used only on Windows", rq="N"
+Suppress App Error Box=Y
+
+;-------------------------------------------------------------------------
+; DbFlags Bitfield
+;
+; Bit       Flag
+; ---       ----
+; 1         - Ignore metaSQL to update database statistics(shared with COBOL)
+; 2         - Ignore Truncate command for DB2Unix, use Delete instead
+; 4         - Disable Second DB Connection
+; 8         - Disable Persistent Secondary DB Connection
+; 16        - not yet allocated
+; 32        - not yet allocated
+; 64        - not yet allocated
+; 128       - not yet allocated
+; 256       - not yet allocated
+;; sd="Database Flags Bitfield", dt="c", dr="m", rq="N"
+;; option(va = 1, sd="Ignore metaSQL to update database statistics(shared with COBOL)")
+;; option(va = 2, sd="Ignore Truncate command for DB2Unix, use Delete instead")
+;; option(va = 4, sd="Disable Second DB Connection")
+;; option(va = 8, sd="Disable Persistent Secondary DB Connection")
+DbFlags=0
+
+
+[Integration Broker]
+;=========================================================================
+; General settings for the Integration Broker
+;=========================================================================
+; Minimum size of message data for synchronous handler to enable compression.
+;; sd="Message Compression Threshold", ld="Minimum message data size in bytes for synchronous handler compression enablement", dt="n", rq="N"
+Min Message Size For Compression=100000
+
+; Thread Pool Size used by SyncRequest PeopleCode event.
+; The Minimum value is 1 and maximum allowable is 20.
+;; sd="Thread Pool Size", ld="Thread Pool Size used by SyncRequest PeopleCode event", dt="n", rq="N"
+Thread Pool Size=5
+
+[Search]
+;=========================================================================
+; Text-Search settings
+;=========================================================================
+; If no option is provided, the application server will automatically
+; select the preferred mechanism for the deployment platform.
+; 1 - Search module bound to an application server
+; 2 - Search module in same machine as the application server
+; 3 - Search module bound to remote search domain
+;; dt="d", ld="The deployment model for Search in this domain", rq="N", tip="If no option is provided, the application server will automatically select the preferred mechanism for the deployment platform."
+;; option(va = 1, sd="Search module bound to an application server")
+;; option(va = 2, sd="Search module in same machine as the application server")
+;; option(va = 3, sd="Search module bound to remote search domain")
+Deployment Type=
+
+; These settings are used to delegate text searches to a search server in a remote
+; search domain. You must specify the following information in order to establish
+; a connection to the remote search domain:
+;	* Port used by this application server to communicate to the remote search 	
+;	  server
+;	* The ip address of the remote search server as well as the port it uses to
+;	  communicate with this application server and
+;	* Finally, the search server's DomainID. It can be found in the
+;	  [Domain Settings] section of the search domain's configuration file
+;	  (pssrchsrv.cfg).
+; For instance,
+;    Application Server Port=7777
+;    Remote Search Server Credentials=SRCHSERV|srchsrv_computer:7778
+; indicates that a Search Domain with Domain ID 'SRCHSERV' is running on 'srchsrv_computer', listening on port 7778
+;; ld="The port on which the Application Server Domains Gateway will listen for communications from the remote Search domain", rl="Y", dt="n", tip="This value must match the Search Server Port in the Search domain configuration", rq="N"
+Application Server Port=7777
+;; ld="The Domain ID and machine:port combination representing the remote Search domain.  The domain id must precede the machine:port combination and be separated by a vertical tab | character.  The machine name should be a fully qualified domain name, e.g. myserver.oracle.com", rl="Y", tip="Enter as [Domain ID]+|+[machine:port]. Port refers to the Search Server Port. If multiple search servers, entries should be comma separated,e.g. TESTSERV|mymachine:8888,PTDOMN|mymachine2:9999", rq="N"
+Remote Search Server Credentials=
+
+[Search Indexes]
+;=========================================================================
+; Text-Search index settings
+;=========================================================================
+;; ssp="", dt="g", rq="N", ld="This is an explicit search index path for this index name"
+; Search indexes can be given alternate locations if there is an entry here.
+; Entries look like: IndexName=fs location (ie EMPLOYEE=c:\temp)
+
+[PSRENSRV]
+;=========================================================================
+; Event notification server settings
+;=========================================================================
+; REN Server log trace level.  Use Error, Warning, Notice, or Debug.
+;; sd="Log Level", ld="REN Server log trace level", dt="d", rq="N"
+log_severity_level=Warning
+
+; REN Server buffer size for HTTP output.  Must not exceed 65536.
+;; sd="IO Buffer Size", ld="REN Server HTTP buffer size output", dt="n", rq="N"
+io_buffer_size=8192
+
+; REN Servers place these values in the database when creating
+; out-of-the-box initialization parameters.
+; If commented out, the values "7180" and "peoplesoft.com" are used.
+;; sd="HTTP Port", ld="Remote Event Notification Server HTTP Port", rq="N", dt="n"
+default_http_port=7180
+;; sd="HTTPS Port", ld="Remote Event Notification Server HTTPS Port", rq="N", dt="n"
+default_https_port=7143
+;; sd="Authentication Token", ld="Remote Event Notification Server Authentication Token", rq="N", tip="This value should match the authentication token provided during PIA installation"
+default_auth_token=peoplesoft.com
+
+
+[PSPPMSRV]
+;=========================================================================
+; Settings for PSPPMSRV
+;=========================================================================
+
+;-------------------------------------------------------------------------
+; UBBGEN settings
+; Since Performance Collators do not advertise services Max and Min
+; Instances must always be equal
+;; sd="Minimum Instances", ld = "Minimum number of process instances started upon domain boot", rl = "Y", dt = n, rq="N"
+Min Instances=1
+;; sd="Maximum Instances", ld = "Maximum number of process instances that will be spawned at peak time", rl = "Y", tip = "Set this value equal to Min Instances to disable spawning", dt = n, rq="N"
+Max Instances=1
+;If PPM registration fails while monitoring Application Server is configured to have multiple IPs, IP address needs to be set explicitly
+;; sd="Monitoring Server's IPV4 address", rq="N", ld="When Monitoring server is configured to have multiple IPs, this value might be required"
+listening_mach_IP=
+;
+
+[LDAP]
+;=========================================================================
+; General settings for LDAP
+;=========================================================================
+; Should the referrals be followed in the Directory server?
+; Y - follow referrals.
+; N - Do not follow referrals.
+;; sd="Follow Referrals", ld="Determines whether the referrals have to be followed in the Directory Server. By default, the referrals will be followed", dt="c", dy="Y", rq="N"
+Follow Referrals=Y
+;-------------------------------------------------------------------------
+; LDAP Connection TimeOut in seconds
+; Range(0-120). 0 - Default TCP Timeout.
+;; sd="LDAP Connection TimeOut", ld="Time Limit in seconds for the PT LDAP Client to make a connection with the Directory server. Default is 30 seconds", dt="n", dy="Y", rq="N"
+Connection TimeOut=30
+;-------------------------------------------------------------------------
+; Enable/Disable Connection Pooling
+; Y - Enable Connection Pooling.
+; N - Disable Connection Pooling.
+;; sd="Enable Connection Pooling", ld="Determines whether the connections from the PT LDAP client have to be pooled in the Directory Server. This is disabled by default", dt="c", dy="Y", rq="N"
+Connection Pooling=N
+;-------------------------------------------------------------------------
+;LDAP Connection Pooling TimeOut in seconds. Not Applicable when the connection pooling is disabled.
+; Range(0-999999). 0 - No Time Limit.
+;; sd="Connection Pooling TimeOut", ld="LDAP Connection Pooling TimeOut in seconds. Not Applicable when the connection pooling is disabled. Default is 300 seconds", dt="n", dy="Y", rq="N"
+Connection Pooling TimeOut=300
+;-------------------------------------------------------------------------
+; Should the LDAP pick up any changes in the ssl certificates?
+; Y - Changes will be in effect without Appserver reboot.
+; N - Appserver reboot needed to pick up the changes.
+;; sd="Dynamic Update of Certificates", ld="Determines whether the application server domain has to be bounced to pick up any changes in the certificates.", dt="c", dy="Y", rq="N"
+Dynamic Update of Certificates=N
+;-------------------------------------------------------------------------
+; LDAP Logging detail level
+;
+; Level     Type of information
+; -----     -------------------
+;   0       - Suppress Logging
+;   1       - Errors and Exceptions (default)
+;   2       - Transaction Status
+;   3       - Detailed Tracing
+; Dynamic change allowed for LogFence
+;; sd="LDAP Log Fence", ld="Determines the level of logging for the LDAP module", dt="d", dy="Y", rq="N"
+;; option(va =    0, sd="Suppress Logging")
+;; option(va =    1, sd="Errors and Exceptions (default)")
+;; option(va =    2, sd="Transaction Status")
+;; option(va =    3, sd="Detailed Tracing")
+LDAP LogFence=1
+
+ 
+; ***************************************************************
+;  This software and related documentation are provided under a
+;  license agreement containing restrictions on use and
+;  disclosure and are protected by intellectual property
+;  laws. Except as expressly permitted in your license agreement
+;  or allowed by law, you may not use, copy, reproduce,
+;  translate, broadcast, modify, license, transmit, distribute,
+;  exhibit, perform, publish or display any part, in any form or
+;  by any means. Reverse engineering, disassembly, or
+;  decompilation of this software, unless required by law for
+;  interoperability, is prohibited.
+;  The information contained herein is subject to change without
+;  notice and is not warranted to be error-free. If you find any
+;  errors, please report them to us in writing.
+;  
+;  Copyright (C) 1988, 2014, Oracle and/or its affiliates.
+;  All Rights Reserved.
+; ***************************************************************
+ 
