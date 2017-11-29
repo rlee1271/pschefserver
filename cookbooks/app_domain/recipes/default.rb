@@ -1,9 +1,5 @@
 #
-# Cookbook Name:: peoplesoft
+# Cookbook:: app_domain
 # Recipe:: default
 #
-# Copyright 2017, YOUR_COMPANY_NAME
-#
-# All rights reserved - Do Not Redistribute
-#
-
+# Copyright:: 2017, The Authors, All Rights Reserved.

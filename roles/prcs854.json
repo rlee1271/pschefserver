@@ -1,6 +1,6 @@
 {
    "name":"prcs854",
-   "description":"Process Scheduler role",
+   "description":"Process Scheduler 8.54 role",
    "json_class":"Chef::Role",
    "default_attributes":{
 
@@ -10,7 +10,7 @@
    },
    "chef_type":"role",
    "run_list":[
-      "recipe[prcs_domain::prcsSetup]"
+      "recipe[prcs_domain::psprcs.854]"
    ],
    "env_run_lists":{
 

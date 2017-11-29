@@ -1,0 +1,949 @@
+;<                  IMPORTANT NOTE TO USERS OF THIS FILE
+;<  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+;<  Oracle does not support creating custom CFX templates nor modifying delivered CFX templates
+;<  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+;<  Each of the section properties in this file contains a meta data
+;<  entry.  This meta data is used for the PeopleSoft Environment Manager plug in
+;<  to display the configuration details in the UI.
+;<  If you are adding new entries to this file YOU MUST ADD meta data for these 
+;<  entries.  If you do not know how to do this, locate the ToolsAdmin API / EM 
+;<  Plugin documentation.  If you cannot locate this documentation, consult 
+;<  the development manager for this product.    
+;<  Meta data enties must be added on the line preceeding the property.  Meta data
+;<  entries are identified by a line beginning with a double comment ( ;; ) 
+;<  followed by a number of name-value pairs.  These name-value pairs are as follows
+;<  dt = Display Type  {c,d,n,t,e} 
+;<                   c  = Checkbox
+;<                   d  = Dropdown List
+;<                   dx = Dropdown list with editable entry
+;<                   n  = Numeric
+;<                   t  = Textfield   (default)
+;<                   e  = Encrypted  
+;<                   g  = Grid
+;<
+;<  dy = Dynamic    {Y,N}       Requires / does not require server restart to take effect
+;<                              default is no
+;<  rl = Reload     {Y,N}       Requires / does not require domain reconfig to take effect
+;<                              default is no
+;<  hd = Hideable   {Y,N}       Hideable means that it can be commented out
+;<                              default is N - no.
+;<  rq = Required   {Y,N}       Property is / is not optional 
+;<                              default is yes
+;<  dr = Display Rule  {single,multiple}    default is single
+;<
+;<  sd = Short Description    string bounded by quotes describing the property
+;<                            Rough guideline is five words or less.  This is 
+;<                            equivalent to the display name for the entry in 
+;<                            the EM UI.
+;<
+;<  ld = Long Description     string bounded by quotes describing the property.
+;<
+;<  tip                       Provides a guideline to the administrator about value range 
+;<                            related settings in possibly other sections. Can also provide
+;<                            link to other sources of documentation.
+;<
+;<  option                    Options are generally applied to dropdown lists or checkoxes.  An
+;<                            option is usually comprised of a va (valid argument) and a sd
+;<                            short description.
+;<
+;<  ssp                       Setting Search Pattern.  This tag is found only for default meta  
+;<                            data entries for a section.  This tag is composed of a regular  
+;<                            expression which is applied to any name=value pairs in the section.  
+;<                            Any settings whose name successfully matches the regular expression 
+;<                            in the ssp tag are adorned with the section default meta data.  
+;<                            There can be at most one ssp tag and thus one default meta data 
+;<                            definition per section.  If the ssp tag has the empty value it is
+;<                            matches any name in a name=value pair for that section.
+;<
+;<  tn                        Template Name. This is an optional tag for the name of the template.  
+;<                            If no entry is present the name of the template is assumed to be 
+;<                            the filename.
+;<
+;<  td                        Template Description. This is an optional tag for a description of
+;<                            the template.  If no entry is present there is assumed to be no
+;<                            description of the template.
+;<
+;<  Meta data entries are optional.  For optimal usability of the EM, it is 
+;<  important that any new entries are considered for meta data additions.
+;<
+;<  Not all meta data tags used by the EM plug-in are found in this file.  Additional
+;<  meta-data entries are devised programatically.  For more information on these
+;<  tags consult the ToolsAdmin API documentation.
+
+[Startup]
+;=========================================================================
+; Database Signon settings
+;=========================================================================
+;; sd="Database Name", ld="The name of the database that contains the PeopleSoft application", rl = "Y"
+DBName=<%= @DBNAME %>
+;; sd="Database Type", ld="Database platform", dt="d"
+DBType=ORACLE
+;; sd="User Id", ld="User ID that can start the Process Scheduler"
+UserId=APPSERV
+;; sd="User Password", ld="Password for the User ID that will start the Process Scheduler"
+UserPswd=twzVdYRM7pplsaO9noPM7NmiFDgeTtCb3bCyTblAJSk=
+;; sd="Connect Id", ld="Connect Id for the database"
+ConnectId=timeinc
+;; sd="Connect Password", ld="Connect password for the database"
+ConnectPswd=hyuqAvhd2cE=
+;; sd="Server Name", ld="Name of server on which the database resides", rl = "Y", rq="N", tip="Needed only for Sybase and Informix"
+ServerName=
+;; sd="Standby Database Name", ld="The name of the Standby database that contains the PeopleSoft application", rq="N"
+StandbyDBName=
+;; sd="Standby Database Type", ld="Standby Database platform", dt="d", rq="N"
+StandbyDBType=
+;; sd="Standby DB User Id", ld="User ID that can start the Process Scheduler", rq="N"
+StandbyUserId=
+;; sd="Standby DB User Password", ld="Password for the User ID that will start Process Scheduler", rq="N"
+StandbyUserPswd=
+;; sd="InMemory Database Name", ld="The name of the InMemory database that contains the PeopleSoft application", rq="N"
+InMemoryDBName=
+;; sd="InMemory Database Type", ld="InMemory Database platform", dt="d", rq="N"
+InMemoryDBType=
+
+[Security]
+;=========================================================================
+; Security settings
+;=========================================================================
+;; sd="AppServer Password", rq="Y", ld="Password for AppServer Connections"
+DomainConnectionPwd=
+
+[Inter-Domain Events]
+;=========================================================================
+; InterDomain Event settings
+;=========================================================================
+;; sd="Process Scheduler Port", ld="The port on which the Process Scheduler Domains Gateway will listen for communications from the remote Application Server domain", rl="Y", dt="n", tip="This value must match the Application Server Port in the Application Server domain configuration", rq="N"
+Process Scheduler Port=8988
+;; sd="Application Server Credentials", ld="The Domain ID and machine:port combination representing the remote Application Server domain.  The domain id must precede the machine:port combination and be separated by a vertical tab | character.  The machine name should be a fully qualified domain name, e.g. myserver.oracle.com", rl="Y", tip="Enter as [Domain ID]+|+[machine:port]", rq="N"
+Application Server Credentials=APPDOM1|localhost:7988
+
+[Database Options]
+;=========================================================================
+; Database-specific configuration options
+;=========================================================================
+
+;-------------------------------------------------------------------------
+; Please see Chapter "Tuning and Administration", in
+; Sybase Installation and Administration Guide for details
+;; sd="Sybase Packet Size", dt="n", ld="Sybase Packet Size, Sybase specific", rq="N", Tip="Please see Chapter Tuning and Administration, in Sybase Installation and Administration Guide for details.  This does not affect you unless you are using a Sybase Database"
+SybasePacketSize=512
+
+;-------------------------------------------------------------------------
+; Please see Chapter "Tuning and Administration", in
+; Oracle Installation and Administration Guide for details
+;; sd="Use Local Oracle Database", rq="N", dt="c", ld="Indicates if the PeopleSoft Database that you are connecting to is in a Local Oracle SID"
+UseLocalOracleDB=0
+;; sd="Oracle SID", hd="Y", rq="N", ld="If UseLocalOracleDB is checked, specify local Oracle SID that you want the PeopleSoft processes to connect to"
+;ORACLE_SID=
+; Dynamic change allowed for EnableDBMonitoring (PSAESRV Only)
+;; sd="Enable Database Monitoring", dt="d", rq="N", dy="Y", ld="Enables or disables monitoring of three-tier connections"
+EnableDBMonitoring=1
+;; sd="Disable GTT Stats", dt="c", rq="N", dy="Y", ld="Enables or disables execution of update database statistics metaSQL for Oracle GTT"
+DisableGTTStats=0
+
+
+[Trace]
+;=========================================================================
+; Trace settings
+;=========================================================================
+; SQL Tracing Bitfield
+;
+; Bit       Type of tracing
+; ---       ---------------
+; 1         - SQL statements
+; 2         - SQL statement variables
+; 4         - SQL connect, disconnect, commit and rollback
+; 8         - Row Fetch (indicates that it occurred, not data)
+; 16        - All other API calls except ssb
+; 32        - Set Select Buffers (identifies the attributes of columns
+;             to be selected).
+; 64        - Database API specific calls
+; 128       - COBOL statement timings
+; 256       - Sybase Bind information
+; 512       - Sybase Fetch information
+; 1024      - SQL Informational Trace
+; Dynamic change allowed for TraceSql and TraceSqlMask
+;; sd="SQL Tracing Bitfield", dt="c", dr="m", dy="Y", tab("TraceSQL")
+;; option(va =    1, sd="SQL statements")
+;; option(va =    2, sd="SQL statement variables")
+;; option(va =    4, sd="SQL connect, disconnect, commit and rollback")
+;; option(va =    8, sd="Row Fetch")
+;; option(va =   16, sd="All other API calls except ssb")
+;; option(va =   32, sd="Set Select Buffers")
+;; option(va =   64, sd="Database API specific calls")
+;; option(va =  128, sd="COBOL statement timings")
+;; option(va =  256, sd="Sybase Bind information")
+;; option(va =  512, sd="Sybase Fetch information")
+;; option(va = 1024, sd="SQL Informational Trace")
+TraceSQL=0
+
+;-------------------------------------------------------------------------
+; PeopleCode Tracing Bitfield
+;
+; Bit       Type of tracing
+; ---       ---------------
+; 1         - Trace Evaluator instructions  (not recommended)
+; 2         - List Evaluator program        (not recommended)
+; 4         - Show assignments to variables
+; 8         - Show fetched values
+; 16        - Show stack
+; 64        - Trace start of programs
+; 128       - Trace external function calls
+; 256       - Trace internal function calls
+; 512       - Show parameter values
+; 1024      - Show function return value
+; 2048      - Trace each statement in program  (recommended)
+; Dynamic change allowed for TracePC 
+;; sd="PeopleCode Tracing Bitfield", dt="c", dr="m", tip="Levels 1 and 2 and 2048 not recommended", dy="Y", tab("TracePC")
+;; option(va =    1, sd="Trace Evaluator instructions")
+;; option(va =    2, sd="List Evaluator program")
+;; option(va =    4, sd="Show assignments to variables")
+;; option(va =    8, sd="Show fetched values")
+;; option(va =   16, sd="Show stack")
+;; option(va =   64, sd="Trace start of programs")
+;; option(va =  128, sd="Trace external function calls")
+;; option(va =  256, sd="Trace internal function calls")
+;; option(va =  512, sd="Show parameter values")
+;; option(va = 1024, sd="Show function return value")
+;; option(va = 2048, sd="Trace each statement in program (recommended)")
+TracePC=0
+
+;-------------------------------------------------------------------------
+; AE Tracing Bitfield
+;
+; Bit       Type of tracing
+; ---       ---------------
+; 1         - Trace STEP execution sequence to AET file
+; 2         - Trace Application SQL statements to AET file
+; 4         - Trace Dedicated Temp Table Allocation to AET file
+; 8         - not yet allocated
+; 16        - not yet allocated
+; 32        - not yet allocated
+; 64        - not yet allocated
+; 128       - Timings Report to AET file
+; 256       - Method/BuiltIn detail instead of summary in AET Timings Report
+; 512       - not yet allocated
+; 1024      - Timings Report to tables
+; 2048      - DB optimizer trace to file
+; 4096      - DB optimizer trace to tables
+;; sd="AE Tracing Bitfield", ld="Application Engine Tracing Bitfield", dt="c", dr="m", dy="Y", tab("TraceAE")
+;; option(va =     1, sd="Trace STEP execution sequence to AET file")
+;; option(va =     2, sd="Trace Application SQL statements to AET file")
+;; option(va =     4, sd="Trace Dedicated Temp Table Allocation to AET file")
+;; option(va =     8, sd="not yet allocated")
+;; option(va =    16, sd="not yet allocated")
+;; option(va =    32, sd="not yet allocated")
+;; option(va =    64, sd="not yet allocated")
+;; option(va =   128, sd="Timings Report to AET file")
+;; option(va =   256, sd="Method/BuiltIn detail instead of summary in AET Timings Report")
+;; option(va =   512, sd="not yet allocated")
+;; option(va =  1024, sd="Timings Report to tables")
+;; option(va =  2048, sd="DB optimizer trace to file")
+;; option(va =  4096, sd="DB optimizer trace to tables")
+TraceAE=0
+
+;-------------------------------------------------------------------------
+; AE Trace file size
+; This parameter is used to specify max size (in MBs) of the AE trace file
+; Min value - 20 (Default)
+; Max value - 1500
+; if value is less than 20, default max file size is set to 20 MB
+; if value is greater than 1500, default max file size is set to 1500 MB
+;; sd="AE Trace File Size", ld="AE Trace File Size, specified in MBs", dt="n", dy="Y", rq="N"
+AETFileSize=20
+
+;-------------------------------------------------------------------------
+; If set to Y, PeopleCode and SQL trace output will be merged into AET file.
+; If set to N, PeopleCode and SQL trace output will be in .trc file in the same directory as AET file.
+TraceAECombineOutput=N
+
+;-------------------------------------------------------------------------
+; If set to Y, section level trace will be enabled.
+; If set to N, section level trace will be disabled and AE traces will be controlled by TraceAE setting only.
+TraceAEEnableSection=N
+
+;------------------------------------------------------------------------
+; Performance Monitor Tracing Bitfield
+;
+; Bit       Type of tracing
+; ---       ---------------
+; 1         - Trace All performance monitor agent activity
+;; sd="Performance Monitor Tracing Bitfield", dt = c, dr = m, dy = Y, tab("Other")
+;; option(va = 1, sd = "Trace All performance monitor agent activity")
+TracePPM=0
+
+
+[Process Scheduler]
+;=========================================================================
+; General settings for the Process Scheduler
+;=========================================================================
+;; sd="Process Scheduler Server Name", ld="Specify the process server name. This must match the name defined in the server definition, such as PSUNX", rl = "Y"
+;PrcsServerName=PSUNX
+PrcsServerName=<%= @PRCSSRVRNAME %>
+;-------------------------------------------------------------------------
+; Max number of attempt to try reconnect to the database when the connection
+; is lost
+;; sd="Maximum Reconnection Attempts", dt="n", ld="Specify the interval, in seconds, between attempts to reconnect to the database when a connection is lost.", rl = "Y"
+Max Reconnect Attempt=12
+;-------------------------------------------------------------------------
+; Interval in seconds between attempts to reconnect
+;; sd="Reconnection Interval", dt="n", ld="Interval in seconds between attempts to reconnect"
+Reconnection Interval=300
+;-------------------------------------------------------------------------
+; This parameter indicates the duration in minutes allotted before
+; Tools' security module will timeout authenticating a process released
+; by Process Scheduler.  The timer starts from the time Process Scheduler
+; initiates the request
+;; sd="Authentication Timeout", dt="n", ld="The duration in minutes allotted before the PeopleTools security module will timeout authenticating a process released by Process Scheduler.  The timer starts from the time Process Scheduler initiates the request." 
+Authentication Timeout=5
+;-------------------------------------------------------------------------
+; This allows for dynamic changes to certain setting without having to reboot
+; the domain.  The settings that can be dynamically changed are: Recycle Count,
+; Consecutive Service failures, Trace SQL, Trace Mask SQL, TracePC, 
+; Log Fence, Enable DB Monitoring, and Enable Debugging, EnableCacheRepair, 
+; AdjustMaxCacheMem, ExcessivePruningThreshold, CacheMissThreshold, 
+; MaxRepairCollection
+; These settings are further identified by the "Dynamic change allowed for .."
+; comment.
+;; sd="Allow Dynamic Changes", dt="c", ld="Indicates whether or not the server will check for dynamic changes", tip="If this is turned off, all changes will require a domain restart and possibly reconfiguration to take effect"
+Allow Dynamic Changes=Y
+;; sd="Log/Output Directory", ld="Location of TUXEDO and PeopleSoft Process Scheduler output files for this domain"
+Log/Output Directory=%PS_SERVDIR%/log_output
+;-------------------------------------------------------------------------
+; Log/Output Directory Extension Option
+;An optional subdirectory structure that can be appended to the
+;designated Log/Output Directory.
+;Additional meta-string that can be used include
+;Userid:                 %OPRID%
+;Contentid:              %REPORTID%
+;Process Instance:       %PRCSINSTANCE%
+;Database Name:          %DBNAME%
+;Process Name:           %PRCSNAME%
+;Process Type:           %PRCSTYPE%
+;Scheduler Server Name:  %SERVER%
+;Current Date:           %CURRDATE%
+;Current Hour:           %CURRHOUR%
+;Job Name:               %JOBNAME%
+;Job Instance:           %JOBINSTANCE%
+; As an example for usage, %CURRDATE%/%CURRHOUR%
+;; sd="Output Directory Optional Extension", dt=c, dr=m, tab("Output Directory Optional Extension")
+;; option(va = %OPRID%, sd="Userid")
+;; option(va = %REPORTID%, sd="Contentid")
+;; option(va = %PRCSINSTANCE%, sd="Process Instance")
+;; option(va = %DBNAME%, sd="Database Name")
+;; option(va = %PRCSNAME%, sd="Process Name")
+;; option(va = %PRCSTYPE%, sd="Process Type")
+;; option(va = %SERVER%, sd="Scheduler Server Name")
+;; option(va = %CURRDATE%, sd="Current Date")
+;; option(va = %CURRHOUR%, sd="Current Hour")
+;; option(va = %JOBNAME%, sd="Job Name")
+;; option(va = %JOBINSTANCE%, sd="Job Instance")
+Output Directory Optional Extension=
+;-------------------------------------------------------------------------
+; Logging detail level
+;
+; Level     Type of information
+; -----     -------------------
+;  -100     - Suppress logging
+;   0       - Status information
+;   1       - Critical Information
+;   2       - Errors
+;   3       - Informational (default)
+;   4       - Tracing Level 1
+;   5       - Tracing Level 2
+; Dynamic change allowed for LogFence
+;; sd="Log Fence", ld="Determines the level of logging for the domain", dt="d", dy="Y", rq="N"
+;; option(va = -100, sd="Suppress logging")
+;; option(va =    0, sd="Status information")
+;; option(va =    1, sd="Critical Information")
+;; option(va =    2, sd="Errors")
+;; option(va =    3, sd="Informational (default)")
+;; option(va =    4, sd="Tracing Level 1")
+;; option(va =    5, sd="Tracing Level 2")
+LogFence=3
+;-------------------------------------------------------------------------
+; Log Field Separator Setting
+;
+; This field is used to separate individual fields of data within the domain
+; log file(s). If this setting is not explicitly defined, the default value
+; value is a single space character. The below meta values can be used as
+; the field separator.
+; Meta Value     String Replaced
+; ----------     ---------------
+;    <TAB>       - A tab character(\t)
+;    <SPACE>     - A whitespace character( )
+; While the actual key strokes can be used to specify a separator, the escape
+; sequence equivalent of them is not supported.(Example \t is not recognized
+; as a tab character). For purpose of clarity, avoid key strokes that are not
+; visible to the naked eye, instead use their meta value equivalents.
+;; sd="Log Field Separator", ld="Characters used to separate individual log fields within the domain log files", hd="Y", rq="N"
+;LogFieldSeparator=
+;-------------------------------------------------------------------------
+; Trace-Log File Character Set: Character set used for log and trace files
+;
+;; sd="Trace-Log File Character Set", ld="Character set used for log and trace files", dt="d"
+Trace-Log File Character Set=ANSI
+;-------------------------------------------------------------------------
+; The space threshold in megabytes (MB) for the log/output directory.  Once the
+; space goes below this threshold, Process Scheduler will stop processing
+; until more disk space becomes available.  When this occurs, an email
+; notification will be sent to the designated administrators
+;; sd="Log Space Threshold", dt="n", ld="Space threshold in megabytes (MB) for the log/output directory.  Once the space goes below this threshold, Process Scheduler will stop processing until more disk space becomes available.  When this occurs, an email notification will be sent to the designated administrators"
+Log Space Threshold=10
+;-------------------------------------------------------------------------
+; The size of memory in allocated to store the value read from a file when
+; transferring files to the Report Repository via HTTP.  The default is
+; 4 MB.
+;; sd="File Chunk Size", dt="n", ld="The size of memory in KB in allocated to store the value read from a file when transferring files to the Report Repository via HTTP."
+File Chunk Size=4096
+;-----------------------------------------------------------------------
+; Set to run statistics for the Process Request and Report Manager
+; tables when the Process Scheduler Server purge
+;  0        Disable updating of the table statistics
+;  1        Enable updating of the table statistics
+;; sd="Update Table Stats on Purge", dt="c", ld="Enable this setting to run statistics for the Process Request and Report Manager tables when the Process Scheduler Server purge"
+Update Table Stats on Purge=1
+;-------------------------------------------------------------------------
+;; sd="Default Printer", ld="Universal Naming Convention (UNC) path of the printer where reports are printed when the %DefaultPrinter% was specified as the output destination"
+DEFAULTPRINTER=
+;; sd="Log/Output Directory", ld="Location of TUXEDO and PeopleSoft Process Scheduler log files for this domain"
+Log Directory=
+
+[Tuxedo Settings]
+;-------------------------------------------------------------------------
+; Mark servers restartable or not.
+;
+;; sd="Restart Servers Upon Termination", ld="Flag indicates whether server processes are restartable or not", rl = "Y", tip="Cross Dependency Note: If you use recycling, you must set this to Y otherwise your server will not restart upon recycle", dt="c"
+Restartable=Y
+;-------------------------------------------------------------------------
+; Grace period between restart in seconds
+;
+;; sd="Grace Period", ld="Determines the time period within which Maximum Restart Attempt takes effect.", rl = "Y", tip="Cross Dependency Note: This value is closely related to the Maximum Restart Attempt setting.  These must be set in synchrony"
+Grace Period=600
+;-------------------------------------------------------------------------
+;  Max number of restarts in the grace period
+;
+;; sd="Maximum Restart Attempt", ld="Determines the maximum number of process restarts that may take place within the Grace Period. Note:  This is at a process slot level not a domain level.", rl = "Y", tip="Cross Dependency Note: This value is closely related to the Grace Period setting.  These must be set in synchrony"
+Max Restart Attempt=5
+;-------------------------------------------------------------------------
+; The SpawnThreshold is placed in the CLOPT setting for each server
+; during domain configuration if Max Instances > Min Instances.
+;
+;; sd="Process Spawn Threshold", ld="Added to the Command Line Parameters for each app server during domain configuration if Max Instances > Min Instances", Tip="Format: a,b:x,y.  A server is decayed if queue size < a for b seconds.  A new server is spawned if the queue size > x for y seconds.  Requires a full domain reconfiguration to take effect. Only applicable when Max Instances > Min Instances"
+Spawn Threshold=1,600:1,1
+
+;; sd="Add To PATH Env Variable", ld="Additional directories for the Process Scheduler's PATH environment variable.  This should include the location of the database DLLs.", rl = "Y", rq="N"
+Add to PATH=
+
+
+[Interface Driver]
+;=========================================================================
+; General settings for Business Interlink Interface Drivers
+;=========================================================================
+;This defines the "RPS_LOCALE" string which is sent to the SCP (Supply Chain
+;Planning) server.
+;; sd="SCP_LOCALE", ld="The RPS_LOCALE string which is sent to the Supply Chain Planning server"
+SCP_LOCALE="LOCALE=EN_US","CHARSET=US-ASCII"
+
+
+[PSTOOLS]
+;=========================================================================
+; General settings for PSTOOLS
+;=========================================================================
+; IMPORTANT NOTE: THIS SETTING IS APPLICABLE FOR ALL PLATFORMS!
+; The "Character Set" setting specifies the character set and encoding
+; used for naming files.  If this setting is commented out, defaults
+; will be used as follows:
+;   Windows: The system active code page (CP_ACP)
+;   UNIX:    latin1
+;   z/OS:    ccsid1047
+; To see the available character encodings, run 'psuniconv -usage'
+;; sd="Character Set", dt="d", ld="Character set", tip="This setting is used on all platforms", rq="N"
+;Character Set=latin1
+
+;Set the value to 1 to enable embedded JMX agents, 0 to disable embedded JMX agents.
+;; sd="Enable Remote Administration Agent", dt="c", rq="N", hd="N", ld="Enable the remote administration agent"
+Enable Remote Administration=0
+;Port number to use for remoted administration of domain processes. All embedded JMX agents will use the
+;port in the JMX service URL.
+;; sd="Remote Administration Port", ld="Port for remote administration service", rq="N", dt="n"
+Remote Administration Port=10100
+;User name for remote administration connections
+;; sd="Remote Administration User Id", ld="User ID for connection to remote administration service" 
+Remote Administration UserId=admin
+;Password for remote administration connections
+;; sd="Remote Administration Password", dt="e", ld="Connect password for remote administration service"
+Remote Administration Password={V1.1}7m4OtVwXFNyLc1j6pZG69Q==
+
+
+;Set the value to 1 to Enable PPM Agents,0 to disable PPM Agents
+;; sd="Enable PPM Agent", ld="Enable the Performance Monitor agent", dt="c", rq="N", hd="N"
+EnablePPM Agent=0
+
+;To add directories or jar files to CLASSPATH for the jvm loaded via JNI, uncomment Add to CLASSPATH=
+;and set it equal to the list of elements you would like to use.
+;The classpath elements need to be seperated using the path seperator specific to the platform.
+;For Example: Add to CLASSPATH=/usr/class:/home/user/class
+;; sd="Add to Java Classpath", ld="Path additions to the CLASSPATH environment variable", rq="N"
+;Add to CLASSPATH=
+
+;To pass java options to the jvm loaded via JNI, uncomment JavaVM Options=
+;and set it equal to the list of parameters you would like to use.
+;The options need to be a blank space separated list of valid java options.
+;Consult your JRE vendor for valid java options.
+;For example: JavaVM Options=-Xmx256m -Xms128m
+;; sd="Java VM Startup Options", rq="N", ld="Used to pass Java options to the JVM loaded via JNI.  Set this value equal to the list of parameters you would like to use.  The options need to be a blank space separated list of valid java options.  Consult your JRE vendor for valid JVM options.  For example, JavaVM Options=-Xmx256m -Xms128m."
+JavaVM Options=-Dxdo.ConfigFile=%PS_HOME%/appserv/xdo.cfg -Xms32m -Xmx128m
+
+;If the process scheduler is behind a proxy server,
+;set "Proxy Host=" to the domain name of the proxy server (proxy.peoplesoft.com)
+;set "Proxy Port=" to the port number of the proxy server (80)
+;; sd="Proxy Server Machine Name", rq="N", ld="Use this setting if the Process Scheduler is behind a proxy server"
+Proxy Host=
+
+;; sd="Proxy Server Machine Port", ld="Port of the Proxy Server", dt="n", rq="N"
+Proxy Port=
+
+
+;set "Non Proxy Hosts=" to a list of hosts that should be connected to directly
+;and not through proxy server. The value can be a list of hosts, each 
+;seperated by a |, and in addition a wildcard character (*) can be used for 
+;matching. For example: Non Proxy Hosts=*.foo.com|localhost. The maximum 
+;length of this string cannot exceed 1024 characters.
+;; sd="Non Proxy Hosts", rq="N", ld="List of hosts that should be connected to directly and not through a proxy server. The value can be a list of hosts, each seperated by a vertical tab, and in addition a wildcard character (*) can be used for matching. For example: Non Proxy Hosts=*.foo.com|localhost. The maximum length of this string cannot exceed 1024 characters"
+Non Proxy Hosts=
+
+;-------------------------------------------------------------------------
+; DbFlags Bitfield
+;
+; Bit       Flag
+; ---       ----
+; 1         - Ignore metaSQL to update database statistics(shared with COBOL)
+; 2         - not yet allocated
+; 4         - Disable Second DB Connection
+; 8         - Disable Persistent Secondary DB Connection
+; 16        - not yet allocated
+; 32        - not yet allocated
+; 64        - not yet allocated
+; 128       - not yet allocated
+; 256       - not yet allocated
+;; sd="Database Flags Bitfield", dt="c", dr="m", rq="N"
+;; option(va = 1, sd="Ignore metaSQL to update database statistics(shared with COBOL)")
+;; option(va = 2, sd="Ignore Truncate command for DB2Unix, use Delete instead")
+;; option(va = 4, sd="Disable Second DB Connection")
+;; option(va = 8, sd="Disable Persistent Secondary DB Connection")
+DbFlags=0
+
+[PSAESRV]
+;=========================================================================
+; Settings for Application Engine Tuxedo Server
+;=========================================================================
+;-------------------------------------------------------------------------
+; The max instance should reflect the max concurrency set for process type
+; defined with a generic process type of Application Engine as defined
+; in the Server Definition page in Process Scheduler Manager
+;; sd="Maximum Instances", dt="n", ld="Maximum concurrency set for process type defined with a generic process type of Application Engine as defined in the Server Definition page in Process Scheduler Manager", rl = "Y"
+Max Instances=3
+
+;-------------------------------------------------------------------------
+; Number of services after which PSAESRV will automatically restart.
+; If the recycle count is set to zero, PSAESRV will never be recycled.
+; The default value is zero.
+; Dynamic change allowed for Recycle Count
+;; sd="Recycle Count", dt="n", dy="Y", ld="Number of services that will be completed before this process restarts", tip="Cross Dependency Note: If set > 0, Tuxedo Settings/Restartable must be set to 'Y'.  If set to zero, the process never recycles" 
+Recycle Count=1000
+
+;-------------------------------------------------------------------------
+; Configurable memory threshold -  ProcessRestartMemoryLimit
+; If the recycable process has exceeded a configurable memory threshold it will recycle
+; default value for the ProcessRestartMemoryLimit=0, - this is mean that there is no configurable memory threshold
+; Dynamic change not allowed for the ProcessRestartMemoryLimit
+;; sd="ProcessRestartMemoryLimit", ld="If the VM for the recycable process has exceeded ProcessRestartMemoryLimit it will recycle", tip="This is not dynamic cfg-parameter.  If set to zero, there is no memory threshold for the process", dt = "n", dy = "Y" 
+ProcessRestartMemoryLimit=0
+
+;-------------------------------------------------------------------------
+; Number of consecutive service failures after which PSAESRV will
+; automatically restart.
+; If this is set to zero, PSAESRV will never be recycled.
+; The default value is zero.
+; Dynamic change allowed for Allowed Consec Service Failures
+;; sd="Allowed Consecutive Service Failures", dt="n", dy="Y", ld="Number of consecutive services allowed to fail before this process restarts", tip="If set to zero, the process never restarts due to failure" 
+Allowed Consec Service Failures=2
+
+; Max Fetch Size -- max result set size in KB for a SELECT query
+; Default is 5000KB. Use 0 for no limit.
+;; sd="Maximum Fetch Size", dt="n", ld="Maximum result set size in KB for a SELECT query", tip="Use '0' for no limit"
+Max Fetch Size=0
+
+;-----------------------------------------------------------------------------------------
+; Setting to control dirty read for Scheduled PSQueries.
+;; sd="Dirty Read", ld="Dirty read setting for Scheduled PSQueries", tip="Set this value to 1 to enable dirty read for scheduled queries. 0 to disable."
+ScheduledQuery-DirtyRead=0
+
+
+[PSDSTSRV]
+;=========================================================================
+; Settings for Distribution Agent Tuxedo Server
+;=========================================================================
+;-------------------------------------------------------------------------
+; The max instance should reflect the max instances of the Dist Agent.
+; Tuxedo will initialy start count specified in the min instance setting.
+;; sd="Minimum Instances", dt="n", ld="Minimum number of process instances started upon domain boot", rl = "Y"
+Min Instances=1
+;; sd="Maximum Instances", ld="Maximum number of process instances started upon domain boot", rl = "Y", tip = "Set this value equal to Min Instances to disable spawning", dt = n
+Max Instances=3
+
+;-------------------------------------------------------------------------
+; Number of services after which PSDSTSRV will automatically restart.
+; If the recycle count is set to zero, PSDSTSRV will never be recycled.
+; The default value is zero.
+; Dynamic change allowed for Recycle Count
+;; sd="Recycle Count", dt="n", dy="Y", ld="Number of services that will be completed before this process restarts", tip="Cross Dependency Note: If set > 0, Tuxedo Settings/Restartable must be set to 'Y'.  If set to zero, the process never recycles"
+Recycle Count=0
+
+;-------------------------------------------------------------------------
+; Configurable memory threshold -  ProcessRestartMemoryLimit
+; If the recycable process has exceeded a configurable memory threshold it will recycle
+; default value for the ProcessRestartMemoryLimit=0, - this is mean that there is no configurable memory threshold
+; Dynamic change not allowed for the ProcessRestartMemoryLimit
+;; sd="ProcessRestartMemoryLimit", ld="If the VM for the recycable process has exceeded ProcessRestartMemoryLimit it will recycle", tip="This is not dynamic cfg-parameter.  If set to zero, there is no memory threshold for the process", dt = "n", dy = "Y" 
+ProcessRestartMemoryLimit=0
+
+;-------------------------------------------------------------------------
+; Number of consecutive service failures after which PSDSTSRV will
+; automatically restart.
+; If this is set to zero, PSDSTSRV will never be recycled.
+; The default value is zero.
+; Dynamic change allowed for Allowed Consec Service Failures
+;; sd="Allowed Consecutive Service Failures", dt="n", dy="Y", ld="Number of consecutive services allowed to fail before this process restarts", tip="If set to zero, the process never restarts due to failure" 
+Allowed Consec Service Failures=2
+
+; Max Fetch Size -- max result set size in KB for a SELECT query
+; Default is 5000KB. Use 0 for no limit.
+;; sd="Max Fetch Size Per Query", ld="Maximum result set size in KB for a SELECT query", tip="If set to zero, there is no limit", dt="n"
+Max Fetch Size=0
+
+
+[SQR]
+;=========================================================================
+; Settings for SQR Software
+;=========================================================================
+;; sd="SQR Bin", ld="The path to the SQR executables"
+SQRBIN=%PS_HOME%/bin/sqr/%PS_DB%/bin
+;; sd="SQR Flags", ld="Specify the SQR report arguments required for launching SQR"
+PSSQRFLAGS=-ZIF%PS_HOME%/sqr/pssqr%LANGUAGECD%.unx
+;; sd="Print Log", dt="c", ld="Indicates whether the SQR log files are also be printed when the output destination is Printer"
+Print Log=N
+;; sd="Enhanced HTML", ld="Indicate whether reports are in enhanced HTML format when the output destination is HTML"
+Enhanced HTML=N
+;;sd="PSSQR", ld="The path for the SQR report file search"
+PSSQR=/apps/psoft/custom_prod/custom_sqr:%PS_APP_HOME%/sqr:%PS_HOME%/sqr
+
+[Data Mover]
+;=========================================================================
+; Data Mover settings
+;=========================================================================
+;; sd="Input Directory", ld="The path for the Data Mover input directory", tip="Example: %PS_HOME%/data"
+InputDir=%PS_HOME%/data
+;; sd="Output Directory", ld="The path for the Data Mover output directory", tip="Example: %PS_HOME%/data"
+OutputDir=%PS_CFG_HOME%/data
+;; sd="Log Directory", ld="The path for the Data Mover log directory", tip="Example: %PS_SERVDIR%/log_output"
+LogDir=%PS_SERVDIR%\log_output
+;; sd="Last Scripts Dir", ld="Data Mover Search directory for scripts specified without an absolute path"
+LastScriptsDir=%PS_HOME%/scripts
+
+[RemoteCall]
+;=========================================================================
+; Settings for RemoteCall
+;=========================================================================
+;; sd="COBOL Platform", ld="Third Party COBOL compiler and runtime platform", rq="N"
+COBOL Platform=
+
+; This parameter indicates the duration in seconds to run  a Remote Call
+; within an Application Engine program before it is terminated
+;; sd="Remote Call Timeout", dt="n", ld="Number of seconds to run a Remote Call within an Application Engine program before it is terminated"
+RCCBL Timeout=300
+
+; RemoteCall child process output redirection and Tracing
+;
+; If this parameter is non-zero,
+; the child process output is saved to <Domain Settings\Log Directory>\<program>_<oprid>.out (with remote call tracing information),
+; and any error output is saved to <program>_<oprid>.err
+; also rmtcall_in.<pid>, rmtcall_out.<pid>, rmtcall_cblmsg.<pid> files will be saved
+;
+; If this parameter is zero (default),
+; the child process output and error files are created but with no remote call tracing information,
+; also rmtcall_in.<pid>, rmtcall_out.<pid>, rmtcall_cblmsg.<pid> files will not be saved
+;; sd="Remote Call Redirect", dt="c", ld="Check this to save the child process output to <Domain Settings\\Log Directory>\<program>_<oprid>.out", tip="Error output output is saved to <program>_<oprid>.err"
+RCCBL Redirect=0
+
+
+[SMTP Settings]
+;=========================================================================
+; Settings for SMTP mail
+; All controls under SMTP Settings can be dynamically changed
+;=========================================================================
+;; sd="SMTP Server", ld="Principal SMTP Server Address", dy="Y", rq="N"
+SMTPServer=
+;; sd="SMTP Port", ld="Port for Principal SMTP Server", dt="n", dy="Y", rq="N"
+SMTPPort=25
+;; sd="SMTP Server 1", ld="Failover SMTP Server", dy="Y", rq="N"
+SMTPServer1=
+;; sd="SMTP Port 1", ld="Port for failover SMTP Server", dt="n", dy="Y", rq="N"
+SMTPPort1=0
+;; sd="SMTP Sender Source Address", dy="Y", rq="N"
+SMTPSender=PeopleSoft@peoplesoft.com
+;; sd="SMTP Source Machine Name", dy="Y", rq="N"
+SMTPSourceMachine=
+;; sd="SMTP Character Set", ld="SMTP Character Encoding Set", dy="Y", rq="N", dt="d"
+SMTPCharacterSet=
+;; sd="SMTP Encoding DLL", ld="Enter the name of a dynamic-link library (DLL) that is used to translate the mail message from the sender's character set (such as latin1, sjis, big5, gb, ks-c-5601-1987, or ks-c-5601-1992) to a 7-bit safe character set for transmission", dy="Y", rq="N"
+SMTPEncodingDLL=
+;; sd="SMTP Tracing Enabled", ld="Enables the tracing of all email details to the log file when LogFence is set to 5. Uncheck this field to disable it. With this option, you can reduce the log file size for high-volume email users", rq="N", dt="c"
+SMTPTrace=0
+;; sd="SMTP Send Time", ld="Enable this field to have messages contain a send time that is populated by the application server. Uncheck this to leave the send time blank and have it populated by the receiving gateway (depending on the gateway)", rq="N", dt="c"
+SMTPSendTime=0
+
+;; sd="SMTP Use SSL Flag", ld="Enable this field connect to Email Server in SSL mode. This works only if MCF is used to connect to Email Server", rq="N"
+SMTPUseSSL=N
+;; sd="SMTP SSL Port", ld="SSL Port for Principal SMTP Server", rq="N", dt="n"
+SMTPSSLPort=465
+;; sd="SMTP Client Certificate Alias", ld="Enter the name of the Certificate Alias incase Email Server is needs a client certificate for SSL connection", rq="N"
+SMTPClientCertAlias=
+
+;; sd="SMTP Use SSL Flag 1", ld="Enable this field connect to Failover Email Server in SSL mode. This is only works is MCF is used to connect to Email Server", rq="N" 
+SMTPUseSSL1=N
+;; sd="SMTP SSL Port 1", ld="SSL Port for Failover SMTP Server", rq="N", dt="n"
+SMTPSSLPort1=465
+;; sd="SMTP Client Certificate Alias 1", ld="Enter the name of the Certificate Alias incase Failover Email Server needs a client certificate for SSL connection", rq="N" 
+SMTPClientCertAlias1=
+
+
+[Cache Settings]
+;=========================================================================
+; Settings for Batch Tools that use Cache, eg Application Engine
+;=========================================================================
+;-------------------------------------------------------------------------
+; Parent of cache directory. Do not share with Application Servers.
+;; sd="Cache Base Directory", ld="Directory where the cache files will be written", rq="N"
+CacheBaseDir=%PS_SERVDIR%
+;-----------------------------------------------------------------------
+; MaxCacheMemory - controls cache memory pruning
+;  0        cache memory pruning disabled
+;  >0       max size of memory cache in MBytes
+;; sd="Max Cache Memory", dt="n", ld="controls cache memory pruning", tip="Set to zero to disable cache memory pruning"
+MaxCacheMemory=0
+;-----------------------------------------------------------------------
+; EnableDBCache - When set to Y, Cache is accessed from DB, rather than File-System.
+; When this setting is enabled, the settings EnableServerCaching, ServerCacheMode and CacheBaseDir are ignored.
+; Y  DB-Cache is enabled
+; N  DB-Cache is disabled
+;; sd="Enable DB-Cache", rq="N", hd="Y", ld="Enables cache in Database. This value must be set prior to booting domain.", dt="c"
+;EnableDBCache=
+
+;-----------------------------------------------------------------------
+; Cache Repair Settings
+;-----------------------------------------------------------------------
+; EnableCacheRepair - When set to Y, cache repair activities will execute.
+;                     When this setting is disabled, the settings AdjustMaxCacheMem, 
+;                     ExcessivePruningThreshold, CacheMissThreshold, and 
+;                     MaxRepairCollection are ignored.
+; Y  cache repair is enabled - default
+; N  cache repair is disabled
+; Dynamic change allowed for EnableCacheRepair
+;; sd="Enable Cache Repair", dt="c", dy="Y", rq="N", hd="Y", ld="Cache repair performs on-the-fly adjustments to problematic cache"
+EnableCacheRepair=Y
+;-----------------------------------------------------------------------
+; AdjustMaxCacheMem - Controls how much to adjust the internal setting for MaxCacheMem 
+;                     if excessive pruning is detected. This is unused if MaxCacheMem=0.
+;  0        disables adjusting internal setting
+;  >0       #MBytes by which to increase the internal setting
+; Dynamic change allowed for AdjustMaxCacheMem
+;; sd="Adjust internal MaxCacheMem setting", dt="n", dy="Y", rq="N", tip="Set to 0 to disable adjusting internal setting",ld="Controls internal adjustments to MaxCacheMem. Ignored if MaxCacheMem is 0."
+AdjustMaxCacheMem=5
+;-----------------------------------------------------------------------
+; ExcessivePruningThreshold - Threshold for ratio of pruned objects to objects fetched  
+;                             in a service request. Once the threshold is reached the 
+;                             internal setting for MaxCacheMem is incremented by the 
+;                             amount in AdjustMaxCacheMem. This is unused if MaxCacheMem=0.
+;                             Expressed as a percentage.
+; Dynamic change allowed for ExcessivePruningThreshold
+;; sd="Excessive Pruning Threshold", dt="n", dy="Y", rq="N", ld="Threshold for ratio of pruned objects to objects fetched in a service request, expressed as a percentage. Once the threshold is reached the internal setting for MaxCacheMem will be incremented by the amount in AdjustMaxCacheMem."
+ExcessivePruningThreshold=80
+;-----------------------------------------------------------------------
+; CacheMissThreshold - Threshold for the number of times an object is found to be invalid
+;                      in cache before deleting the object from cache, forcing a refresh.
+; Dynamic change allowed for CacheMissThreshold
+;; sd="Cache Miss Threshold", dt="n", dy="Y", rq="N", ld="Threshold for the number of times an object is found to be invalid in cache before deleting the object from cache, forcing a refresh."
+CacheMissThreshold=5
+;-----------------------------------------------------------------------
+; MaxRepairCollection - Maximum size of the memory data collection for cache repair
+; Dynamic change allowed for MaxRepairCollection
+;; sd="Max Repair Collection", dt="n", dy="Y", rq="N", ld="Maximum size of the memory data collection for cache repair. The data collection is purged from memory once it reaches the maximum size."
+MaxRepairCollection=5
+
+[Integration Broker]
+;=========================================================================
+; General settings for the Integration Broker
+;=========================================================================
+; Minimum size of message data for synchronous handler to enable compression.
+;; sd="Message Compression Threshold", dt="n", rq="N", ld="Minimum message data size for synchronous handler compression enablement"
+Min Message Size For Compression=10000
+
+[Search]
+;=========================================================================
+; Text-Search settings
+;=========================================================================
+; If no option is provided, the application server will automatically
+; select the preferred mechanism for the deployment platform.
+; 1 - Search module bound to an application server
+; 2 - Search module in same machine as the application server
+; 3 - Search module bound to remote search domain
+;; dt="d", ld="The deployment model for Search in this domain", rq="N", tip="If no option is provided, the application server will automatically select the preferred mechanism for the deployment platform."
+;; option(va = 1, sd="Search module bound to an application server")
+;; option(va = 2, sd="Search module in same machine as the application server")
+;; option(va = 3, sd="Search module bound to remote search domain")
+Deployment Type=
+
+[Search Indexes]
+;=========================================================================
+; Search index settings
+;=========================================================================
+;; ssp="", dt="g", rq="N", ld="This is an explicit search index path for this index name"
+; Search indexes can be given alternate locations if there is an entry here.
+; Entries look like: IndexName=fs location (ie EMPLOYEE=c:\temp)
+
+[LDAP]
+;=========================================================================
+; General settings for LDAP
+;=========================================================================
+; Should the referrals be followed in the Directory server?
+; Y - follow referrals.
+; N - Do not follow referrals.
+;; sd="Follow Referrals", ld="Determines whether the referrals have to be followed in the Directory Server. By default, the referrals will be followed", dt="c", dy="Y", rq="N"
+Follow Referrals=Y
+;-------------------------------------------------------------------------
+; LDAP Connection TimeOut in seconds
+; Range(0-120). 0 - Default TCP Timeout.
+;; sd="LDAP Connection TimeOut", ld="Time Limit in seconds for the PT LDAP Client to make a connection with the Directory server. Default is 30 seconds", dt="n", dy="Y", rq="N"
+Connection TimeOut=30
+;-------------------------------------------------------------------------
+; Enable/Disable Connection Pooling
+; Y - Enable Connection Pooling.
+; N - Disable Connection Pooling.
+;; sd="Enable Connection Pooling", ld="Determines whether the connections from the PT LDAP client have to be pooled in the Directory Server. This is disabled by default", dt="c", dy="Y", rq="N"
+Connection Pooling=N
+;-------------------------------------------------------------------------
+;LDAP Connection Pooling TimeOut in seconds. Not Applicable when the connection pooling is disabled.
+; Range(0-999999). 0 - No Time Limit.
+;; sd="Connection Pooling TimeOut", ld="LDAP Connection Pooling TimeOut in seconds. Not Applicable when the connection pooling is disabled. Default is 300 seconds", dt="n", dy="Y", rq="N"
+Connection Pooling TimeOut=300
+;-------------------------------------------------------------------------
+; Should the LDAP pick up any changes in the ssl certificates?
+; Y - Changes will be in effect without Appserver reboot.
+; N - Appserver reboot needed to pick up the changes.
+;; sd="Dynamic Update of Certificates", ld="Determines whether the application server domain has to be bounced to pick up any changes in the certificates.", dt="c", dy="Y", rq="N"
+Dynamic Update of Certificates=N
+;-------------------------------------------------------------------------
+; LDAP Logging detail level
+;
+; Level     Type of information
+; -----     -------------------
+;   0       - Suppress Logging
+;   1       - Errors and Exceptions (default)
+;   2       - Transaction Status
+;   3       - Detailed Tracing
+; Dynamic change allowed for LogFence
+;; sd="LDAP Log Fence", ld="Determines the level of logging for the LDAP module", dt="d", dy="Y", rq="N"
+;; option(va =    0, sd="Suppress Logging")
+;; option(va =    1, sd="Errors and Exceptions (default)")
+;; option(va =    2, sd="Transaction Status")
+;; option(va =    3, sd="Detailed Tracing")
+LDAP LogFence=1
+
+
+[Parameter Exceptions]
+;=========================================================================
+; MetaString Exceptions in Parameters 
+;=========================================================================
+;; ssp="", dt="g", rq="N", ld="Generates an error when this value is found in one of the parameters"
+; Metastring Exceptions will give an error when the string is found in 
+; some specific parameters sent in a request (e.g. Output Destination or Run Control Id).
+; %ACCESSPSWD% need not be included in this list since it is always trapped
+; Entries look like: PARAMETER_EXCEPT01=%OPRID%
+;PARAMETER_EXCEPT01=
+;PARAMETER_EXCEPT02=
+;PARAMETER_EXCEPT03=
+;PARAMETER_EXCEPT04=
+;PARAMETER_EXCEPT05=
+;PARAMETER_EXCEPT06=
+;PARAMETER_EXCEPT07=
+;PARAMETER_EXCEPT08=
+;PARAMETER_EXCEPT09=
+;PARAMETER_EXCEPT10=
+;PARAMETER_EXCEPT11=
+;PARAMETER_EXCEPT12=
+;PARAMETER_EXCEPT13=
+;PARAMETER_EXCEPT14=
+;PARAMETER_EXCEPT15=
+
+[nVision]
+;=========================================================================
+; General settings for nVision
+;=========================================================================
+;; sd="Drill Down Directory", ld="Specify the location of PS/nVision DrillDown files", tip="Example: %PS_HOME%\\NVSION\\LAYOUT\\DRILLDN"
+DrillDownDir=%PS_APP_HOME%/NVISION/LAYOUT/DRILLDN:%PS_HOME%/NVISION/LAYOUT/DRILLDN
+;; sd="Instance Directory", ld="Location where PS/nVision places report instances", tip="Example: %PS_SERVDIR%\\NVSION\\INSTANCE"
+InstanceDir=%PS_SERVDIR%/NVISION/INSTANCE
+;; sd="Layout Directory", ld="Location of the PS/nVision layout", tip="Example: %PS_HOME%\\NVISION\\LAYOUT"
+LayoutDir=%PS_APP_HOME%/NVISION/LAYOUT:%PS_HOME%/NVISION/LAYOUT
+;; sd="Enable Drill Down For File", dt="c", ld="Indicate whether you want to enable drilldown on a report with the output type of file"
+EnableDrillDownForFile=0
+;; sd="Enable Poll Dialogs", dt="c", ld="Indicate whether you want the system to poll and automatically kill unattended dialogs generated from PS/nVision in batch mode. For example, dialog messages from Excel displaying on the webserver"
+EnablePollDialogs=0
+;; sd="Poll Dialog Seconds", dt="n", ld="Time in seconds used to cycle polling for the dialog"
+PollDialogSeconds=30
+;; sd="Trace Level", dt="n", ld="Indicate whether you want the system to generate independent trace/log files, and at what level, for each nVision process", tip="Trace files can be viewed from the Process Monitor Details - View Log/Trace page"
+TraceLevel=0
+;; sd="Save Temp File", dt="c", ld="Indicate whether you want PS/nVision to save or delete the temporary reports created when running them to Email, Printer, or Web output", tip="Select this and temporary report will be saved"
+SaveTempFile=0
+;; sd="nVision Mode Setting", dt="n", ld="Indicates PS/nVision web mode"
+UseExcelAutomation=2
+;; sd="As of Date for Labels", dt="n", ld="Flag to either include As of Date in Label retrieval logic or not"
+AsofDateForLabels=0
+;; sd="Retrieve only Active descriptions for tree node", dt="n", ld="Flag to retrieve only Active descriptions for tree node"
+RetrieveActiveTreeLabels=0
+
+
+; ******************************************************************
+; ******************************************************************
+;
+;                          
+;
+;                                               
+;                           
+; $Date: 27-Oct-2004.16:13:32$
+;                           
+; ******************************************************************
+;
+;                                                                    
+ 
+; ***************************************************************
+;  This software and related documentation are provided under a
+;  license agreement containing restrictions on use and
+;  disclosure and are protected by intellectual property
+;  laws. Except as expressly permitted in your license agreement
+;  or allowed by law, you may not use, copy, reproduce,
+;  translate, broadcast, modify, license, transmit, distribute,
+;  exhibit, perform, publish or display any part, in any form or
+;  by any means. Reverse engineering, disassembly, or
+;  decompilation of this software, unless required by law for
+;  interoperability, is prohibited.
+;  The information contained herein is subject to change without
+;  notice and is not warranted to be error-free. If you find any
+;  errors, please report them to us in writing.
+;  
+;  Copyright (C) 1988, 2014, Oracle and/or its affiliates.
+;  All Rights Reserved.
+; ***************************************************************
+ 

@@ -29,23 +29,19 @@ DOMAIN_TYPE=NEW_DOMAIN
 # Silent installer can detect the deployable application extensions from the PS_APP_HOME
 # PS_APP_HOME=D:/CR9.2
 # Install type to specify whether the installation is a single server or multi server deployment. Possible values are "SINGLE_SERVER_INSTALLATION", "MULTI_SERVER_INSTALLATION"
-<% if @SingleOrMultiIntall == "MULTI" %>
-INSTALL_TYPE=MULTI_SERVER_INSTALLATION
-<% else %>
-INSTALL_TYPE=SINGLE_SERVER_INSTALLATION
-<% end %>
+INSTALL_TYPE=<%= @INSTALL_TYPE %>
 # WebSite Name
-WEBSITE_NAME=<%= @SITE_NAME %>
+WEBSITE_NAME=<%= @WEBSITE_NAME %>
 # To enable jolt failover and load balancing, provide a list of application server domains in the format of; PSSERVER=AppSrvr:JSLport,...
 # For example: PSSERVER=SERVER1:9000,SERVER2:9010,SERVER3:9020
 # PSSERVER is optional, but if set will have precedence over APPSERVER_NAME & JSL_PORT.
 PSSERVER=
 # AppServer Name
-APPSERVER_NAME=<%= @AppServerName %>
+APPSERVER_NAME=<%= @APPSERVER_NAME %>
 # Appserver JSL Port
-JSL_PORT=<%= @JSLPort %>
+JSL_PORT=<%= @JSL_PORT %>
 # HTTP Port
-HTTP_PORT=<%= @HTTPPort %>
+HTTP_PORT=<%= @HTTP_PORT %>
 # HTTPS Port
 HTTPS_PORT=8443
 # Authentication Domain (optional)

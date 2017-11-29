@@ -24,19 +24,22 @@ unless Dir.exist?('/apps/psoft/appl/crm88-850')
   end
 end
 
-template '/home/psoft/setcrm88-850' do
-   source 'setcrm88-850.erb'
-   owner 'psoft'
-   group 'psoft'
-   mode '0755'
-   variables(
-     ORACLE_SID:      node['setcrm88-850']['ORACLE_SID'],
-     ORACLE_HOME:     node['setcrm88-850']['ORACLE_HOME'],
-     ORACLE_BASE:     node['GlobalEnv']['ORACLE_BASE'],
-     COBDIR:          node['setcrm88-850']['COBDIR'],
-     TUXDIR:          node['setcrm88-850']['TUXDIR'],
-     PATH:            node['GlobalEnv']['PATH'],
-     LD_LIBRARY_PATH: node['GlobalEnv']['LD_LIBRARY_PATH'],
-     PS_APP_HOME:     node['setcrm88-850']['PS_APP_HOME']
-   )
+unless File.exist?('/home/psoft/setcrm88-850')
+  template '/home/psoft/setcrm88-850' do
+     source 'setcrm88-850.erb'
+     owner 'psoft'
+     group 'psoft'
+     mode '0755'
+     variables(
+      ORACLE_SID:      node['setcrm88-850']['ORACLE_SID'],
+      ORACLE_HOME:     node['GLOBAL']['PT850']['ORACLE_HOME'],
+      ORACLE_BASE:     node['GLOBAL']['PT850']['ORACLE_BASE'],
+      COBDIR:          node['GLOBAL']['PT850']['COBDIR'],
+      TUXDIR:          node['GLOBAL']['PT850']['TUXDIR'],
+      PATH:            node['GLOBAL']['PT850']['PATH'],
+      LD_LIBRARY_PATH: node['GLOBAL']['PT850']['LD_LIBRARY_PATH'],
+      PS_APP_HOME:     node['setcrm88-850']['PS_APP_HOME'],
+      PS_HOME:         node['GLOBAL']['PT850']['PS_HOME']
+     )
+  end
 end
