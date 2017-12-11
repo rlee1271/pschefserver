@@ -4,7 +4,7 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
-node[node['hostname'].upcase].each do |toolsver, toolsver_val|
+node[node['hostname'].upcase]['APPSERV'].each do |toolsver, toolsver_val|
   toolsver_val.each do |dom_pos, dom_pos_val|
     unless Dir.exist?(node['GLOBAL']['PS_HOME_854'] + '/appserv/' + dom_pos) && toolsver == '854'
       template node['GLOBAL']['PS_HOME_854'] + '/appserv/psappsrv.cfg' do
@@ -29,7 +29,7 @@ node[node['hostname'].upcase].each do |toolsver, toolsver_val|
         user 'psoft'
         group 'psoft'
         cwd node['GLOBAL']['PS_HOME_854'] + '/appserv'
-        command '. /home/psoft/setfin92-854;./psadmin -c configure -d ' + dom_pos + ' -u {RENSRV}=' + dom_pos_val['RENSRV'] + '%' + '{PUBSUB}=' + dom_pos_val['PUBSUB'] + '%'
+        command '. /home/psoft/setfin92-854;./psadmin -c configure -d ' + dom_pos.to_s + ' -u {RENSRV}=' + dom_pos_val['RENSRV'].to_s + '%' + '{PUBSUB}=' + dom_pos_val['PUBSUB'].to_s + '%'
       end
     end
   end

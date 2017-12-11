@@ -1,6 +1,6 @@
 {
-   "name":"appservNew",
-   "description":"Application Server role",
+   "name":"appsrv854",
+   "description":"Application Server 8.54 domain role",
    "json_class":"Chef::Role",
    "default_attributes":{
 
@@ -10,7 +10,7 @@
    },
    "chef_type":"role",
    "run_list":[
-      "recipe[app_domain_new::appServSetup]"
+      "recipe[app_domain::appdomain.854]"
    ],
    "env_run_lists":{
 

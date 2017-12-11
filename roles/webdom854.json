@@ -1,0 +1,19 @@
+{
+   "name":"webdom854",
+   "description":"WebServer 8.54 domain role",
+   "json_class":"Chef::Role",
+   "default_attributes":{
+
+   },
+   "override_attributes":{
+
+   },
+   "chef_type":"role",
+   "run_list":[
+      "recipe[web_domain::wls1212]",
+      "recipe[web_domain::mod_config.wls1212]"
+   ],
+   "env_run_lists":{
+
+   }
+}

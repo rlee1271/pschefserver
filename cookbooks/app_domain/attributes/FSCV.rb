@@ -5,7 +5,7 @@
 # second level is peopletools version
 # third level is domain
 
-default['TPAPSAPPTST1'] = { # first level is server/node
+default['TPAPSAPPTST1']['APPSERV'] = { # first level is server/node
   '854' => { # second level is peopletools version
     'FSCV_WB01' => { # third level is domain
       'DBNAME'     => 'FSCV',

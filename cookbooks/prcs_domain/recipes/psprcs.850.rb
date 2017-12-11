@@ -4,7 +4,7 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
-node[node['hostname'].upcase].each do |env_name, env_val|
+node[node['hostname'].upcase]['PSPRCS'].each do |env_name, env_val|
   x = 1
   env_val.each do |dom_pos, dom_pos_val|
     unless Dir.exist?(node['GLOBAL']['PS_HOME_850'] + '/appserv/prcs/' + env_name + x.to_s) && dom_pos_val['TOOLS'] == '850'
