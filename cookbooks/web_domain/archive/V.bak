@@ -1,0 +1,104 @@
+############################################
+#  V (ProdFix POC) SETTINGS      		   #
+############################################
+# first level is server/node
+# second level is weblogic version
+# third level is environment name
+# fourth level is DOMAIN_POS: WB01, WB02, etc. OR IB01, IB02, OR RPT01, RPT02
+# CREATE_NEW_DOMAIN or ADD_SITE
+# NEW_DOMAIN or EXISTING_DOMAIN
+# MULTI_SERVER_INSTALLATION or SINGLE_SERVER_INSTALLATION
+# HTTP_PORT_2 only for Multi server 
+# IG_NODES required for any IBxx servers
+
+default['TPAPSAPPTST1']['WEBSERV'] = {
+  '1212' => {
+    'FSCV' => { 
+      'WB01' => { 
+        'INSTALL_ACTION' => 'CREATE_NEW_DOMAIN', 
+        'DOMAIN_TYPE' => 'NEW_DOMAIN', 
+        'INSTALL_TYPE' => 'MULTI_SERVER_INSTALLATION', 
+        'WEBSITE_NAME' => 'FSCV',
+        'APPSERVER_NAME' => 'tpapsapptst1.timeinc.com',
+        'JSL_PORT' => '21100',
+        'HTTP_PORT' => '8210',
+	    'HTTP_PORT_2' => '8212',
+      },
+      'IB01' => { # third level is DOMAIN_POS: WB01, WB02, etc. OR IB01, IB02, OR RPT01, RPT02
+        'INSTALL_ACTION' => 'CREATE_NEW_DOMAIN', # CREATE_NEW_DOMAIN or ADD_SITE
+        'DOMAIN_TYPE' => 'NEW_DOMAIN', # NEW_DOMAIN or EXISTING_DOMAIN
+        'INSTALL_TYPE' => 'SINGLE_SERVER_INSTALLATION', # MULTI_SERVER_INSTALLATION or SINGLE_SERVER_INSTALLATION
+        'WEBSITE_NAME' => 'FSCV',
+        'APPSERVER_NAME' => 'tpapsapptst1.timeinc.com',
+        'JSL_PORT' => '21600',
+        'HTTP_PORT' => '8215',
+        'IG_NODES' => 'V',
+      },
+    },	
+  },
+},
+
+default['TPAPSAPPTST2']['WEBSERV'] = {
+#  '1036' => {
+#    'CRMV' => { 
+#      'WB01' => { 
+#        'INSTALL_ACTION' => 'CREATE_NEW_DOMAIN', 
+#        'DOMAIN_TYPE' => 'NEW_DOMAIN', 
+#        'INSTALL_TYPE' => 'SINGLE_SERVER_INSTALLATION', 
+#        'WEBSITE_NAME' => 'CRMV',
+#        'APPSERVER_NAME' => 'tpapsapptst2.timeinc.com',
+#        'JSL_PORT' => '31100',
+#        'HTTP_PORT' => '8310',
+#      },
+#      'IB01' => { # third level is DOMAIN_POS: WB01, WB02, etc. OR IB01, IB02, OR RPT01, RPT02
+#        'INSTALL_ACTION' => 'CREATE_NEW_DOMAIN', # CREATE_NEW_DOMAIN or ADD_SITE
+#        'DOMAIN_TYPE' => 'NEW_DOMAIN', # NEW_DOMAIN or EXISTING_DOMAIN
+#        'INSTALL_TYPE' => 'SINGLE_SERVER_INSTALLATION', # MULTI_SERVER_INSTALLATION or SINGLE_SERVER_INSTALLATION
+#        'WEBSITE_NAME' => 'CRMV',
+#        'APPSERVER_NAME' => 'tpapsapptst2.timeinc.com',
+#        'JSL_PORT' => '31600',
+#        'HTTP_PORT' => '8315',
+#        'IG_NODES' => 'V',
+#      },
+#    },
+#  },
+  '1212' => {
+    'PAEV' => { 
+      'WB01' => { 
+        'INSTALL_ACTION' => 'CREATE_NEW_DOMAIN', 
+        'DOMAIN_TYPE' => 'NEW_DOMAIN', 
+        'INSTALL_TYPE' => 'SINGLE_SERVER_INSTALLATION', 
+        'WEBSITE_NAME' => 'PAEV',
+        'APPSERVER_NAME' => 'tpapsapptst2.timeinc.com',
+        'JSL_PORT' => '41100',
+        'HTTP_PORT' => '8410',
+      },
+      'IB01' => { # third level is DOMAIN_POS: WB01, WB02, etc. OR IB01, IB02, OR RPT01, RPT02
+        'INSTALL_ACTION' => 'CREATE_NEW_DOMAIN', # CREATE_NEW_DOMAIN or ADD_SITE
+        'DOMAIN_TYPE' => 'NEW_DOMAIN', # NEW_DOMAIN or EXISTING_DOMAIN
+        'INSTALL_TYPE' => 'SINGLE_SERVER_INSTALLATION', # MULTI_SERVER_INSTALLATION or SINGLE_SERVER_INSTALLATION
+        'WEBSITE_NAME' => 'PAEV',
+        'APPSERVER_NAME' => 'tpapsapptst2.timeinc.com',
+        'JSL_PORT' => '41600',
+        'HTTP_PORT' => '8415',
+        'IG_NODES' => 'V',
+      },
+    },
+  },
+},
+
+default['TPATPAPPT1']['WEBSERV'] = {
+  '1212' => {
+    'FSCV' => { 
+      'RPT01' => { # third level is DOMAIN_POS: WB01, WB02, etc. OR IB01, IB02, OR RPT01, RPT02
+        'INSTALL_ACTION' => 'CREATE_NEW_DOMAIN', # CREATE_NEW_DOMAIN or ADD_SITE
+        'DOMAIN_TYPE' => 'NEW_DOMAIN', # NEW_DOMAIN or EXISTING_DOMAIN
+        'INSTALL_TYPE' => 'SINGLE_SERVER_INSTALLATION', # MULTI_SERVER_INSTALLATION or SINGLE_SERVER_INSTALLATION
+        'WEBSITE_NAME' => 'FSCV',
+        'APPSERVER_NAME' => 'tpapsapptst1.timeinc.com',
+        'JSL_PORT' => '21100',
+        'HTTP_PORT' => '8218',
+      },
+    },
+  },
+}

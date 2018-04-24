@@ -26,6 +26,6 @@ template '/apps/psoft/ptools/pt850/psconfig.sh' do
   group 'psoft'
   mode '0755'
   variables(
-    PS_HOME: node['pt850']['PS_HOME']
+    PS_HOME: node['GLOBAL']['PT850']['PS_HOME']
   )
 end

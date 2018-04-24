@@ -1,0 +1,18 @@
+{
+   "name":"prt91",
+   "description":"peoplesoft portal 9.1 role",
+   "json_class":"Chef::Role",
+   "default_attributes":{
+
+   },
+   "override_attributes":{
+
+   },
+   "chef_type":"role",
+   "run_list":[
+      "recipe[appl::prt91]"
+   ],
+   "env_run_lists":{
+
+   }
+}

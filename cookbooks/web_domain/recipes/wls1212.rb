@@ -3,10 +3,16 @@
 # Recipe:: wls1212
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
+#
+# first level is server/node
+# second level is weblogic version
+# third level is environment name
 
-node[node['hostname'].upcase]['WEBSERV'].each do |env_name, env_val|
-  env_val.each do |dom_pos, dom_pos_val|
-      unless Dir.exist?(node['GLOBAL']['WEBLOGIC1212']['PS_HOME'] + '/webserv/' + env_name + '_' + dom_pos)
+if !node[node['hostname'].upcase]['WEBSERV'].nil?
+node[node['hostname'].upcase]['WEBSERV'].each do |ver, ver_val|
+  ver_val.each do |env_name, env_val|
+    env_val.each do |dom_pos, dom_pos_val|
+      if !Dir.exist?(node['GLOBAL']['WEBLOGIC1212']['PS_HOME'] + '/webserv/' + env_name + '_' + dom_pos) && ver == '1212'
         template '/apps/psoft/ptools/webserv.' + env_name + dom_pos do
           source 'webserv.silent.erb'
           owner 'psoft'
@@ -24,12 +30,33 @@ node[node['hostname'].upcase]['WEBSERV'].each do |env_name, env_val|
             HTTP_PORT: dom_pos_val['HTTP_PORT']
           )
         end
-        execute 'execute_webserv_setup' do
+
+        bash 'import_appdomain' do
+          cwd node['GLOBAL']['WEBLOGIC1212']['PS_HOME'] + '/setup/PsMpPIAInstall'
           user 'psoft'
           group 'psoft'
-          cwd node['GLOBAL']['WEBLOGIC1212']['PS_HOME'] + '/setup/PsMpPIAInstall'
-          command '. /home/psoft/setfin92-854;./setup.sh -i silent -DRES_FILE_PATH=/apps/psoft/ptools/webserv.' + env_name + dom_pos
+          code <<-EOH
+            export ORACLE_HOME=#{node['GLOBAL']['PT854']['ORACLE_HOME']}
+            export ORACLE_BASE=#{node['GLOBAL']['PT854']['ORACLE_BASE']}
+            export TUXDIR=#{node['GLOBAL']['PT854']['TUXDIR']}
+            export PATH=$ORACLE_HOME/bin:$TUXDIR/bin:$PATH
+            export LD_LIBRARY_PATH=$TUXDIR/lib:$LD_LIBRARY_PATH
+            . #{node['GLOBAL']['PS_HOME_854']}/psconfig.sh
+            export PS_CFG_HOME=$PS_HOME
+            export PS_APP_HOME=$PS_HOME
+            export PS_CLASSPATH=$PS_HOME/class:$PS_HOME/appserv/classes/:$PS_APP_HOME/class:$PS_APP_HOME/appserv/classes
+            ./setup.sh -i silent -DRES_FILE_PATH=/apps/psoft/ptools/webserv.#{env_name}#{dom_pos}
+          EOH
         end
+
+#        execute 'execute_webserv_setup' do
+#          user 'psoft'
+#          group 'psoft'
+#          cwd node['GLOBAL']['WEBLOGIC1212']['PS_HOME'] + '/setup/PsMpPIAInstall'
+#          command '. /home/psoft/setfin92-854;./setup.sh -i silent -DRES_FILE_PATH=/apps/psoft/ptools/webserv.' + env_name + dom_pos
+#        end
       end
+    end
   end
+end
 end
